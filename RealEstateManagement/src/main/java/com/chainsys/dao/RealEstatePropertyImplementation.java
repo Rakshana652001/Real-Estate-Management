@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.chainsys.model.RealEstatePropertyRegister;
-import com.chainsys.model.RealEstateUserRegister;
 import com.chainsys.util.ConnectionJdbc;
 
 public class RealEstatePropertyImplementation
@@ -19,15 +18,16 @@ public class RealEstatePropertyImplementation
 	public void saveProperties(RealEstatePropertyRegister estatePropertyRegister) throws ClassNotFoundException, SQLException
 	{
 		Connection getConnection = ConnectionJdbc.getConnection();
-		String saveProperties = "insert into property_registration (seller_id,property_name,property_id,property_price, property_address, property_district,property_state) values (?,?,?,?,?,?,?)";
+		String saveProperties = "insert into property_registration (seller_id,property_name,property_id,property_price, property_images,property_address, property_district,property_state) values (?,?,?,?,?,?,?,?)";
 		PreparedStatement insertStatement = getConnection.prepareStatement(saveProperties);
 		insertStatement.setString(1, estatePropertyRegister.getSellerId());
 		insertStatement.setString(2, estatePropertyRegister.getPropertyName());
 		insertStatement.setString(3, estatePropertyRegister.getPropertyId());
 		insertStatement.setLong(4, estatePropertyRegister.getPropertyPrice());
-		insertStatement.setString(5, estatePropertyRegister.getPropertyAddress());
-		insertStatement.setString(6, estatePropertyRegister.getPropertyDistrict());
-		insertStatement.setString(7, estatePropertyRegister.getPropertyState());
+		insertStatement.setBytes(5, estatePropertyRegister.getPropertyImages());
+		insertStatement.setString(6, estatePropertyRegister.getPropertyAddress());
+		insertStatement.setString(7, estatePropertyRegister.getPropertyDistrict());
+		insertStatement.setString(8, estatePropertyRegister.getPropertyState());
 		
 		insertStatement.executeUpdate();
 		getConnection.close();		
@@ -40,22 +40,22 @@ public class RealEstatePropertyImplementation
 		{
 			System.out.println("Inside method");
 			Connection getConnection = ConnectionJdbc.getConnection();
-			String retriveProperties = "select seller_id,property_name,property_id,property_price, property_address, property_district,property_state from property_registration where seller_id = ?";
+			String retriveProperties = "select seller_id,property_name,property_id,property_price, property_images,property_address, property_district,property_state from property_registration where seller_id = ?";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveProperties);
 			preparedStatement.setString(1, sellerId);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next())
 			{
-				System.out.println("Inside while");
 				RealEstatePropertyRegister estatePropertyRegister = new RealEstatePropertyRegister();
 				
 				estatePropertyRegister.setSellerId(resultSet.getString(1));
 				estatePropertyRegister.setPropertyName(resultSet.getString(2));
 				estatePropertyRegister.setPropertyId(resultSet.getString(3));
 				estatePropertyRegister.setPropertyPrice(resultSet.getLong(4));
-				estatePropertyRegister.setPropertyAddress(resultSet.getString(5));
-				estatePropertyRegister.setPropertyDistrict(resultSet.getString(6));
-				estatePropertyRegister.setPropertyState(resultSet.getString(7));
+				estatePropertyRegister.setPropertyImages(resultSet.getBytes(5));
+				estatePropertyRegister.setPropertyAddress(resultSet.getString(6));
+				estatePropertyRegister.setPropertyDistrict(resultSet.getString(7));
+				estatePropertyRegister.setPropertyState(resultSet.getString(8));
 				
 				list.add(estatePropertyRegister);
 			}
@@ -76,28 +76,29 @@ public class RealEstatePropertyImplementation
 		{
 			System.out.println("Inside method");
 			Connection getConnection = ConnectionJdbc.getConnection();
-			String retriveProperties = "select seller_id,property_name,property_id,property_price, property_address, property_district,property_state from property_registration";
+			String retriveProperties = "select seller_id,property_name,property_id,property_price, property_images, property_address, property_district,property_state from property_registration";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveProperties);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next())
 			{
-				System.out.println("Inside while");
+				
 				RealEstatePropertyRegister estatePropertyRegister = new RealEstatePropertyRegister();
 				
 				estatePropertyRegister.setSellerId(resultSet.getString(1));
 				estatePropertyRegister.setPropertyName(resultSet.getString(2));
 				estatePropertyRegister.setPropertyId(resultSet.getString(3));
 				estatePropertyRegister.setPropertyPrice(resultSet.getLong(4));
-				estatePropertyRegister.setPropertyAddress(resultSet.getString(5));
-				estatePropertyRegister.setPropertyDistrict(resultSet.getString(6));
-				estatePropertyRegister.setPropertyState(resultSet.getString(7));
+				estatePropertyRegister.setPropertyImages(resultSet.getBytes(5));
+				estatePropertyRegister.setPropertyAddress(resultSet.getString(6));
+				estatePropertyRegister.setPropertyDistrict(resultSet.getString(7));
+				estatePropertyRegister.setPropertyState(resultSet.getString(8));
 				
 				list.add(estatePropertyRegister);
 			}
 		}
 		catch(Exception e)
 		{
-			
+			System.out.println(e);
 		}
 		return list;
 	}
@@ -119,40 +120,6 @@ public class RealEstatePropertyImplementation
 		}
 	}
 
-	public List<RealEstatePropertyRegister> retriveSellerDetails(String id)
-	{
-		List<RealEstatePropertyRegister> list = new ArrayList<RealEstatePropertyRegister>();
-		try
-		{
-			System.out.println("Inside method");
-			Connection getConnection = ConnectionJdbc.getConnection();
-			String retriveProperties = "select seller_id,property_name,property_id,property_price, property_address, property_district,property_state from property_registration where seller_id = ? and deleted_User=0";
-			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveProperties);
-			preparedStatement.setString(1, id);
-			ResultSet resultSet = preparedStatement.executeQuery();
-			while(resultSet.next())
-			{
-				System.out.println("Inside while");
-				RealEstatePropertyRegister estatePropertyRegister = new RealEstatePropertyRegister();
-				
-				estatePropertyRegister.setSellerId(resultSet.getString(1));
-				estatePropertyRegister.setPropertyName(resultSet.getString(2));
-				estatePropertyRegister.setPropertyId(resultSet.getString(3));
-				estatePropertyRegister.setPropertyPrice(resultSet.getLong(4));
-				estatePropertyRegister.setPropertyAddress(resultSet.getString(5));
-				estatePropertyRegister.setPropertyDistrict(resultSet.getString(6));
-				estatePropertyRegister.setPropertyState(resultSet.getString(7));
-				
-				list.add(estatePropertyRegister);
-			}
-		}
-		catch(Exception e)
-		{
-			
-		}
-		return list;
-		
-	}
 
 	public List<RealEstatePropertyRegister> retriveResidential(String getId)
 	{
@@ -161,21 +128,22 @@ public class RealEstatePropertyImplementation
 		{
 			System.out.println("Inside method");
 			Connection getConnection = ConnectionJdbc.getConnection();
-			String retriveProperties = "select seller_id,property_name,property_id,property_price, property_address, property_district,property_state from property_registration where property_name = 'Residential' and deleted_User=0";
+			String retriveProperties = "select seller_id,property_name,property_id,property_price,property_images ,property_address, property_district,property_state from property_registration where property_name = 'Residential' and deleted_User=0";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveProperties);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next())
 			{
-				System.out.println("Inside while");
-				RealEstatePropertyRegister estatePropertyRegister = new RealEstatePropertyRegister();
 				
+				RealEstatePropertyRegister estatePropertyRegister = new RealEstatePropertyRegister();
 				estatePropertyRegister.setSellerId(resultSet.getString(1));
 				estatePropertyRegister.setPropertyName(resultSet.getString(2));
 				estatePropertyRegister.setPropertyId(resultSet.getString(3));
 				estatePropertyRegister.setPropertyPrice(resultSet.getLong(4));
-				estatePropertyRegister.setPropertyAddress(resultSet.getString(5));
-				estatePropertyRegister.setPropertyDistrict(resultSet.getString(6));
-				estatePropertyRegister.setPropertyState(resultSet.getString(7));
+				estatePropertyRegister.setPropertyImages(resultSet.getBytes(5));
+				System.out.println(resultSet.getBytes(5));
+				estatePropertyRegister.setPropertyAddress(resultSet.getString(6));
+				estatePropertyRegister.setPropertyDistrict(resultSet.getString(7));
+				estatePropertyRegister.setPropertyState(resultSet.getString(8));
 				
 				list.add(estatePropertyRegister);
 			}
@@ -194,7 +162,7 @@ public class RealEstatePropertyImplementation
 		{
 			System.out.println("Inside method");
 			Connection getConnection = ConnectionJdbc.getConnection();
-			String retriveProperties = "select seller_id,property_name,property_id,property_price, property_address, property_district,property_state from property_registration where property_name = 'Land' and deleted_User=0";
+			String retriveProperties = "select seller_id,property_name,property_id,property_price, property_images ,property_address, property_district,property_state from property_registration where property_name = 'Land' and deleted_User=0";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveProperties);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next())
@@ -206,9 +174,10 @@ public class RealEstatePropertyImplementation
 				estatePropertyRegister.setPropertyName(resultSet.getString(2));
 				estatePropertyRegister.setPropertyId(resultSet.getString(3));
 				estatePropertyRegister.setPropertyPrice(resultSet.getLong(4));
-				estatePropertyRegister.setPropertyAddress(resultSet.getString(5));
-				estatePropertyRegister.setPropertyDistrict(resultSet.getString(6));
-				estatePropertyRegister.setPropertyState(resultSet.getString(7));
+				estatePropertyRegister.setPropertyImages(resultSet.getBytes(5));
+				estatePropertyRegister.setPropertyAddress(resultSet.getString(6));
+				estatePropertyRegister.setPropertyDistrict(resultSet.getString(7));
+				estatePropertyRegister.setPropertyState(resultSet.getString(8));
 				
 				list.add(estatePropertyRegister);
 			}
@@ -227,7 +196,7 @@ public class RealEstatePropertyImplementation
 		{
 			System.out.println("Inside method");
 			Connection getConnection = ConnectionJdbc.getConnection();
-			String retriveProperties = "select seller_id,property_name,property_id,property_price, property_address, property_district,property_state from property_registration where property_name = 'Industrial' and deleted_User=0";
+			String retriveProperties = "select seller_id,property_name,property_id,property_price, property_images, property_address, property_district,property_state from property_registration where property_name = 'Industrial' and deleted_User=0";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveProperties);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next())
@@ -239,9 +208,10 @@ public class RealEstatePropertyImplementation
 				estatePropertyRegister.setPropertyName(resultSet.getString(2));
 				estatePropertyRegister.setPropertyId(resultSet.getString(3));
 				estatePropertyRegister.setPropertyPrice(resultSet.getLong(4));
-				estatePropertyRegister.setPropertyAddress(resultSet.getString(5));
-				estatePropertyRegister.setPropertyDistrict(resultSet.getString(6));
-				estatePropertyRegister.setPropertyState(resultSet.getString(7));
+				estatePropertyRegister.setPropertyImages(resultSet.getBytes(5));
+				estatePropertyRegister.setPropertyAddress(resultSet.getString(6));
+				estatePropertyRegister.setPropertyDistrict(resultSet.getString(7));
+				estatePropertyRegister.setPropertyState(resultSet.getString(8));
 				
 				list.add(estatePropertyRegister);
 			}
@@ -260,21 +230,22 @@ public class RealEstatePropertyImplementation
 		{
 			System.out.println("Inside method");
 			Connection getConnection = ConnectionJdbc.getConnection();
-			String retriveProperties = "select seller_id,property_name,property_id,property_price, property_address, property_district,property_state from property_registration where property_name = 'Commercial' and deleted_User=0";
+			String retriveProperties = "select seller_id,property_name,property_id,property_price,property_images, property_address, property_district,property_state from property_registration where property_name = 'Commercial' and deleted_User=0";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveProperties);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next())
 			{
-				System.out.println("Inside while");
+				
 				RealEstatePropertyRegister estatePropertyRegister = new RealEstatePropertyRegister();
 				
 				estatePropertyRegister.setSellerId(resultSet.getString(1));
 				estatePropertyRegister.setPropertyName(resultSet.getString(2));
 				estatePropertyRegister.setPropertyId(resultSet.getString(3));
 				estatePropertyRegister.setPropertyPrice(resultSet.getLong(4));
-				estatePropertyRegister.setPropertyAddress(resultSet.getString(5));
-				estatePropertyRegister.setPropertyDistrict(resultSet.getString(6));
-				estatePropertyRegister.setPropertyState(resultSet.getString(7));
+				estatePropertyRegister.setPropertyImages(resultSet.getBytes(5));
+				estatePropertyRegister.setPropertyAddress(resultSet.getString(6));
+				estatePropertyRegister.setPropertyDistrict(resultSet.getString(7));
+				estatePropertyRegister.setPropertyState(resultSet.getString(8));
 				
 				list.add(estatePropertyRegister);
 			}

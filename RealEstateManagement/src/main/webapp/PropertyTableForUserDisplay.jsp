@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.Base64" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <%@ page import="com.chainsys.model.RealEstatePropertyRegister" %>
+<%@ page import="com.chainsys.model.RealEstateUserRegister" %>
 <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
@@ -12,34 +14,34 @@
         margin: 20px;
         background-color: #f9f9f9;
     }
-    h4 {
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .card {
+        width: 300px;
+        margin: 20px;
+        padding: 15px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        text-align: left;
+    }
+    .card:hover {
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+    h3 {
         text-align: center;
         color: #333;
     }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 20px 0;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    .details {
+        margin-bottom: 10px;
     }
-    th, td {
-        padding: 12px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
+    .actions {
+        text-align: center;
     }
-    th {
-        background-color: #f2f2f2;
-        color: #333;
-        text-transform: uppercase;
-    }
-    tr:hover {
-        background-color: #f1f1f1;
-    }
-    form {
-        margin: 0;
-    }
-    input[type="submit"] {
+    .btn-buy {
         background-color: #4CAF50;
         color: white;
         border: none;
@@ -47,46 +49,63 @@
         cursor: pointer;
         text-transform: uppercase;
     }
-    input[type="submit"]:hover {
+    .btn-buy:hover {
         background-color: #45a049;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
     }
 </style>
 </head>
 <body>
-<h4>Property Details</h4>
-<table>
-    <thead>
-        <tr>
-            <th>Seller ID</th>
-            <th>Property Name</th>
-            <th>Property ID</th>
-            <th>Property Price</th>
-            <th>Property Address</th>
-            <th>Property District</th>
-            <th>Property State</th>
-            <th>Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% ArrayList<RealEstatePropertyRegister> list = (ArrayList<RealEstatePropertyRegister>) request.getAttribute("list");
-           for (RealEstatePropertyRegister object : list) { %>
-            <tr>
-                <td><%= object.getSellerId() %></td>
-                <td><%= object.getPropertyName() %></td>
-                <td><%= object.getPropertyId() %></td>
-                <td><%= object.getPropertyPrice() %></td>
-                <td><%= object.getPropertyAddress() %></td>
-                <td><%= object.getPropertyDistrict() %></td>
-                <td><%= object.getPropertyState() %></td>
-                <td>
-                    <form action="" method="post">
-                        
-                        <input type="submit" name="buy" value="Buy Now">
-                    </form>
-                </td>
-            </tr>
-        <% } %>
-    </tbody>
-</table>
+<h3>Property Details</h3>
+<div class="container">
+    <% 
+    ArrayList<RealEstatePropertyRegister> list = (ArrayList<RealEstatePropertyRegister>) request.getAttribute("list");
+    if (list != null) {
+        for (RealEstatePropertyRegister object : list) {
+        	byte[] images = object.getPropertyImages();
+            String getImage = "";
+            if (images != null) {
+                getImage = Base64.getEncoder().encodeToString(images);
+            }
+    %>
+        <div class="card">
+            <div class="details">
+                <p><strong>Seller ID:</strong> <%= object.getSellerId() %></p>
+                <p><strong>Property Name:</strong> <%= object.getPropertyName() %></p>
+                <p><strong>Property ID:</strong> <%= object.getPropertyId() %></p>
+                <p><strong>Property Price:</strong> <%= object.getPropertyPrice() %></p>
+                <p>
+                <% if (!getImage.isEmpty()) { %>
+                        <img alt="images" src="data:image/jpg;base64,<%= getImage %> ">
+                    <% } else { %>
+                        No Image
+                    <% } %>
+                </p> 
+                <p><strong>Property Address:</strong> <%= object.getPropertyAddress() %></p>
+                <p><strong>Property District:</strong> <%= object.getPropertyDistrict() %></p>
+                <p><strong>Property State:</strong> <%= object.getPropertyState() %></p>
+            </div>
+            <div class="actions">
+                <form action="BuyNowForm.jsp" method="post">
+                    <input type="hidden" name="propertyId" value="<%= object.getPropertyId() %>">
+                    <input type="hidden" name="propertyName" value="<%= object.getPropertyName() %>">
+                    <input type="hidden" name="propertyAddress" value="<%= object.getPropertyAddress() %>">
+                    <input type="hidden" name="propertyPrice" value="<%= object.getPropertyPrice() %>">
+                    <input type="submit" class="btn-buy" name="buy" value="Buy Now">
+                </form>
+            </div>
+        </div>
+    <% 
+        }
+    } else { 
+    %>
+        <p>No properties found</p>
+    <% 
+    } 
+    %>
+</div>
 </body>
 </html>

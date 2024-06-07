@@ -1,3 +1,4 @@
+<%@page import="java.util.Base64"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="com.chainsys.model.RealEstatePropertyRegister" %>
 <%@ page import="java.util.ArrayList" %>
@@ -62,20 +63,36 @@
             <th>Property ID</th>
             <th>Property Price</th>
             <th>Property Address</th>
+            <th>Property Images</th>
             <th>Property District</th>
             <th>Property State</th>
             <th>Delete</th>
         </tr>
     </thead>
     <tbody>
-        <% ArrayList<RealEstatePropertyRegister> list = (ArrayList<RealEstatePropertyRegister>) request.getAttribute("list");
-           for (RealEstatePropertyRegister object : list) { %>
+        <% 
+        ArrayList<RealEstatePropertyRegister> list = (ArrayList<RealEstatePropertyRegister>) request.getAttribute("list");
+        if (list != null) {
+            for (RealEstatePropertyRegister object : list) {
+                byte[] images = object.getPropertyImages();
+                String getImage = "";
+                if (images != null) {
+                    getImage = Base64.getEncoder().encodeToString(images);
+                }
+        %>
             <tr>
                 <td><%= object.getSellerId() %></td>
                 <td><%= object.getPropertyName() %></td>
                 <td><%= object.getPropertyId() %></td>
                 <td><%= object.getPropertyPrice() %></td>
                 <td><%= object.getPropertyAddress() %></td>
+                <td> 
+                    <% if (!getImage.isEmpty()) { %>
+                        <img alt="images" src="data:image/*;base64,<%= getImage %> ">
+                    <% } else { %>
+                        No Image
+                    <% } %>
+                </td>
                 <td><%= object.getPropertyDistrict() %></td>
                 <td><%= object.getPropertyState() %></td>
                 <td>
@@ -85,7 +102,16 @@
                     </form>
                 </td>
             </tr>
-        <% } %>
+        <% 
+            }
+        } else { 
+        %>
+            <tr>
+                <td colspan="9">No properties found</td>
+            </tr>
+        <% 
+        } 
+        %>
     </tbody>
 </table>
 </body>

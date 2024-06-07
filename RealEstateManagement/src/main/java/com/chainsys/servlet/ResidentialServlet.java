@@ -31,7 +31,7 @@ public class ResidentialServlet extends HttpServlet {
 		}
 		catch(Exception e)
 		{
-			
+			System.out.println(e);
 		}
 	}
 
