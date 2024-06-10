@@ -12,6 +12,7 @@ public class RealEstatePropertyRegister
 	String propertyAddress;
 	String propertyDistrict;
 	String	propertyState;
+	String approval = null;
 	
 	public RealEstatePropertyRegister()
 	{
@@ -81,13 +82,23 @@ public class RealEstatePropertyRegister
 	public void setPropertyState(String propertyState) {
 		this.propertyState = propertyState;
 	}
+	
+
+	public String getApproval() {
+		return approval;
+	}
+
+	public void setApproval(String approval) {
+		this.approval = approval;
+	}
 
 	@Override
 	public String toString() {
 		return "RealEstatePropertyRegister [sellerId=" + sellerId + ", propertyId=" + propertyId + ", propertyName="
 				+ propertyName + ", propertyPrice=" + propertyPrice + ", propertyImages="
 				+ Arrays.toString(propertyImages) + ", propertyAddress=" + propertyAddress + ", propertyDistrict="
-				+ propertyDistrict + ", propertyState=" + propertyState + "]";
+				+ propertyDistrict + ", propertyState=" + propertyState + ", approval=" + approval + "]";
 	}
+
 	
 }

@@ -25,13 +25,13 @@
         <input type="text" id="designationInput" name="designation" readonly required/>
     </label>
     <label for="phoneNumber">Phone Number: <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="7339263883" pattern="[789][0-9]{9}" required/></label>
-    <label for="emailID">EmailID: <input type="email" id="emailID" name="emailID" placeholder="raksha@gmail.com" required/></label>
+    <label for="emailID">EmailID: <input type="email" id="emailID" name="emailID" pattern="[a-z0-9_/-/.]+[@][a-z]+[/.][a-z]{2,3}$" placeholder="raksha@gmail.com" required/></label>
     <label for="password">Password: <input type="password" id="password" name="password" placeholder="Rakshana@12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required/></label>
     <label for="address">Address: <textarea id="address" name="address" rows="4" cols="50"></textarea></label>
     <label for="district">District: <input type="text" id="district" name="district" placeholder="Madurai" required/></label>
     <label for="state">State: <input type="text" id="state" name="state" placeholder="Tamil Nadu" required/></label>
-    <input type="text" id="generatedUserID" name="generatedUserID" readonly style="display: none;"> <!-- Hidden input field for generated user ID -->
-    <label id="userIDLabel" style="display: none;"></label> <!-- Hidden by default -->
+    <input type="text" id="generatedUserID" name="generatedUserID" readonly style="display: none;"> 
+    <label id="userIDLabel" style="display: none;"></label>
     <button type="button" onclick="validateForm()">Register</button>
 </form>
 <script>

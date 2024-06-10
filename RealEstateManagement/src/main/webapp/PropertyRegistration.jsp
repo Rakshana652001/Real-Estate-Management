@@ -24,14 +24,15 @@
     <label>Property Name: <input type="text" id="propertyName" name="propertyName" readonly/></label><br><br>
     <label>Property Price: <input type="number" id="propertyPrice" name="propertyPrice" required/></label><br><br>
     
-    <label for="propertyImages" >Add Images: <input type="file" id="propertyImages" name="propertyImages" accept="image/*" required/></label><br><br>
+    <label>Add Images: <input type="file" id="propertyImages" name="propertyImage" required/></label><br><br>
     <label>Property Address: <textarea id="propertyAddress" name="propertyAddress" placeholder="Enter detail address includes your Property type, Door no, Street name, Landmark" rows="4" cols="30" required></textarea></label><br><br>
     <label>Property District: <input type="text" id="propertyDistrict" name="propertyDistrict" placeholder="Madurai" required/></label><br><br>
     <label>Property State: <input type="text" id="propertyState" name="propertyState" placeholder="Tamil Nadu" required/></label><br><br>
     <button type="submit">Register the Property</button>
 </form>
 <script>
-function autoFillPropertyDetails() {
+function autoFillPropertyDetails()
+{
     var propertySelect = document.getElementById('propertyNameSelect');
     var selectedOption = propertySelect.options[propertySelect.selectedIndex];
     var propertyId = selectedOption.value;
@@ -41,15 +42,16 @@ function autoFillPropertyDetails() {
     document.getElementById('propertyName').value = propertyName;
 }
 
-function validateForm() {
+function validateForm() 
+{
     var propertyNameSelect = document.getElementById('propertyNameSelect').value;
     var propertyPrice = document.getElementById('propertyPrice').value;
     var propertyAddress = document.getElementById('propertyAddress').value;
-    var propertyImages = document.getElementById('propertyImages').value;
     var propertyDistrict = document.getElementById('propertyDistrict').value;
     var propertyState = document.getElementById('propertyState').value;
 
-    if (propertyNameSelect === "" || propertyPrice === "" || propertyAddress === "" || propertyImages === "" || propertyDistrict === "" || propertyState === "") {
+    if (propertyNameSelect === "" || propertyPrice === "" || propertyAddress === "" || propertyDistrict === "" || propertyState === "")
+    {
         alert("Please fill in all required fields.");
         return false;
     }

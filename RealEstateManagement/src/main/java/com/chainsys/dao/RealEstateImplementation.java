@@ -42,7 +42,7 @@ public class RealEstateImplementation implements RealEstateInterface
 		try
 		{
 			Connection getConnection = ConnectionJdbc.getConnection();
-			String retriveDetails = "select id, name, designation, phone_number, email_id, address, district, state from user_registration where deleted_User=0";
+			String retriveDetails = "select id, name, designation, phone_number, email_id, address, district, state from user_registration where (designation = 'Seller' or designation = 'Customer') and deleted_User=0";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveDetails);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next())
@@ -110,7 +110,7 @@ public class RealEstateImplementation implements RealEstateInterface
 	public Object getAdminId(String id) throws ClassNotFoundException, SQLException
 	{
 		Connection getConnection = ConnectionJdbc.getConnection();
-		String selectId = "select id from user_registration where id=? and (designation = 'Admin')"; // allow only admin id's
+		String selectId = "select id from user_registration where id=? and (designation = 'Admin') and deleted_User=0"; // allow only admin id's
 		PreparedStatement preparedStatement = getConnection.prepareStatement(selectId);
 		preparedStatement.setString(1, id);
 		ResultSet resultSet = preparedStatement.executeQuery();
@@ -128,7 +128,7 @@ public class RealEstateImplementation implements RealEstateInterface
 	public Object getGeneratedSellerId(String id) throws ClassNotFoundException, SQLException
 	{
 		Connection getConnection = ConnectionJdbc.getConnection();
-		String selectId = "select id from user_registration where id=? and (designation = 'Seller')";
+		String selectId = "select id from user_registration where id=? and (designation = 'Seller') and deleted_User=0";
 		PreparedStatement preparedStatement = getConnection.prepareStatement(selectId);
 		preparedStatement.setString(1, id);
 		ResultSet resultSet = preparedStatement.executeQuery();
@@ -147,7 +147,7 @@ public class RealEstateImplementation implements RealEstateInterface
 	public String getAdminpassword(String id) throws ClassNotFoundException, SQLException
 	{
 		Connection getConnection = ConnectionJdbc.getConnection();
-		String password = "select password from user_registration where id=? and (designation = 'Admin')"; 
+		String password = "select password from user_registration where id=? and (designation = 'Admin') and deleted_User=0"; 
 		PreparedStatement passwordStatement = getConnection.prepareStatement(password);
 		passwordStatement.setString(1, id);
 		ResultSet resultSet = passwordStatement.executeQuery();
@@ -166,7 +166,7 @@ public class RealEstateImplementation implements RealEstateInterface
 	public String getsellerPassword(String id) throws ClassNotFoundException, SQLException
 	{
 		Connection getConnection = ConnectionJdbc.getConnection();
-		String password = "select password from user_registration where id=? and (designation = 'Seller')";
+		String password = "select password from user_registration where id=? and (designation = 'Seller') and deleted_User=0";
 		PreparedStatement passwordStatement = getConnection.prepareStatement(password);
 		passwordStatement.setString(1, id);
 		ResultSet resultSet = passwordStatement.executeQuery();
@@ -229,7 +229,7 @@ public class RealEstateImplementation implements RealEstateInterface
 		{
 			
 			Connection getConnection = ConnectionJdbc.getConnection();
-			String retriveDetails = "select id, name, designation, phone_number, email_id, address, district, state, deleted_User from user_registration where (designation = 'Seller' or designation = 'Customer')";
+			String retriveDetails = "select id, name, designation, phone_number, email_id, address, district, state from user_registration where deleted_User=0 and (designation = 'Seller' or designation = 'Customer')";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveDetails);
 		
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -299,7 +299,7 @@ public class RealEstateImplementation implements RealEstateInterface
 	public Object getCustomerGeneratedId(String id) throws ClassNotFoundException, SQLException
 	{
 		Connection getConnection = ConnectionJdbc.getConnection();
-		String selectId = "select id from user_registration where id=? and (designation = 'Customer')";
+		String selectId = "select id from user_registration where id=? and (designation = 'Customer') and deleted_User=0";
 		PreparedStatement preparedStatement = getConnection.prepareStatement(selectId);
 		preparedStatement.setString(1, id);
 		ResultSet resultSet = preparedStatement.executeQuery();
@@ -318,7 +318,7 @@ public class RealEstateImplementation implements RealEstateInterface
 	public Object getCustomerPassword(String id) throws ClassNotFoundException, SQLException 
 	{
 		Connection getConnection = ConnectionJdbc.getConnection();
-		String password = "select password from user_registration where id=? and (designation = 'Customer')";
+		String password = "select password from user_registration where id=? and (designation = 'Customer') and deleted_User=0";
 		PreparedStatement passwordStatement = getConnection.prepareStatement(password);
 		passwordStatement.setString(1, id);
 		ResultSet resultSet = passwordStatement.executeQuery();

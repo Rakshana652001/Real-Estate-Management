@@ -8,55 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Properties Details</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-        background-color: #f9f9f9;
-    }
-    .container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .card {
-        width: 300px;
-        margin: 20px;
-        padding: 15px;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        text-align: left;
-    }
-    .card:hover {
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    }
-    h3 {
-        text-align: center;
-        color: #333;
-    }
-    .details {
-        margin-bottom: 10px;
-    }
-    .actions {
-        text-align: center;
-    }
-    .btn-buy {
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        padding: 8px 16px;
-        cursor: pointer;
-        text-transform: uppercase;
-    }
-    .btn-buy:hover {
-        background-color: #45a049;
-    }
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-</style>
+
 </head>
 <body>
 <h3>Property Details</h3>
@@ -79,7 +31,7 @@
                 <p><strong>Property Price:</strong> <%= object.getPropertyPrice() %></p>
                 <p>
                 <% if (!getImage.isEmpty()) { %>
-                        <img alt="images" src="data:image/jpg;base64,<%= getImage %> ">
+                        <img alt="img" src="data:image/jpg;base64,<%= getImage %> ">
                     <% } else { %>
                         No Image
                     <% } %>

@@ -33,9 +33,9 @@ public class AllPropertyServlet extends HttpServlet {
 			
 			list = estatePropertyImplementation.retriveAllSellerDetails(getId);
 			request.setAttribute("list", list);
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("RegisteredPropertiesTable.jsp");
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("RegisteredPropertyAdminView.jsp");
 	        dispatcher.forward(request, response);
-	        System.out.println(list);
+	        
 		}
 		catch(Exception e)
 		{

@@ -45,7 +45,7 @@ public class SellerCustomerServlet extends HttpServlet {
 			
 			list = objectForImplementation.retriveSellerCustomerDetails(getId);
 			request.setAttribute("list", list);
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("UserRegistrationTable.jsp");
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("UsersTable.jsp");
 	        dispatcher.forward(request, response);
 	        System.out.println(list);
 		}

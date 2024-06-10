@@ -14,15 +14,18 @@ import javax.servlet.http.Part;
 import com.chainsys.dao.RealEstatePropertyImplementation;
 import com.chainsys.model.RealEstatePropertyRegister;
 
-@MultipartConfig
+
 @WebServlet("/PropertyServlet")
+@MultipartConfig
 public class PropertyServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     RealEstatePropertyRegister estatePropertyRegister = new RealEstatePropertyRegister();
     RealEstatePropertyImplementation estatePropertyImplementation = new RealEstatePropertyImplementation();
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    @SuppressWarnings("unused")
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	byte[] data=null;
         String sellerId = request.getParameter("sellerId");
         estatePropertyRegister.setSellerId(sellerId);
 
@@ -36,28 +39,30 @@ public class PropertyServlet extends HttpServlet {
         long propertyprice = Long.parseLong(propertyPrice);
         estatePropertyRegister.setPropertyPrice(propertyprice);
 
-        // File upload handling
-        Part filePart = request.getPart("propertyImages");
-        String fileName = filePart.getSubmittedFileName();
-        String uploadPath = "C:/Users/raks3556/git/repository7/RealEstateManagement/src/main/webapp/Images/"
-                + fileName; // Adjust this path as per your project structure
+        
+        Part file=request.getPart("propertyImage");
+        String imageFilename=file.getSubmittedFileName();
+        String uploadPath = "C:/Users/raks3556/git/repository7/RealEstateManagement/src/main/webapp/Images" + imageFilename;
+        
+        try
+        {
+            FileOutputStream fos=new FileOutputStream(uploadPath);
+            InputStream is=file.getInputStream();
 
-        try (InputStream fileContent = filePart.getInputStream();
-             FileOutputStream fileOutputStream = new FileOutputStream(uploadPath)) {
+            data=new byte[(is.available())];
+            is.read(data);
+            fos.write(data);
+            fos.close();
             
-            byte[] buffer = new byte[1024];
-            int bytesRead;
-            while ((bytesRead = fileContent.read(buffer)) != -1) {
-                fileOutputStream.write(buffer, 0, bytesRead);
-            }
-        } catch (IOException e) {
-            // Handle file upload exception
+        }
+        catch(NumberFormatException e)
+        {
             e.printStackTrace();
         }
+        estatePropertyRegister.setPropertyImages(data);
 
-        // Set property images
-        estatePropertyRegister.setPropertyImages(fileName.getBytes()); // Example, adjust this based on your actual requirement
-
+              
+       
         String propertyAddress = request.getParameter("propertyAddress");
         estatePropertyRegister.setPropertyAddress(propertyAddress);
 
@@ -66,15 +71,20 @@ public class PropertyServlet extends HttpServlet {
 
         String propertyState = request.getParameter("propertyState");
         estatePropertyRegister.setPropertyState(propertyState);
+        
+        String approve = "Not Approved";
 
         HttpSession httpSession = request.getSession();
 
-        try {
-            estatePropertyImplementation.saveProperties(estatePropertyRegister);
+        try 
+        {
+            estatePropertyImplementation.saveProperties(approve);
             System.out.println("Inside Session");
             httpSession.setAttribute("sellerId", sellerId);
             response.sendRedirect("SellerWelcomePage.jsp");
-        } catch (Exception e) {
+        }
+        catch (Exception e) 
+        {
             System.out.println(e);
             response.sendRedirect("PropertyRegistration.jsp");
         }

@@ -12,6 +12,7 @@
 	    <li class="nav-item"><a href="AdminProfileServlet" class="nav-link">Profile</a></li>
         <li class="nav-item"><a href="SellerCustomerServlet" class="nav-link">Users</a></li>
         <li class="nav-item"><a href="AllPropertyServlet" class="nav-link">Seller Property List</a></li>
+        <li class="nav-item"><a href="ApprovedServlet" class="nav-link">Approved Properties</a></li>
         <li class="nav-item"><a href="WelcomePage.jsp" class="nav-link">Logout</a></li>
     </ul>
 </nav>
