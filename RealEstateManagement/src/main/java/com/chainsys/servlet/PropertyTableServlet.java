@@ -31,9 +31,9 @@ public class PropertyTableServlet extends HttpServlet {
 			getId = (String)httpSession.getAttribute("id");
 			System.out.println("inside the retrive method");
 			
-			list = estatePropertyImplementation.retriveDetails(getId);
+		  	list = estatePropertyImplementation.retriveDetails(getId);
 			request.setAttribute("list", list);
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("RegisteredPropertiesTable.jsp");
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("PropertiesTableSellerView.jsp");
 	        dispatcher.forward(request, response);
 		}
 		catch(Exception e)
@@ -42,11 +42,9 @@ public class PropertyTableServlet extends HttpServlet {
 		}
  		
 	}
-
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		
 		doGet(request, response);
 	}
 

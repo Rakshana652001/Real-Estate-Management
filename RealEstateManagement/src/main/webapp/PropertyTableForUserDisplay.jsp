@@ -46,7 +46,7 @@
                     <input type="hidden" name="propertyName" value="<%= object.getPropertyName() %>">
                     <input type="hidden" name="propertyAddress" value="<%= object.getPropertyAddress() %>">
                     <input type="hidden" name="propertyPrice" value="<%= object.getPropertyPrice() %>">
-                    <input type="submit" class="btn-buy" name="buy" value="Buy Now">
+                    <input type="submit" class="btn-buy" name="buy" value="Register"><br><br><br><br>
                 </form>
             </div>
         </div>

@@ -11,7 +11,7 @@
 </head>
 <body>
 <h4>Property Details</h4>
-<a href="AdminWelcomePage.jsp"><button>Back to home</button></a>
+<a href="SellerWelcomePage.jsp"><button>Back to home</button></a>
 <table border="1">
     <thead>
         <tr>
@@ -23,7 +23,7 @@
             <th>Property Images</th>
             <th>Property District</th>
             <th>Property State</th>
-            <th>Approval Status</th>
+            <th>Approval</th>
         </tr>
     </thead>
     <tbody>

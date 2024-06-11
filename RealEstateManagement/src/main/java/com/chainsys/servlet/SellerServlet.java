@@ -1,7 +1,6 @@
 package com.chainsys.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -25,8 +24,6 @@ public class SellerServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		PrintWriter out = response.getWriter();
-		
 		String id = request.getParameter("id");
 		objectForPojo.setGeneratedUserID(id);
 		System.out.println(id);

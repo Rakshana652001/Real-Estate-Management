@@ -6,7 +6,6 @@
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>User Registration</title>
-
 </head>
 <body>
 <form action="UserServlet" id="registrationForm" method="get">
@@ -35,11 +34,11 @@
     <button type="button" onclick="validateForm()">Register</button>
 </form>
 <script>
-let codeNumber = localStorage.getItem('codeNumber') ? parseInt(localStorage.getItem('codeNumber')) : 1; // Initialize the auto-increment code number from local storage
+let codeNumber = localStorage.getItem('codeNumber') ? parseInt(localStorage.getItem('codeNumber')) : 1; 
 
 function promptForCode(option) {
     if (option === 'Admin') {
-        let correctCode = "UrbanNest654386"; // Set the correct code here
+        let correctCode = "UrbanNest654386";
         let userCode = prompt("Please enter the code for " + option);
 
         if (userCode === correctCode) {
@@ -61,17 +60,17 @@ function selectOption(option) {
 
 function generateUserID() {
     let designation = document.getElementById('designationInput').value;
-    let companyName = "UNR"; // Company name
+    let companyName = "UNR";
     let userID = companyName + '_' + designation + '_' + codeNumber;
     
-    // Set the generated user ID value to the input field
+    
     document.getElementById('generatedUserID').value = userID;
 
-    // Show the label with the generated user ID
+    
     document.getElementById('userIDLabel').textContent = "Please Note Generated User ID: " + userID;
     document.getElementById('userIDLabel').style.display = "block"; 
 
-    // Increment the code number for the next user and store it in local storage
+  
     codeNumber++;
     localStorage.setItem('codeNumber', codeNumber);
 }
@@ -87,40 +86,28 @@ function validateForm() {
     let district = document.getElementById('district');
     let state = document.getElementById('state');
 
-    // Check if phone number is valid
+   
     if (!phoneNumber.checkValidity()) {
         alert("Please enter a valid phone number.");
         return;
     }
 
-    // Check if email is valid
+   
     if (!email.checkValidity()) {
         alert("Please enter a valid email address.");
         return;
     }
 
-    // Check if password is valid
+   
     if (!password.checkValidity()) {
         alert("Please enter a valid password.\nPassword must contain at least 8 characters including at least one uppercase letter, one lowercase letter, and one number.");
         return;
     }
 
-    // Check if district is not empty
-    if (district.value.trim() === "") {
-        alert("Please enter the district.");
-        return;
-    }
-
-    // Check if state is not empty
-    if (state.value.trim() === "") {
-        alert("Please enter the state.");
-        return;
-    }
-
-    // If all validations pass, generate user ID
+    
+    
     generateUserID();
 
-    // Submit the form
     form.submit();
 }
 </script>

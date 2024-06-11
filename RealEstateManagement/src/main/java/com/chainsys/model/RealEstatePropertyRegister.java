@@ -12,7 +12,7 @@ public class RealEstatePropertyRegister
 	String propertyAddress;
 	String propertyDistrict;
 	String	propertyState;
-	String approval = null;
+	String approval;
 	
 	public RealEstatePropertyRegister()
 	{

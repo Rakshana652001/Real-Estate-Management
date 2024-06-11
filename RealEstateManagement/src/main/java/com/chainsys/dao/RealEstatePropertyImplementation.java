@@ -15,8 +15,9 @@ public class RealEstatePropertyImplementation
 {
 	RealEstatePropertyRegister estatePropertyRegister = new RealEstatePropertyRegister();
 
-	public void saveProperties(String approve) throws ClassNotFoundException, SQLException
+	public void saveProperties(RealEstatePropertyRegister estatePropertyRegister) throws ClassNotFoundException, SQLException
 	{
+		
 		Connection getConnection = ConnectionJdbc.getConnection();
 		String saveProperties = "insert into property_registration (seller_id,property_name,property_id,property_price, property_images,property_address, property_district,property_state, approval) values (?,?,?,?,?,?,?,?,?)";
 		PreparedStatement insertStatement = getConnection.prepareStatement(saveProperties);
@@ -28,7 +29,7 @@ public class RealEstatePropertyImplementation
 		insertStatement.setString(6, estatePropertyRegister.getPropertyAddress());
 		insertStatement.setString(7, estatePropertyRegister.getPropertyDistrict());
 		insertStatement.setString(8, estatePropertyRegister.getPropertyState());
-		insertStatement.setString(9, approve);
+		insertStatement.setString(9, "Not Approved");
 		
 		insertStatement.executeUpdate();
 		getConnection.close();		
@@ -40,7 +41,7 @@ public class RealEstatePropertyImplementation
 		try
 		{
 			Connection getConnection = ConnectionJdbc.getConnection();
-			String retriveProperties = "select seller_id,property_name,property_id,property_price, property_images,property_address, property_district,property_state from property_registration where seller_id = ? and deleted_User = 0";
+			String retriveProperties = "select seller_id,property_name,property_id,property_price, property_images,property_address, property_district,property_state,approval from property_registration where seller_id = ? and deleted_User = 0";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveProperties);
 			preparedStatement.setString(1, sellerId);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -56,6 +57,7 @@ public class RealEstatePropertyImplementation
 				estatePropertyRegister.setPropertyAddress(resultSet.getString(6));
 				estatePropertyRegister.setPropertyDistrict(resultSet.getString(7));
 				estatePropertyRegister.setPropertyState(resultSet.getString(8));
+				estatePropertyRegister.setApproval(resultSet.getString(9));
 				
 				list.add(estatePropertyRegister);
 				
@@ -76,7 +78,7 @@ public class RealEstatePropertyImplementation
 		try
 		{
 			Connection getConnection = ConnectionJdbc.getConnection();
-			String retriveProperties = "select seller_id,property_name,property_id,property_price, property_images, property_address, property_district,property_state from property_registration";
+			String retriveProperties = "select seller_id,property_name,property_id,property_price, property_images, property_address, property_district,property_state,approval from property_registration where approval='Not Approved' and deleted_User = 0";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveProperties);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next())
@@ -92,6 +94,7 @@ public class RealEstatePropertyImplementation
 				estatePropertyRegister.setPropertyAddress(resultSet.getString(6));
 				estatePropertyRegister.setPropertyDistrict(resultSet.getString(7));
 				estatePropertyRegister.setPropertyState(resultSet.getString(8));
+				estatePropertyRegister.setApproval(resultSet.getString(9));
 				
 				list.add(estatePropertyRegister);
 			}
@@ -257,33 +260,13 @@ public class RealEstatePropertyImplementation
 		return list;
 	}
 
-	public List<RealEstatePropertyRegister> updateApproval(String sellerId, String approval)
-	{
-		List<RealEstatePropertyRegister> list = new ArrayList<RealEstatePropertyRegister>();
-		try
-		{
-			Connection getConnection = ConnectionJdbc.getConnection();
-			String update = "update property_registration set approval = ? where seller_id = ?";
-			PreparedStatement preparedStatement = getConnection.prepareStatement(update);
-			preparedStatement.setString(1, approval);
-			preparedStatement.setString(2, sellerId);
-			
-			preparedStatement.executeUpdate();
-			
-		}
-		catch(Exception e)
-		{
-			System.out.println(e);
-		}
-		return list;
-	}
+	
 
-	public List<RealEstatePropertyRegister> retriveDetailsAfterUpdate() 
+	public List<RealEstatePropertyRegister> retriveDetailsAfterUpdate(String id) 
 	{
 		List<RealEstatePropertyRegister> list = new ArrayList<RealEstatePropertyRegister>();
 		try
 		{
-			System.out.println("Inside method");
 			Connection getConnection = ConnectionJdbc.getConnection();
 			String retriveProperties = "select seller_id,property_name,property_id,property_price,property_images, property_address, property_district,property_state, approval from property_registration where deleted_User=0 and approval='Approved'";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveProperties);
@@ -311,26 +294,32 @@ public class RealEstatePropertyImplementation
 			
 		}
 		return list;
+	
 		
 		
 	}
+	public List<RealEstatePropertyRegister> updateApproval(String sellerId, String approval)
+	{
+		List<RealEstatePropertyRegister> list = new ArrayList<RealEstatePropertyRegister>();
+		try
+		{
+			Connection getConnection = ConnectionJdbc.getConnection();
+			String update = "update property_registration set approval = ? where seller_id = ?";
+			PreparedStatement preparedStatement = getConnection.prepareStatement(update);
+			preparedStatement.setString(1, approval);
+			preparedStatement.setString(2, sellerId);
+			
+			preparedStatement.executeUpdate();
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		return list;
+	}
 
-//	public void deleteDetailsApproved(RealEstatePropertyRegister estateUserRegister)
-//	{
-//		String name = "update property_registration set deleted_User = true where property_id=?";
-//		try 
-//		{
-//			Connection getConnection = ConnectionJdbc.getConnection();
-//			PreparedStatement preparedStatement = getConnection.prepareStatement(name);
-//			preparedStatement.setString(1, estatePropertyRegister.getPropertyId());
-//			preparedStatement.executeUpdate();
-//		}
-//		catch(Exception e)
-//		{
-//			System.out.println(e);
-//		}
-//		
-//	}
+	
 
 	
 

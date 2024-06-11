@@ -7,14 +7,12 @@
 <title>Admin Welcome Page</title>
 </head>
 <body>
-<nav class="navbar">
-    <ul class="navbar-nav">
-	    <li class="nav-item"><a href="AdminProfileServlet" class="nav-link">Profile</a></li>
-        <li class="nav-item"><a href="SellerCustomerServlet" class="nav-link">Users</a></li>
-        <li class="nav-item"><a href="AllPropertyServlet" class="nav-link">Seller Property List</a></li>
-        <li class="nav-item"><a href="ApprovedServlet" class="nav-link">Approved Properties</a></li>
-        <li class="nav-item"><a href="WelcomePage.jsp" class="nav-link">Logout</a></li>
-    </ul>
-</nav>
+<a href="AdminProfileServlet" class="nav-link">Profile</a><br>
+<a href="SellerCustomerServlet" class="nav-link">Users</a><br>
+<a href="AllPropertyServlet" class="nav-link">Unapproved Seller Property</a><br>
+<a href="ApprovedServlet" class="nav-link">Approved Seller Properties</a><br>
+<a href="ApproveToBuyServlet" class="nav-link">Unapprove Customer Properties</a><br>
+<a href="ApprovedPropertiesServlet" class="nav-link">Approved Customer Properties</a><br>
+<a href="WelcomePage.jsp" class="nav-link">Logout</a>
 </body>
 </html>

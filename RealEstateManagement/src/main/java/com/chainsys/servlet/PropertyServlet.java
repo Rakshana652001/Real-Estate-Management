@@ -22,7 +22,7 @@ public class PropertyServlet extends HttpServlet {
     RealEstatePropertyRegister estatePropertyRegister = new RealEstatePropertyRegister();
     RealEstatePropertyImplementation estatePropertyImplementation = new RealEstatePropertyImplementation();
 
-    @SuppressWarnings("unused")
+   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	byte[] data=null;
@@ -42,7 +42,7 @@ public class PropertyServlet extends HttpServlet {
         
         Part file=request.getPart("propertyImage");
         String imageFilename=file.getSubmittedFileName();
-        String uploadPath = "C:/Users/raks3556/git/repository7/RealEstateManagement/src/main/webapp/Images" + imageFilename;
+        String uploadPath = "C:/Users/raks3556/git/repository7/RealEstateManagement/src/main/webapp/Images/" + imageFilename;
         
         try
         {
@@ -72,13 +72,12 @@ public class PropertyServlet extends HttpServlet {
         String propertyState = request.getParameter("propertyState");
         estatePropertyRegister.setPropertyState(propertyState);
         
-        String approve = "Not Approved";
 
         HttpSession httpSession = request.getSession();
 
         try 
         {
-            estatePropertyImplementation.saveProperties(approve);
+            estatePropertyImplementation.saveProperties(estatePropertyRegister);
             System.out.println("Inside Session");
             httpSession.setAttribute("sellerId", sellerId);
             response.sendRedirect("SellerWelcomePage.jsp");

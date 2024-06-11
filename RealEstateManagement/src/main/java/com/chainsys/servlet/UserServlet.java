@@ -1,11 +1,9 @@
 package com.chainsys.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.chainsys.dao.RealEstateImplementation;
-import com.chainsys.model.RealEstatePropertyRegister;
 import com.chainsys.model.RealEstateUserRegister;
 
 
@@ -27,10 +24,8 @@ public class UserServlet extends HttpServlet {
 	
 	
 	
-	@SuppressWarnings("unused")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		PrintWriter out = response.getWriter();
 		String name = request.getParameter("name");
 		estateUserRegister.setName(name);
 		
@@ -74,7 +69,6 @@ public class UserServlet extends HttpServlet {
 		}
 
 	}
-	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{

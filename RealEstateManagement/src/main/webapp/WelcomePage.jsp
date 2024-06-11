@@ -15,7 +15,7 @@ body {
 }
 
 .navbar {
-    background-color: #343a40; /* Dark background */
+    background-color: #343a40; 
     padding: 10px 20px;
     border-bottom: 1px solid #e7e7e7;
 }
@@ -31,19 +31,19 @@ body {
 }
 
 .nav-link {
-    color: #ffffff; /* White text */
+    color: #ffffff; 
     text-decoration: none;
     padding: 8px 15px;
     border-radius: 5px;
 }
 
 .nav-link:hover, .nav-link.active {
-    background-color: #495057; /* Darker background on hover and active link */
+    background-color: #495057; 
     color: #ffffff;
 }
 
 .dropdown-menu {
-    background-color: #343a40; /* Dark background */
+    background-color: #343a40; 
     border: none;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -55,7 +55,7 @@ body {
 }
 
 .dropdown-item:hover {
-    background-color: #495057; /* Darker background on hover */
+    background-color: #495057;
     color: #ffffff;
 }
 

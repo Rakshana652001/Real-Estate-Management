@@ -13,10 +13,8 @@
 <label>EmailID: <input type="email" name="sellerEmailID" placeholder="raksha@gmail.com" pattern= "[a-z0-9_/-/.]+[@][a-z]+[/.][a-z]{2,3}"></label>
 <label>Password: <input type="password" name="sellerPassword" placeholder="Rakshana@12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"></label>
 <label>Account Number: <input type="number" name="sellerAccountNumber" placeholder="67392537489" pattern="\d{11}"></label>
-
 <input type="hidden" name="name" value="<%=request.getParameter("editName") %>">
 <button>Update</button>
 </form>
-
 </body>
 </html>

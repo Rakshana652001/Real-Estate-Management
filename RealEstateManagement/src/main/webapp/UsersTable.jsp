@@ -20,7 +20,6 @@
 			<th>address</th>
 			<th>district</th>
 			<th>state</th>
-			<th>Update</th>
 			<th>Delete</th>
 		</tr>
 	</thead>
@@ -36,7 +35,6 @@
 			<td><%=object.getAddress() %></td>
 			<td><%=object.getDistrict() %></td>
 			<td><%=object.getState() %></td>
-			<td><input type="hidden" value="<%=object.getName() %>" name="name"><a href="UpdateUserDetails.jsp?editName=<%=object.getName() %>"><button>Update</button></a></td>
 			<td>
 		<form action="UserServlet" method="post">
   		<input type="hidden" name="deleteName" value="<%= object.getName()%>">

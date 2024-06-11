@@ -6,12 +6,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Approved Properties</title>
+<title>Properties Registration Details Admin view</title>
 
 </head>
 <body>
 <h4>Property Details</h4>
-<a href="AdminWelcomePage.jsp"><button>Back to home</button></a>
 <table border="1">
     <thead>
         <tr>
@@ -24,6 +23,7 @@
             <th>Property District</th>
             <th>Property State</th>
             <th>Approval Status</th>
+            <th>Approval</th>
         </tr>
     </thead>
     <tbody>
@@ -48,8 +48,18 @@
                  <td><%= object.getPropertyDistrict() %></td>
                  <td><%=object.getPropertyState() %></td>
                  <td><%=object.getApproval() %></td>
+                 <td>
+                      <form action="ApprovalServlet" method="post">
+                         <input type="hidden" name="sellerId" value="<%= object.getSellerId() %>">
+                         <select name="approvalStatus">
+                             <option value="Select">Select</option>
+                             <option value="Approved">Approved</option>
+                             <option value="Not Approved">Not Approved</option>
+                         </select>
+                         <input type="submit" value="Submit">
+                     </form>
+                 </td>
              </tr>
-             
          <%
              }
             
