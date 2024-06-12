@@ -32,7 +32,9 @@
     <input type="text" id="generatedUserID" name="generatedUserID" readonly style="display: none;"> 
     <label id="userIDLabel" style="display: none;"></label>
     <button type="button" onclick="validateForm()">Register</button>
+    
 </form>
+<form action="WelcomePage.jsp"><button>Back to home</button></form>
 <script>
 let codeNumber = localStorage.getItem('codeNumber') ? parseInt(localStorage.getItem('codeNumber')) : 1; 
 

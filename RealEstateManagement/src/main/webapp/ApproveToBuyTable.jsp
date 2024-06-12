@@ -11,7 +11,7 @@
 </head>
 <body>
 <h4>Registered Properties to Buy</h4>
-<a href="CustomerWelcomePage.jsp"><button>Back to home</button></a>
+<a href="AdminWelcomePage.jsp"><button>Back to home</button></a>
 <table border="1">
     <thead>
         <tr>
@@ -21,7 +21,9 @@
             <th>Payable Amount</th>
             <th>Payment Method</th>
             <th>Approval Status</th>
-            <th>Payment</th>
+            <th>Approval</th>
+            
+            
         </tr>
     </thead>
     <tbody>
@@ -40,17 +42,24 @@
                 	<img alt="images" src="data:image/jpeg;base64,<%= getImage %> ">      
                  </td>
                  <td><%= object.getPropertyPrice() %></td>
-                 <td><%=object.getPayableAmount() %></td>
+              	 <td><%=object.getPayableAmount() %></td>
                  <td><%= object.getPaymentMethod() %></td>
                  <td><%= object.getApproval() %></td>
+                 
                  <td>
-                 <form action="PayNow.jsp" >
-                 	<button>Pay Now</button>
-                 	<%-- <input type="hidden" value="<%=object.get %>"> --%>
-                 </form>
+                      <form action="ApprovalToBuyServlet" method="post">
+                         <input type="hidden" name="customerId" value="<%=object.getCustomerId() %>">
+                         <select name="approvalStatus">
+                             <option value="Select">Select</option>
+                             <option value="Approved">Approved</option>
+                             <option value="Not Approved">Not Approved</option>
+                         </select>
+                         <input type="submit" value="Submit">
+                     </form>
+                     
                  </td>
-             </tr>
-             
+                 
+              </tr>
              
          <%
              }

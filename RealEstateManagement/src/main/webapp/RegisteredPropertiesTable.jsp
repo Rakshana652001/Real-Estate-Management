@@ -21,9 +21,11 @@
             <th>Property Price</th>
             <th>Property Address</th>
             <th>Property Images</th>
+            <th>Property Document Photo Copy</th>
             <th>Property District</th>
             <th>Property State</th>
             <th>Approval Status</th>
+            <th>Register Status</th>
         </tr>
     </thead>
     <tbody>
@@ -34,6 +36,10 @@
                  byte[] images = object.getPropertyImages();
                  String getImage;
                  getImage = Base64.getEncoder().encodeToString(images);
+                 
+                 byte[] documents = object.getPropertyDocument();
+                 String getDocuments = Base64.getEncoder().encodeToString(documents);
+              
              
          %>
              <tr>
@@ -45,9 +51,22 @@
                  <td> 
                 	<img alt="images" src="data:image/jpeg;base64,<%= getImage %> ">      
                  </td>
+                 <td> 
+                	<img alt="documents" src="data:image/jpeg;base64,<%= getDocuments %> ">      
+                 </td>
                  <td><%= object.getPropertyDistrict() %></td>
                  <td><%=object.getPropertyState() %></td>
                  <td><%=object.getApproval() %></td>
+                 <td>
+                 	<form action="">
+                 		<select name="registerStatus">
+                             <option value="Select">Select</option>
+                             <option value="Registered">Registered</option>
+                             <option value="Not Registered">Not Registered</option>
+                         </select>
+                         <input type="submit" value="Submit">
+                 	</form>
+                 </td>
              </tr>
              
          <%

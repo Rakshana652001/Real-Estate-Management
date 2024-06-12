@@ -45,7 +45,7 @@
   		</form>
   		</td>
   		<td>
-  		<form action="SellerWelcomePage.jsp"><button>Back to Home</button></form>
+  		<form action="CustomerWelcomePage.jsp"><button>Back to Home</button></form>
   		</td>
 			
 		</tr>

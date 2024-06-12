@@ -12,38 +12,50 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.chainsys.dao.RealEstatePropertyImplementation;
-import com.chainsys.model.RealEstatePropertyRegister;
+import com.chainsys.dao.RealEstateCustomerImplementation;
+import com.chainsys.model.CustomerPurchasedProperty;
 
 
-@WebServlet("/AllPropertyServlet")
-public class AllPropertyServlet extends HttpServlet {
+@WebServlet("/RegisterBuyPropertiesServlet")
+public class RegisterBuyPropertiesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	String getCustomerId;
+    RealEstateCustomerImplementation customerImplementation = new RealEstateCustomerImplementation();
+    List<CustomerPurchasedProperty> list = new ArrayList<CustomerPurchasedProperty>();
+    
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		RealEstatePropertyImplementation estatePropertyImplementation = new RealEstatePropertyImplementation();
-		String getId;
-		List<RealEstatePropertyRegister> list = new ArrayList<RealEstatePropertyRegister>();
 		HttpSession httpSession = request.getSession();
 		try
 		{
-			getId = (String)httpSession.getAttribute("sellerId");
-			System.out.println("inside the retrive method");
-			
-			list = estatePropertyImplementation.retriveAllSellerDetails(getId);
-			request.setAttribute("list", list);
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("RegisteredPropertyAdminView.jsp");
-	        dispatcher.forward(request, response);
-	        
+			getCustomerId = (String)httpSession.getAttribute("id");
+			retrive(request,response);
 		}
 		catch(Exception e)
 		{
 			System.out.println(e);
 		}
-		
 	}
 
+	protected void retrive(HttpServletRequest request, HttpServletResponse response) throws IOException 
+	{
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		try 
+		{
+			System.out.println("inside the retrive method");
+			
+			list = customerImplementation.registeredProperty(getCustomerId);
+			request.setAttribute("list", list);
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("RegisterBuyPropertiesTable.jsp");
+	        dispatcher.forward(request, response);
+	        System.out.println(list);
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}		
+	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{

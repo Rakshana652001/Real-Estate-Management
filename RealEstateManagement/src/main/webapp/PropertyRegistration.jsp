@@ -25,11 +25,13 @@
     <label>Property Price: <input type="number" id="propertyPrice" name="propertyPrice" required/></label><br><br>
     
     <label>Add Images: <input type="file" id="propertyImages" name="propertyImage" required/></label><br><br>
+    <label>Property Documents Photo Copy: <input type="file" id="propertyDocument" name="propertyDocument" required/> </label><br><br>
     <label>Property Address: <textarea id="propertyAddress" name="propertyAddress" placeholder="Enter detail address includes your Property type, Door no, Street name, Landmark" rows="4" cols="30" required></textarea></label><br><br>
     <label>Property District: <input type="text" id="propertyDistrict" name="propertyDistrict" placeholder="Madurai" required/></label><br><br>
     <label>Property State: <input type="text" id="propertyState" name="propertyState" placeholder="Tamil Nadu" required/></label><br><br>
     <button type="submit">Register the Property</button>
 </form>
+<form action="SellerWelcomePage.jsp"><button>Back to Your Page</button></form>
 <script>
 function autoFillPropertyDetails()
 {

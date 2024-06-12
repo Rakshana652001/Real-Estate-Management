@@ -61,7 +61,29 @@ public class PropertyServlet extends HttpServlet {
         }
         estatePropertyRegister.setPropertyImages(data);
 
-              
+        
+        byte[] data1 = null;
+        Part file1 = request.getPart("propertyDocument");
+        String image = file1.getSubmittedFileName();
+        String upload = "C:/Users/raks3556/git/repository7/RealEstateManagement/src/main/webapp/PropertyDocuments"+image;
+        
+        try 
+        {
+        	FileOutputStream fileOutputStream = new FileOutputStream(upload);
+        	InputStream inputStream = file1.getInputStream();
+        	 
+        	data1 = new byte[(inputStream.available())];
+        	inputStream.read(data1);
+        	fileOutputStream.write(data1);
+        	fileOutputStream.close();
+        	
+        }
+        catch(NumberFormatException e)
+        {
+            e.printStackTrace();
+        }
+        
+        estatePropertyRegister.setPropertyDocument(data1);
        
         String propertyAddress = request.getParameter("propertyAddress");
         estatePropertyRegister.setPropertyAddress(propertyAddress);
@@ -80,6 +102,7 @@ public class PropertyServlet extends HttpServlet {
             estatePropertyImplementation.saveProperties(estatePropertyRegister);
             System.out.println("Inside Session");
             httpSession.setAttribute("sellerId", sellerId);
+            httpSession.setAttribute("propertyAddress", propertyAddress);
             response.sendRedirect("SellerWelcomePage.jsp");
         }
         catch (Exception e) 

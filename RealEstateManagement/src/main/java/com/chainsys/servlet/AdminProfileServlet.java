@@ -49,7 +49,7 @@ public class AdminProfileServlet extends HttpServlet {
 			
 			list = objectForImplementation.retriveAdminDetails(getId);
 			request.setAttribute("list", list);
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("UserRegistrationTable.jsp");
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("AdminProfile.jsp");
 	        dispatcher.forward(request, response);
 	        System.out.println(list);
 		}

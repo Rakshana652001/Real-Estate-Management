@@ -12,31 +12,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.chainsys.dao.RealEstateImplementation;
-import com.chainsys.model.RealEstateUserRegister;
+import com.chainsys.dao.RealEstateCustomerImplementation;
+import com.chainsys.model.CustomerPurchasedProperty;
 
 
-@WebServlet("/CustomerProfileServlet")
-public class CustomerProfileServlet extends HttpServlet {
+@WebServlet("/ApproveToBuyServlet")
+public class ApproveToBuyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    String getCustomerId;
-    RealEstateImplementation objectForImplementation = new RealEstateImplementation();
-	
-	List<RealEstateUserRegister> list = new ArrayList<RealEstateUserRegister>();
-    
+	String getCustomerId;
+    RealEstateCustomerImplementation customerImplementation = new RealEstateCustomerImplementation();
+    List<CustomerPurchasedProperty> list = new ArrayList<CustomerPurchasedProperty>();
+     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		HttpSession httpSession = request.getSession();
 		try
 		{
-			getCustomerId = (String)httpSession.getAttribute("id");
+			getCustomerId = (String)httpSession.getAttribute("customerId");
 			retrive(request,response);
 		}
 		catch(Exception e)
 		{
 			System.out.println(e);
 		}
-		
 	}
 	
 	protected void retrive(HttpServletRequest request, HttpServletResponse response) throws IOException 
@@ -44,11 +42,9 @@ public class CustomerProfileServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		try 
 		{
-			System.out.println("inside the retrive method");
-			
-			list = objectForImplementation.retriveCustomerDetails(getCustomerId);
+			list = customerImplementation.registeredPropertyToApprove(getCustomerId);
 			request.setAttribute("list", list);
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("CustomerProfile.jsp");
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("ApproveToBuyTable.jsp");
 	        dispatcher.forward(request, response);
 	        System.out.println(list);
 		}
@@ -58,10 +54,8 @@ public class CustomerProfileServlet extends HttpServlet {
 		}		
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		
 		doGet(request, response);
 	}
 

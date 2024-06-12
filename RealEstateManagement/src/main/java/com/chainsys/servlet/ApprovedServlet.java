@@ -16,9 +16,12 @@ import com.chainsys.dao.RealEstatePropertyImplementation;
 import com.chainsys.model.RealEstatePropertyRegister;
 
 
-@WebServlet("/AllPropertyServlet")
-public class AllPropertyServlet extends HttpServlet {
+@WebServlet("/ApprovedServlet")
+public class ApprovedServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+    String getId;
+    List<RealEstatePropertyRegister> list = new ArrayList<RealEstatePropertyRegister>();
+    RealEstatePropertyImplementation estatePropertyImplementation = new RealEstatePropertyImplementation();
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
@@ -29,11 +32,9 @@ public class AllPropertyServlet extends HttpServlet {
 		try
 		{
 			getId = (String)httpSession.getAttribute("sellerId");
-			System.out.println("inside the retrive method");
-			
-			list = estatePropertyImplementation.retriveAllSellerDetails(getId);
+			list = estatePropertyImplementation.retriveDetailsAfterUpdate(getId);
 			request.setAttribute("list", list);
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("RegisteredPropertyAdminView.jsp");
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("RegisteredPropertiesTable.jsp");
 	        dispatcher.forward(request, response);
 	        
 		}
@@ -41,9 +42,7 @@ public class AllPropertyServlet extends HttpServlet {
 		{
 			System.out.println(e);
 		}
-		
 	}
-
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{

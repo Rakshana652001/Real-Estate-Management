@@ -21,7 +21,6 @@
             <th>Payable Amount</th>
             <th>Payment Method</th>
             <th>Approval Status</th>
-            <th>Payment</th>
         </tr>
     </thead>
     <tbody>
@@ -43,12 +42,6 @@
                  <td><%=object.getPayableAmount() %></td>
                  <td><%= object.getPaymentMethod() %></td>
                  <td><%= object.getApproval() %></td>
-                 <td>
-                 <form action="PayNow.jsp" >
-                 	<button>Pay Now</button>
-                 	<%-- <input type="hidden" value="<%=object.get %>"> --%>
-                 </form>
-                 </td>
              </tr>
              
              

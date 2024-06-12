@@ -21,6 +21,7 @@
             <th>Property Price</th>
             <th>Property Address</th>
             <th>Property Images</th>
+            <th>Property Document Photo Copy</th>
             <th>Property District</th>
             <th>Property State</th>
             <th>Approval</th>
@@ -34,6 +35,9 @@
                  byte[] images = object.getPropertyImages();
                  String getImage;
                  getImage = Base64.getEncoder().encodeToString(images);
+                 
+                 byte[] document = object.getPropertyDocument();
+                 String getDocument = Base64.getEncoder().encodeToString(document);
              
          %>
              <tr>
@@ -43,7 +47,10 @@
                  <td><%= object.getPropertyPrice() %></td>
                  <td><%= object.getPropertyAddress() %></td>
                  <td> 
-                	<img alt="images" src="data:image/jpeg;base64,<%= getImage %> ">      
+                	<img alt="images" src="data:image/jpeg;base64,<%= getImage %> ">
+                 </td>
+                 <td>
+                 	<img alt="document" src="data:image/jpeg;base64, <%=getDocument %>">
                  </td>
                  <td><%= object.getPropertyDistrict() %></td>
                  <td><%=object.getPropertyState() %></td>

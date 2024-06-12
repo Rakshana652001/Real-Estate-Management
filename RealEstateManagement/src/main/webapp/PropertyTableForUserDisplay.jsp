@@ -48,6 +48,7 @@
                     <input type="hidden" name="propertyPrice" value="<%= object.getPropertyPrice() %>">
                     <input type="submit" class="btn-buy" name="buy" value="Register"><br><br><br><br>
                 </form>
+                <form action="WelcomePage.jsp"><button>Back to Home</button></form>
             </div>
         </div>
     <% 

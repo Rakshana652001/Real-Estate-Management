@@ -11,17 +11,15 @@
 </head>
 <body>
 <h4>Registered Properties to Buy</h4>
-<a href="CustomerWelcomePage.jsp"><button>Back to home</button></a>
+<a href="AdminWelcomePage.jsp"><button>Back to home</button></a>
 <table border="1">
     <thead>
         <tr>
             <th>Customer ID</th>
             <th>Government Id</th>
             <th>Property Total Amount</th>
-            <th>Payable Amount</th>
             <th>Payment Method</th>
             <th>Approval Status</th>
-            <th>Payment</th>
         </tr>
     </thead>
     <tbody>
@@ -40,17 +38,9 @@
                 	<img alt="images" src="data:image/jpeg;base64,<%= getImage %> ">      
                  </td>
                  <td><%= object.getPropertyPrice() %></td>
-                 <td><%=object.getPayableAmount() %></td>
                  <td><%= object.getPaymentMethod() %></td>
                  <td><%= object.getApproval() %></td>
-                 <td>
-                 <form action="PayNow.jsp" >
-                 	<button>Pay Now</button>
-                 	<%-- <input type="hidden" value="<%=object.get %>"> --%>
-                 </form>
-                 </td>
              </tr>
-             
              
          <%
              }
