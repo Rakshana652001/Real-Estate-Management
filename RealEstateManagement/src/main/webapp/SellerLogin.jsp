@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="xml:lang">
 <head>
 <meta charset="ISO-8859-1">
 <title>Seller Login</title>
@@ -77,7 +77,7 @@ button:hover {
 <body>
 <form action="SellerServlet" method="get">
 	<h3>Seller Login</h3>
-	<label>ID: <input type="text" name="id" placeholder="Enter the code given by the company" required/></label><br><br>
+	<label>ID: <input type="text" name="id" name="sellerId" placeholder="Enter the code given by the company" required/></label><br><br>
 	<label>Password: <input type="password" name="password" placeholder="Rakshana@12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required/></label><br><br>
 	<button>Login</button>
 </form>

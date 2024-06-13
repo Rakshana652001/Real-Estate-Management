@@ -4,7 +4,7 @@
 <%@ page import="com.chainsys.model.RealEstateUserRegister" %>
 <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
-<html>
+<html lang="xml:lang">
 <head>
 <meta charset="ISO-8859-1">
 <title>Properties Details</title>
@@ -46,6 +46,7 @@
                     <input type="hidden" name="propertyName" value="<%= object.getPropertyName() %>">
                     <input type="hidden" name="propertyAddress" value="<%= object.getPropertyAddress() %>">
                     <input type="hidden" name="propertyPrice" value="<%= object.getPropertyPrice() %>">
+            
                     <input type="submit" class="btn-buy" name="buy" value="Register"><br><br><br><br>
                 </form>
                 <form action="WelcomePage.jsp"><button>Back to Home</button></form>

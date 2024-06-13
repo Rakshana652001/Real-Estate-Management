@@ -15,9 +15,9 @@
     <div class="dropdown">
         <label class="dropbtn" for="designationDropdown" id="designationDropdown">Select Designation</label>
         <div class="dropdown-content">
-            <a href="#" onclick="promptForCode('Admin')">Admin</a>
-            <a href="#" onclick="selectOption('Customer')">Customer</a>
-            <a href="#" onclick="selectOption('Seller')">Seller</a>
+            <button onclick="promptForCode('Admin')">Admin</button>
+            <button onclick="selectOption('Customer')">Customer</button>
+            <button onclick="selectOption('Seller')">Seller</button>
         </div>
     </div>
     <label for="designation">Designation: 

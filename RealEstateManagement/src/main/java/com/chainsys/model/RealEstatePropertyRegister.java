@@ -8,14 +8,13 @@ public class RealEstatePropertyRegister
 	String propertyId;
 	String propertyName;
 	long propertyPrice;
-	
 	byte[] propertyImages;
 	String propertyAddress;
 	String propertyDistrict;
 	String	propertyState;
 	String approval;
 	byte[] propertyDocument;
-	String registered;;
+	String registered;
 	public RealEstatePropertyRegister()
 	{
 		

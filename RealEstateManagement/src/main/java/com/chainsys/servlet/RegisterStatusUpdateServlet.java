@@ -38,7 +38,7 @@ public class RegisterStatusUpdateServlet extends HttpServlet {
 		}
 		catch(Exception e)
 		{
-			
+			System.out.println(e);			
 		}		
 		request.setAttribute("list", list);
         RequestDispatcher dispatcher = request.getRequestDispatcher("RegisteredPropertiesServlet");

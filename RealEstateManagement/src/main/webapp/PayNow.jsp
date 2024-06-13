@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="xml:lang">
 <head>
 <meta charset="ISO-8859-1">
 <title>Pay Now</title>

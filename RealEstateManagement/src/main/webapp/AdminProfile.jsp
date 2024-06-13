@@ -3,7 +3,7 @@
     <%@page import=" com.chainsys.model.RealEstateUserRegister" %>
     <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
-<html>
+<html lang="xml:lang">
 <head>
 <meta charset="ISO-8859-1">
 <title>User Registration Details</title>

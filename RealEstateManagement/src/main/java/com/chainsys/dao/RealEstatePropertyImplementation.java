@@ -134,7 +134,6 @@ public class RealEstatePropertyImplementation
 		List<RealEstatePropertyRegister> list = new ArrayList<RealEstatePropertyRegister>();
 		try
 		{
-			System.out.println("Inside method");
 			Connection getConnection = ConnectionJdbc.getConnection();
 			String retriveProperties = "select seller_id,property_name,property_id,property_price,property_images ,property_address, property_district,property_state from property_registration where property_name = 'Residential' and deleted_User=0 and approval='Approved' and register_status='Not Registered'";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveProperties);
@@ -168,7 +167,6 @@ public class RealEstatePropertyImplementation
 		List<RealEstatePropertyRegister> list = new ArrayList<RealEstatePropertyRegister>();
 		try
 		{
-			System.out.println("Inside method");
 			Connection getConnection = ConnectionJdbc.getConnection();
 			String retriveProperties = "select seller_id,property_name,property_id,property_price, property_images ,property_address, property_district,property_state from property_registration where property_name = 'Land' and deleted_User=0 and approval='Approved' and register_status='Not Registered'";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveProperties);

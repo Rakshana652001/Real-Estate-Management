@@ -38,7 +38,7 @@ public class ApprovalServlet extends HttpServlet {
 		}
 		catch(Exception e)
 		{
-			
+			System.out.println(e);
 		}
 		
 		request.setAttribute("list", list);

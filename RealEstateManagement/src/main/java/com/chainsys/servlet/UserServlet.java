@@ -58,7 +58,6 @@ public class UserServlet extends HttpServlet {
 		try
 		{
 			System.out.println("Inside session");
-			httpSession.setAttribute("userData", estateUserRegister);
 			objectForImplementation.userRegistration(estateUserRegister);
 			response.sendRedirect("AfterRegister.jsp");
 				

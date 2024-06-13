@@ -3,7 +3,7 @@
 <%@ page import="com.chainsys.model.RealEstatePropertyRegister" %>
 <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
-<html>
+<html lang="xml:lang"> 
 <head>
 <meta charset="ISO-8859-1">
 <title>Approved Properties</title>
@@ -48,7 +48,7 @@
                  <td><%= object.getPropertyPrice() %></td>
                  <td><%= object.getPropertyAddress() %></td>
                  <td> 
-                	<img alt="images" src="data:image/jpeg;base64,<%= getImage %> ">
+                	<img alt="ShowRoom" src="data:image/jpeg;base64,<%= getImage %> ">
                  </td>
                  <td>
                  	<img alt="document" src="data:image/jpeg;base64, <%=getDocument %>">

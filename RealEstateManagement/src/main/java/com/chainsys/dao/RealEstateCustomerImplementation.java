@@ -228,6 +228,72 @@ public class RealEstateCustomerImplementation
 		return list;
 	}
 
-	
+	public List<CustomerPurchasedProperty> retriveBuyedProperties(String customerId)
+	{
+		List<CustomerPurchasedProperty> list = new ArrayList<CustomerPurchasedProperty>();
+		try
+		{
+			Connection getConnection = ConnectionJdbc.getConnection();
+			String select = "select customer_id,property_address, total_amount, payment_method, approval, government_id,customer_account,seller_account, payabel_amount,payed_status from customer_registered_property where customer_id = ? and deleted_User=0 and payed_status='Paid'";
+			PreparedStatement preparedStatement = getConnection.prepareStatement(select);
+			preparedStatement.setString(1, customerId);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next())
+			{
+				CustomerPurchasedProperty customerPurchasedProperty = new CustomerPurchasedProperty();
+				customerPurchasedProperty.setCustomerId(resultSet.getString(1));
+				customerPurchasedProperty.setPropertyAddress(resultSet.getString(2));
+				customerPurchasedProperty.setPropertyPrice(resultSet.getLong(3));
+				customerPurchasedProperty.setPaymentMethod(resultSet.getString(4));
+				customerPurchasedProperty.setApproval(resultSet.getString(5));
+				customerPurchasedProperty.setGovernmentId(resultSet.getBytes(6));
+				customerPurchasedProperty.setYourAccountNumber(resultSet.getLong(7));
+				customerPurchasedProperty.setSenderAccountNumber(resultSet.getLong(8));
+				customerPurchasedProperty.setPayableAmount(resultSet.getDouble(9));
+				customerPurchasedProperty.setPaymentStatus(resultSet.getString(10));
+				
+				list.add(customerPurchasedProperty);
+			}		
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		return list;
+	}
+
+	public List<CustomerPurchasedProperty> paidProperties(String getAddress)
+	{
+		List<CustomerPurchasedProperty> list = new ArrayList<CustomerPurchasedProperty>();
+		try
+		{
+			Connection getConnection = ConnectionJdbc.getConnection();
+			String select = "select customer_id,property_address, total_amount, payment_method, approval,customer_account,seller_account, payabel_amount,payed_status from customer_registered_property where property_address = ? and deleted_User=0 and payed_status='Paid'";
+			PreparedStatement preparedStatement = getConnection.prepareStatement(select);
+			preparedStatement.setString(1, getAddress);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next())
+			{
+				CustomerPurchasedProperty customerPurchasedProperty = new CustomerPurchasedProperty();
+				customerPurchasedProperty.setCustomerId(resultSet.getString(1));
+				customerPurchasedProperty.setPropertyAddress(resultSet.getString(2));
+				customerPurchasedProperty.setPropertyPrice(resultSet.getLong(3));
+				customerPurchasedProperty.setPaymentMethod(resultSet.getString(4));
+				customerPurchasedProperty.setApproval(resultSet.getString(5));
+				customerPurchasedProperty.setYourAccountNumber(resultSet.getLong(6));
+				customerPurchasedProperty.setSenderAccountNumber(resultSet.getLong(7));
+				customerPurchasedProperty.setPayableAmount(resultSet.getDouble(8));
+				customerPurchasedProperty.setPaymentStatus(resultSet.getString(9));
+				customerPurchasedProperty.setPropertyAddress(resultSet.getString(10));
+				
+				list.add(customerPurchasedProperty);
+			}		
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		return list;
+	}
 	
 }

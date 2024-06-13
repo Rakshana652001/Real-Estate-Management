@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="xml:land">
 <head>
 <meta charset="ISO-8859-1">
 <title>Urban Nest Realty</title>
@@ -99,9 +99,10 @@ body {
         <a class="nav-link active"  href="#contact">Contact</a>
       </li>
       <li class="nav-item dropdown">
+        
         <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Account
-        </a>
+        </a> 
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="UserRegistration.jsp">Register</a>
           <a class="dropdown-item" href="AdminLogin.jsp">Admin Login</a>

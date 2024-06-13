@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="xml:lang">
 <head>
 <meta charset="ISO-8859-1">
 <title>Buy Now</title>

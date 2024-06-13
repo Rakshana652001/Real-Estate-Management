@@ -17,7 +17,8 @@ public class RealEstateUserRegister
 	{
 		
 	}
-	public RealEstateUserRegister(String selectId) {
+	public RealEstateUserRegister(String selectId) 
+	{
 		// TODO Auto-generated constructor stub
 	}
 	public String getName() {

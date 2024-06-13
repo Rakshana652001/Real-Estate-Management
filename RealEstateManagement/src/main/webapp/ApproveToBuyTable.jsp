@@ -3,7 +3,7 @@
 <%@ page import="com.chainsys.model.CustomerPurchasedProperty" %>
 <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
-<html>
+<html lang="xml:lang">
 <head>
 <meta charset="ISO-8859-1">
 <title>Registered Properties Still Not Approved</title>
@@ -41,7 +41,7 @@
                  <td><%= object.getCustomerId() %></td>
                  <td><%=object.getPropertyAddress() %></td>
                  <td> 
-                	<img alt="images" src="data:image/jpeg;base64,<%= getImage %> ">      
+                	<img alt="Residential" src="data:image/jpeg;base64,<%= getImage %> ">      
                  </td>
                  <td><%= object.getPropertyPrice() %></td>
               	 <td><%=object.getPayableAmount() %></td>
