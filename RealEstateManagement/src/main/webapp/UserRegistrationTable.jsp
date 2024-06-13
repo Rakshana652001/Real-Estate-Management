@@ -7,6 +7,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>User Registration Details</title>
+
 </head>
 <body>
 <h4>User Details</h4>
