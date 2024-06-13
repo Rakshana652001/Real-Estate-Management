@@ -39,15 +39,17 @@
 			<td><%=object.getState() %></td>
 			<td><input type="hidden" value="<%=object.getName() %>" name="name"><a href="UpdateUserDetails.jsp?editName=<%=object.getName() %>"><button>Update</button></a></td>
 			<td>
+			<input type="hidden" name="customerId" value="<%=object.getGeneratedUserID() %>">
 		<form action="UserServlet" method="post">
   		<input type="hidden" name="deleteName" value="<%= object.getName()%>">
+  		<input type="hidden" name="id" value="<%=object.getGeneratedUserID()%>"> 
   		<input type="submit" name="delete" value="Delete">
   		</form>
   		</td>
   		<td>
-  		<form action="SellerWelcomePage.jsp"><button>Back to Home</button></form>
+  		<form action="AdminWelcomePage.jsp"><button>Back to Home</button></form>
   		</td>
-			
+  		
 		</tr>
 	<%
 	}

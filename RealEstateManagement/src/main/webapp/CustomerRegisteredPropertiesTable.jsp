@@ -21,6 +21,7 @@
             <th>Payable Amount</th>
             <th>Payment Method</th>
             <th>Approval Status</th>
+            <th>Payment Status</th>
         </tr>
     </thead>
     <tbody>
@@ -42,6 +43,7 @@
                  <td><%=object.getPayableAmount() %></td>
                  <td><%= object.getPaymentMethod() %></td>
                  <td><%= object.getApproval() %></td>
+                 <td><%=object.getPaymentStatus() %></td>
              </tr>
              
              

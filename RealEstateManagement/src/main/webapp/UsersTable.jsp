@@ -41,7 +41,6 @@
   		<input type="submit" name="delete" value="Delete">
   		</form>
   		</td>
-			
 		</tr>
 	<%
 	}

@@ -65,14 +65,16 @@ function generateUserID() {
     let companyName = "UNR";
     let userID = companyName + '_' + designation + '_' + codeNumber;
     
-    
+    // Set the generated user ID value to the input field
     document.getElementById('generatedUserID').value = userID;
 
-    
-    document.getElementById('userIDLabel').textContent = "Please Note Generated User ID: " + userID;
-    document.getElementById('userIDLabel').style.display = "block"; 
+    // Show the label with the generated user ID after 5 seconds
+    setTimeout(() => {
+        document.getElementById('userIDLabel').textContent = "Please Note Generated User ID: " + userID;
+        document.getElementById('userIDLabel').style.display = "block"; 
+    }, 5000);
 
-  
+    // Increment the code number for the next user and store it in local storage
     codeNumber++;
     localStorage.setItem('codeNumber', codeNumber);
 }
@@ -106,11 +108,12 @@ function validateForm() {
         return;
     }
 
-    
-    
     generateUserID();
 
-    form.submit();
+    setTimeout(() => 
+    {
+    	form.submit();
+    }, 5000);
 }
 </script>
 

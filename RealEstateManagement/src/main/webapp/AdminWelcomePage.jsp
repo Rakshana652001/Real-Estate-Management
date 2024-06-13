@@ -5,14 +5,43 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Admin Welcome Page</title>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: grey;
+    background-position: center;
+    position: relative;
+    color: #333;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+	}
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn {
+        width: 300px;
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+    }
+</style>
 </head>
 <body>
-<a href="AdminProfileServlet" class="nav-link">Profile</a><br>
-<a href="SellerCustomerServlet" class="nav-link">Users</a><br>
-<a href="AllPropertyServlet" class="nav-link">Unapproved Seller Property</a><br>
-<a href="ApprovedServlet" class="nav-link">Approved Seller Properties</a><br>
-<a href="ApproveToBuyServlet" class="nav-link">Unapprove Customer Properties</a><br>
-<a href="ApprovedPropertiesServlet" class="nav-link">Approved Customer Properties</a><br>
-<a href="WelcomePage.jsp" class="nav-link">Logout</a>
+    <form>
+        <button type="button" class="btn" onclick="location.href='AdminProfileServlet'">Profile</button>
+        <button type="button" class="btn" onclick="location.href='SellerCustomerServlet'">Users</button>
+        <button type="button" class="btn" onclick="location.href='AllPropertyServlet'">Seller Properties(Unapproved)</button>
+        <button type="button" class="btn" onclick="location.href='ApprovedServlet'">Seller Properties(Approved)</button>
+        <button type="button" class="btn" onclick="location.href='ApproveToBuyServlet'">Customer Properties(Unapprove)</button>
+        <button type="button" class="btn" onclick="location.href='ApprovedPropertiesServlet'">Customer Properties(Approved and Payment Status)</button>
+        <button type="button" class="btn" onclick="location.href='RegisteredPropertiesServlet'">Registered Properties</button>
+        <button type="button" class="btn" onclick="location.href='WelcomePage.jsp'">Logout</button>
+    </form>
 </body>
 </html>

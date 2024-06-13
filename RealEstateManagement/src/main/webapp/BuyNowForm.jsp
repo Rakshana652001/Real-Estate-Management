@@ -5,12 +5,14 @@
 <title>Buy Now</title>
 </head>
 <body>
+<% 
+    String customerId = (String) session.getAttribute("customerId");
+%>
 <div class="container">
     <h3>Buy Now Form</h3>
     <form action="PurchaseServlet" method="post" enctype="multipart/form-data">
         <label for="customerId">Customer ID:
-            <input type="text" name="customerId" placeholder="Enter the ID given when you registered" required/>
-        </label><br><br>
+            <input type="text" name="customerId" placeholder="Enter the ID given when you registered"  value="<%= customerId != null ? customerId : "" %>" readonly/></label>
         <label for="governmentId">Government ID:
             <input type="file" id="governmentId" name="governmentId" required>
         </label><br><br>
@@ -46,11 +48,13 @@
     </form>
 </div>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener
+    ("DOMContentLoaded", function(){
         var propertyPrice = document.getElementById("propertyPrice").value;
         var payableAmountInput = document.getElementById("payableAmount");
 
-        if (propertyPrice) {
+        if (propertyPrice) 
+        {
             var payableAmount = propertyPrice / 2;
             payableAmountInput.value = payableAmount.toFixed(2);
         }

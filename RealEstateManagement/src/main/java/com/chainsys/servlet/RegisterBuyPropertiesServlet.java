@@ -29,7 +29,7 @@ public class RegisterBuyPropertiesServlet extends HttpServlet {
 		HttpSession httpSession = request.getSession();
 		try
 		{
-			getCustomerId = (String)httpSession.getAttribute("id");
+			getCustomerId = (String)httpSession.getAttribute("customerId");
 			retrive(request,response);
 		}
 		catch(Exception e)

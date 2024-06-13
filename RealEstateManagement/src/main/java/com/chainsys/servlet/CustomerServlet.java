@@ -20,7 +20,7 @@ public class CustomerServlet extends HttpServlet
     RealEstateImplementation estateImplementation = new RealEstateImplementation();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		String id = request.getParameter("id");
+		String id = request.getParameter("customerId");
 		estateUserRegister.setGeneratedUserID(id);
 		
 		String password = request.getParameter("password");
@@ -33,7 +33,7 @@ public class CustomerServlet extends HttpServlet
 			{
 				if(password.equals(estateImplementation.getCustomerPassword(id)))
 				{
-					httpSession.setAttribute("id", id);
+					httpSession.setAttribute("customerId", id);
 					response.sendRedirect("CustomerWelcomePage.jsp");
 				}
 				else

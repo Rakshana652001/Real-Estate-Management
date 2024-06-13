@@ -79,7 +79,7 @@ button:hover {
 <body>
 <form action="CustomerServlet" method="post">
 	<h3>Customer Login</h3>
-	<label>ID: <input type="text" name="id" placeholder="Enter the code given by the company" required/></label><br><br>
+	<label>ID: <input type="text" name="customerId" placeholder="Enter the code given by the company" required/></label><br><br>
 	<label>Password: <input type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required/></label><br><br>
 	<button>Login</button>
 </form>

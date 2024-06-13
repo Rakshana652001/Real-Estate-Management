@@ -45,8 +45,8 @@
                  <td><%= object.getApproval() %></td>
                  <td>
                  <form action="PayNow.jsp" >
+                 <input type="hidden" name="amount" value="<%=object.getPayableAmount() %>">
                  	<button>Pay Now</button>
-                 	<%-- <input type="hidden" value="<%=object.get %>"> --%>
                  </form>
                  </td>
              </tr>

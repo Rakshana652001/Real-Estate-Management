@@ -16,6 +16,7 @@
     <thead>
         <tr>
             <th>Customer ID</th>
+            <th>Property Address</th>
             <th>Government Id</th>
             <th>Property Total Amount</th>
             <th>Payable Amount</th>
@@ -38,6 +39,7 @@
          %>
              <tr>
                  <td><%= object.getCustomerId() %></td>
+                 <td><%=object.getPropertyAddress() %></td>
                  <td> 
                 	<img alt="images" src="data:image/jpeg;base64,<%= getImage %> ">      
                  </td>

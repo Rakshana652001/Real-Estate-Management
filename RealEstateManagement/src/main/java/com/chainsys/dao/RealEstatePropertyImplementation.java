@@ -43,7 +43,7 @@ public class RealEstatePropertyImplementation
 		try
 		{
 			Connection getConnection = ConnectionJdbc.getConnection();
-			String retriveProperties = "select seller_id,property_name,property_id,property_price, property_images,property_document, property_address, property_district,property_state,approval from property_registration where seller_id = ? and deleted_User = 0";
+			String retriveProperties = "select seller_id,property_name,property_id,property_price, property_images,property_document, property_address, property_district,property_state,approval, register_status from property_registration where seller_id = ? and deleted_User = 0";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveProperties);
 			preparedStatement.setString(1, sellerId);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -61,6 +61,7 @@ public class RealEstatePropertyImplementation
 				estatePropertyRegister.setPropertyDistrict(resultSet.getString(8));
 				estatePropertyRegister.setPropertyState(resultSet.getString(9));
 				estatePropertyRegister.setApproval(resultSet.getString(10));
+				estatePropertyRegister.setRegistered(resultSet.getString(11));
 				
 				list.add(estatePropertyRegister);
 				
@@ -272,7 +273,7 @@ public class RealEstatePropertyImplementation
 		try
 		{
 			Connection getConnection = ConnectionJdbc.getConnection();
-			String retriveProperties = "select seller_id,property_name,property_id,property_price,property_images,property_document, property_address, property_district,property_state, approval  from property_registration where deleted_User=0 and approval='Approved'";
+			String retriveProperties = "select seller_id,property_name,property_id,property_price,property_images,property_document, property_address, property_district,property_state, approval  from property_registration where deleted_User=0 and approval='Approved' and register_status='Not Registered'";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveProperties);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next())
@@ -333,6 +334,63 @@ public class RealEstatePropertyImplementation
 			String update = "update property_registration set register_status = ? where property_address = ?";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(update);
 			preparedStatement.setString(1, registered);
+			preparedStatement.setString(2, address);
+			
+			preparedStatement.executeUpdate();
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		return list;
+	}
+
+	public List<RealEstatePropertyRegister> retriveRegistered(String getId)
+	{
+		List<RealEstatePropertyRegister> list = new ArrayList<RealEstatePropertyRegister>();
+		try
+		{
+			Connection getConnection = ConnectionJdbc.getConnection();
+			String retriveProperties = "select seller_id,property_name,property_id,property_price,property_images,property_document, property_address, property_district,property_state, approval, register_status  from property_registration where deleted_User=0 and approval='Approved' and register_status='Registered'";
+			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveProperties);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next())
+			{
+				
+				RealEstatePropertyRegister estatePropertyRegister = new RealEstatePropertyRegister();
+				
+				estatePropertyRegister.setSellerId(resultSet.getString(1));
+				estatePropertyRegister.setPropertyName(resultSet.getString(2));
+				estatePropertyRegister.setPropertyId(resultSet.getString(3));
+				estatePropertyRegister.setPropertyPrice(resultSet.getLong(4));
+				estatePropertyRegister.setPropertyImages(resultSet.getBytes(5));
+				estatePropertyRegister.setPropertyDocument(resultSet.getBytes(6));
+				estatePropertyRegister.setPropertyAddress(resultSet.getString(7));
+				estatePropertyRegister.setPropertyDistrict(resultSet.getString(8));
+				estatePropertyRegister.setPropertyState(resultSet.getString(9));
+				estatePropertyRegister.setApproval(resultSet.getString(10));
+				estatePropertyRegister.setRegistered(resultSet.getString(11));
+				list.add(estatePropertyRegister);
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		return list;
+	
+	}
+
+	public List<RealEstatePropertyRegister> updateRegistered(String address, String registerStatus)
+	{
+		List<RealEstatePropertyRegister> list = new ArrayList<RealEstatePropertyRegister>();
+		try
+		{
+			Connection getConnection = ConnectionJdbc.getConnection();
+			String update = "update property_registration set register_status = ? where property_address = ?";
+			PreparedStatement preparedStatement = getConnection.prepareStatement(update);
+			preparedStatement.setString(1, registerStatus);
 			preparedStatement.setString(2, address);
 			
 			preparedStatement.executeUpdate();

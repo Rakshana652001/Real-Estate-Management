@@ -11,7 +11,7 @@
 </head>
 <body>
 <h4>Property Details</h4>
-<a href="SellerWelcomePage.jsp"><button>Back to home</button></a>
+<a href="AdminWelcomePage.jsp"><button>Back to home</button></a>
 <table border="1">
     <thead>
         <tr>
@@ -37,8 +37,9 @@
                  String getImage;
                  getImage = Base64.getEncoder().encodeToString(images);
                  
-                 byte[] document = object.getPropertyDocument();
-                 String getDocument = Base64.getEncoder().encodeToString(document);
+                 byte[] documents = object.getPropertyDocument();
+                 String getDocuments = Base64.getEncoder().encodeToString(documents);
+              
              
          %>
              <tr>
@@ -48,10 +49,10 @@
                  <td><%= object.getPropertyPrice() %></td>
                  <td><%= object.getPropertyAddress() %></td>
                  <td> 
-                	<img alt="images" src="data:image/jpeg;base64,<%= getImage %> ">
+                	<img alt="images" src="data:image/jpeg;base64,<%= getImage %> ">      
                  </td>
-                 <td>
-                 	<img alt="document" src="data:image/jpeg;base64, <%=getDocument %>">
+                 <td> 
+                	<img alt="documents" src="data:image/jpeg;base64,<%= getDocuments %> ">      
                  </td>
                  <td><%= object.getPropertyDistrict() %></td>
                  <td><%=object.getPropertyState() %></td>
