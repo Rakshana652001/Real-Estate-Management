@@ -102,7 +102,7 @@
         cursor: pointer;
         width: 48%;
         margin-top: 10px;
-    }
+    } 
     button:hover {
         background-color: #333;
     }

@@ -50,8 +50,7 @@
         <a href="AllPropertyServlet">Seller Properties (Unapproved)</a>
         <a href="ApprovedServlet">Seller Properties (Approved)</a>
         <a href="ApproveToBuyServlet">Customer Properties (Unapprove)</a>
-<!--         <a href="ApprovedPropertiesServlet">Customer Properties (Approved and Payment Status)</a>
- -->        <a href="RegisteredPropertiesServlet">Saled Properties</a>
+        <a href="RegisteredPropertiesServlet">Saled Properties</a>
         <a href="WelcomePage.jsp">Logout</a>
     </div>
     <div class="content">

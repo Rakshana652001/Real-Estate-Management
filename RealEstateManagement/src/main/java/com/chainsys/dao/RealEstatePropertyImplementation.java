@@ -19,7 +19,7 @@ public class RealEstatePropertyImplementation
 	{
 		
 		Connection getConnection = ConnectionJdbc.getConnection();
-		String saveProperties = "insert into property_registration (seller_id,property_name,property_id,property_price, property_images,property_document,property_address, property_district,property_state, approval, register_status) values (?,?,?,?,?,?,?,?,?,?,?)";
+		String saveProperties = "insert into property_registration (seller_id,property_name,property_id,property_price, property_images,property_document,property_address, property_district,property_state, approval, register_status, payment_status) values (?,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement insertStatement = getConnection.prepareStatement(saveProperties);
 		insertStatement.setString(1, estatePropertyRegister.getSellerId());
 		insertStatement.setString(2, estatePropertyRegister.getPropertyName());
@@ -32,6 +32,7 @@ public class RealEstatePropertyImplementation
 		insertStatement.setString(9, estatePropertyRegister.getPropertyState());
 		insertStatement.setString(10, "Not Approved");
 		insertStatement.setString(11, "Not Registered");
+		insertStatement.setString(12, "Not Paid");
 		
 		insertStatement.executeUpdate();
 		getConnection.close();		

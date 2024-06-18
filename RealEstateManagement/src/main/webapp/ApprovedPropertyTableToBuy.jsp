@@ -11,6 +11,8 @@
 </head>
 <body>
 <h3>Customer Registered Properties(Approved)</h3>
+<a href="CustomerWelcomePage.jsp"><button>Back to home</button></a>
+
 <table border="1">
     <thead>
         <tr>
@@ -48,6 +50,5 @@
             %>
     </tbody>
 </table>
-<a href="CustomerWelcomePage.jsp"><button>Back to home</button></a>
 </body>
 </html>

@@ -71,6 +71,8 @@ button:hover, .btn-action:hover {
 </head>
 <body>
 <h3>User Details</h3>
+<form action="AdminWelcomePage.jsp"><button>Back to Home</button></form>
+
 <table border="1">
 	<thead>
 		<tr>
@@ -108,6 +110,5 @@ button:hover, .btn-action:hover {
 	}
 	  %>
 </table>
-<form action="AdminWelcomePage.jsp"><button>Back to Home</button></form>
 </body>
 </html>

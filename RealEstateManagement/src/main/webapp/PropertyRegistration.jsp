@@ -6,10 +6,79 @@
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Property Registration</title>
+<style type="text/css">
+body {
+    font-family: Arial, sans-serif;
+    background-color: grey;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 500px;
+    width: 100%;
+    padding: 20px;
+    background: #fff;
+    border: 12px solid white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+h4 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: black;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 10px;
+    color: black;
+}
+
+input[type="text"], input[type="number"], textarea, select, input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f4f4f4;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #000100;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #333;
+}
+
+</style>
 </head>
 <body>
+<div class="container">
 <%
-	String getSellerId = (String)session.getAttribute("id");
+    String getSellerId = (String)session.getAttribute("id");
 %>
 <form action="PropertyServlet" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
     <h4>Property Registration</h4>
@@ -36,6 +105,7 @@
     <button type="submit">Register the Property</button>
 </form>
 <form action="SellerWelcomePage.jsp"><button>Back to Your Page</button></form>
+</div>
 <script>
 function autoFillPropertyDetails()
 {

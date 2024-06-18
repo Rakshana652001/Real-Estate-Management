@@ -84,8 +84,6 @@ button:hover, .btn-action:hover {
             <th>Address</th>
             <th>District</th>
             <th>State</th>
-            <!-- <th>Update</th>
-            <th>Delete</th> -->
         </tr>
     </thead>
     <tbody>
@@ -101,17 +99,6 @@ button:hover, .btn-action:hover {
             <td><%= object.getAddress() %></td>
             <td><%= object.getDistrict() %></td>
             <td><%= object.getState() %></td>
-<%--             <td>
-                <a href="UpdateAdminDetails.jsp?editName=<%= object.getName() %>">
-                    <button class="btn-action">Update</button>
-                </a>
-            </td>
-            <td>
-                <form action="UserServlet" method="post" style="display: inline;">
-                    <input type="hidden" name="deleteName" value="<%= object.getName() %>">
-                    <input type="submit" name="delete" value="Delete" class="btn-action">
-                </form>
-            </td> --%>
         </tr>
     <% 
     } 

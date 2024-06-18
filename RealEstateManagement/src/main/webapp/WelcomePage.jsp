@@ -9,13 +9,16 @@
 <style>
 body
 {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-size: large;
     margin: 0;
     padding: 0;
     background-color: #f8f9fa;
     
 }
-
+h1{
+font-family: "Times New Roman", Times, serif;
+}
 .navbar 
 {
     background-color: #343a40;
@@ -99,6 +102,12 @@ body
     height: 200px;
     object-fit: cover;
 }
+.btn-outline-dark{
+  background-color:rgba(238, 43, 43, 0)!important;
+  border-width: 2px !important;
+  border-color: rgb(75, 3, 3) !important;
+  color: black !important;
+}
 </style>
 </head>
 <body>
@@ -140,7 +149,7 @@ body
   </div>
 </nav>
 <section id="home" class="container mt-5">
-    <h2 class="text-center">Urban Nest Realty</h2>
+    <h1 class="text-center">Urban Nest Realty</h1>
 </section>
 <section id="realties" class="container mt-5">
     <div class="row">

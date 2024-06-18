@@ -236,7 +236,7 @@ public class RealEstateCustomerImplementation
 		try
 		{
 			Connection getConnection = ConnectionJdbc.getConnection();
-			String retriveProperties = "select seller_id, property_name,property_id,property_price, property_images,property_document, property_address, property_district,property_state,approval, register_status,payment_status from property_registration where customer_id = ? and deleted_User = 0";
+			String retriveProperties = "select seller_id, property_name,property_id,property_price, property_images,property_document, property_address, property_district,property_state,approval, register_status,payment_status from property_registration where customer_id = ? and payment_status='Paid' and deleted_User = 0";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveProperties);
 			preparedStatement.setString(1, customerId);
 			ResultSet resultSet = preparedStatement.executeQuery();
