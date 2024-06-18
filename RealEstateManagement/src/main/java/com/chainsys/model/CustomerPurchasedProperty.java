@@ -23,6 +23,7 @@ public class CustomerPurchasedProperty
     long yourAccountNumber;
     long senderAccountNumber;
     Double amount;
+    String sellerId;
     
     
 	public CustomerPurchasedProperty()
@@ -221,6 +222,16 @@ public class CustomerPurchasedProperty
 	}
 
 
+	public String getSellerId() {
+		return sellerId;
+	}
+
+
+	public void setSellerId(String sellerId) {
+		this.sellerId = sellerId;
+	}
+
+
 	@Override
 	public String toString() {
 		return "CustomerPurchasedProperty [customerId=" + customerId + ", customerName=" + customerName
@@ -230,8 +241,12 @@ public class CustomerPurchasedProperty
 				+ ", propertyAddress=" + propertyAddress + ", propertyPrice=" + propertyPrice + ", paymentMethod="
 				+ paymentMethod + ", payableAmount=" + payableAmount + ", approval=" + approval + ", registered="
 				+ registered + ", paymentStatus=" + paymentStatus + ", yourAccountNumber=" + yourAccountNumber
-				+ ", senderAccountNumber=" + senderAccountNumber + ", amount=" + amount + "]";
+				+ ", senderAccountNumber=" + senderAccountNumber + ", amount=" + amount + ", sellerId=" + sellerId
+				+ "]";
 	}
+
+
+	
 
 
 }

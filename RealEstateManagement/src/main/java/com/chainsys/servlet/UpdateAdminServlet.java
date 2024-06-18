@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.chainsys.dao.RealEstateImplementation;
 import com.chainsys.model.RealEstateUserRegister;
 
-@WebServlet("/UpdateServlet")
-public class UpdateServlet extends HttpServlet {
+@WebServlet("/UpdateAdminServlet")
+public class UpdateAdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     RealEstateUserRegister estateUserRegister = new RealEstateUserRegister();
     RealEstateImplementation estateImplementation = new RealEstateImplementation();
@@ -51,7 +51,7 @@ public class UpdateServlet extends HttpServlet {
 		
 		try
 		{
-			 list = estateImplementation.retriveUserDetails(estateUser);
+			 list = estateImplementation.retriveAdminDetails1(name1);
 			
 		}
 		catch(Exception e)
@@ -59,7 +59,7 @@ public class UpdateServlet extends HttpServlet {
 			System.out.println(e);
 		}
 		request.setAttribute("list", list);
-        RequestDispatcher dispatcher = request.getRequestDispatcher(".jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("AdminProfile.jsp");
         dispatcher.forward(request, response);
         System.out.println(list);
 	}

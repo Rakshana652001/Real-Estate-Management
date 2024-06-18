@@ -28,6 +28,7 @@ public class PropertyServlet extends HttpServlet {
     	byte[] data=null;
         String sellerId = request.getParameter("sellerId");
         estatePropertyRegister.setSellerId(sellerId);
+        System.out.println("Seller ID: "+sellerId);
 
         String propertyName = request.getParameter("propertyName");
         estatePropertyRegister.setPropertyName(propertyName);
@@ -96,11 +97,10 @@ public class PropertyServlet extends HttpServlet {
         
 
         HttpSession httpSession = request.getSession();
-
+        
         try 
         {
             estatePropertyImplementation.saveProperties(estatePropertyRegister);
-            System.out.println("Inside Session");
             httpSession.setAttribute("sellerId", sellerId);
             httpSession.setAttribute("propertyAddress", propertyAddress);
             response.sendRedirect("SellerWelcomePage.jsp");

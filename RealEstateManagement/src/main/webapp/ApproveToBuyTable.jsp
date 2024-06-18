@@ -10,8 +10,7 @@
 
 </head>
 <body>
-<h4>Registered Properties to Buy</h4>
-<a href="AdminWelcomePage.jsp"><button>Back to home</button></a>
+<h3>Customer Registered Properties(Unapproved)</h3>
 <table border="1">
     <thead>
         <tr>
@@ -71,5 +70,6 @@
      
     </tbody>
 </table>
+<a href="AdminWelcomePage.jsp"><button>Back to home</button></a>
 </body>
 </html>

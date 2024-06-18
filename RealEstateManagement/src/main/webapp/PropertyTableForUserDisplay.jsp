@@ -4,7 +4,7 @@
 <%@ page import="com.chainsys.model.RealEstateUserRegister" %>
 <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
-<html lang="xml:lang">
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Properties Details</title>
@@ -12,12 +12,15 @@
 </head>
 <body>
 <h3>Property Details</h3>
+<form action="WelcomePage.jsp" style="flex: 1;">
+   <button>Back to Home</button>
+</form>
 <div class="container">
     <% 
     ArrayList<RealEstatePropertyRegister> list = (ArrayList<RealEstatePropertyRegister>) request.getAttribute("list");
     if (list != null) {
         for (RealEstatePropertyRegister object : list) {
-        	byte[] images = object.getPropertyImages();
+            byte[] images = object.getPropertyImages();
             String getImage = "";
             if (images != null) {
                 getImage = Base64.getEncoder().encodeToString(images);
@@ -31,32 +34,32 @@
                 <p><strong>Property Price:</strong> <%= object.getPropertyPrice() %></p>
                 <p>
                 <% if (!getImage.isEmpty()) { %>
-                        <img alt="img" src="data:image/jpg;base64,<%= getImage %> ">
-                    <% } else { %>
-                        No Image
-                    <% } %>
-                </p> 
+                    <img alt="img" src="data:image/jpg;base64,<%= getImage %> ">
+                <% } else { %>
+                    No Image
+                <% } %>
+                </p>
                 <p><strong>Property Address:</strong> <%= object.getPropertyAddress() %></p>
                 <p><strong>Property District:</strong> <%= object.getPropertyDistrict() %></p>
                 <p><strong>Property State:</strong> <%= object.getPropertyState() %></p>
             </div>
             <div class="actions">
-                <form action="BuyNowForm.jsp" method="post">
+                <form action="BuyNowForm.jsp" method="post" style="flex: 1;">
+                	<input type="hidden" name="sellerId" value="<%= object.getSellerId()%>">
                     <input type="hidden" name="propertyId" value="<%= object.getPropertyId() %>">
                     <input type="hidden" name="propertyName" value="<%= object.getPropertyName() %>">
                     <input type="hidden" name="propertyAddress" value="<%= object.getPropertyAddress() %>">
                     <input type="hidden" name="propertyPrice" value="<%= object.getPropertyPrice() %>">
-            
-                    <input type="submit" class="btn-buy" name="buy" value="Register"><br><br>
+                    <input type="submit" class="btn-buy" name="buy" value="Register">
                 </form>
-                <form action="WelcomePage.jsp"><button>Back to Home</button></form>
+                
             </div>
         </div>
     <% 
         }
     } else { 
     %>
-        <p>No properties found</p>
+        <p class="no-properties">No properties found</p>
     <% 
     } 
     %>

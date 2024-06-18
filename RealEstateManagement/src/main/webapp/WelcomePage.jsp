@@ -7,81 +7,95 @@
 <title>Urban Nest Realty</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <style>
-body {
+body
+{
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f8f9fa;
+    
 }
 
-.navbar {
+.navbar 
+{
     background-color: #343a40;
     padding: 10px 20px;
     border-bottom: 1px solid #e7e7e7;
 }
 
-.navbar-nav {
+.navbar-nav 
+{
     display: flex;
     align-items: center;
 }
 
-.nav-item {
+.nav-item 
+{
     list-style: none;
     margin-right: 15px;
 }
 
-.nav-link {
+.nav-link 
+{
     color: #ffffff;
-    text-decoration: none;
     padding: 8px 15px;
     border-radius: 5px;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover, .nav-link.active 
+{
     background-color: #495057;
     color: #ffffff;
 }
 
-.dropdown-menu {
+.dropdown-menu 
+{
     background-color: #343a40;
     border: none;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.dropdown-item {
+.dropdown-item 
+{
     color: #ffffff;
     padding: 10px 20px;
     text-decoration: none;
 }
 
-.dropdown-item:hover {
+.dropdown-item:hover 
+{
     background-color: #495057;
     color: #ffffff;
 }
 
-.form-control {
+.form-control 
+{
     border-radius: 5px;
     border: 1px solid #ced4da;
     padding: 8px 15px;
 }
 
-.form-control:focus {
+.form-control:focus 
+{
     border-color: #80bdff;
     outline: 0;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
 }
 
-#navbarSupportedContent {
+#navbarSupportedContent 
+{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-#search {
+#search 
+{
     margin-left: auto;
 }
 
-.card img {
+.card img
+{
     height: 200px;
     object-fit: cover;
 }
@@ -89,35 +103,32 @@ body {
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark">
-  <div class="container">
-    <a class="navbar-brand" href="#">Urban Nest Realty</a>
+ <div class="container">
+  
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <a class="nav-link active" href="#home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#realties">Realties</a>
+          <a class="nav-link active" href="#realties">Realties</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#about">About Us</a>
+          <a class="nav-link active" href="#about">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#contact">Contact</a>
+          <a class="nav-link active" href="#contact">Contact</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Account
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="UserRegistration.jsp">Register</a>
-            <a class="dropdown-item" href="AdminLogin.jsp">Admin Login</a>
-            <a class="dropdown-item" href="SellerLogin.jsp">Seller Login</a>
-            <a class="dropdown-item" href="CustomerLogin.jsp">Customer Login</a>
+            <a class="dropdown-item" href="AdminLogin.jsp">Login</a>
           </div>
         </li>
       </ul>
@@ -128,11 +139,9 @@ body {
     </div>
   </div>
 </nav>
-
 <section id="home" class="container mt-5">
-    <h3 class="text-center">Urban Nest Realty</h3>
+    <h2 class="text-center">Urban Nest Realty</h2>
 </section>
-
 <section id="realties" class="container mt-5">
     <div class="row">
         <div class="col-lg-3 col-md-4 col-12 mb-4">
@@ -173,9 +182,7 @@ body {
         </div>
     </div>
 </section>
-
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

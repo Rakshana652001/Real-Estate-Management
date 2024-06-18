@@ -10,13 +10,14 @@
 
 </head>
 <body>
-<h4>Registered Properties to Buy</h4>
-<a href="CustomerWelcomePage.jsp"><button>Back to home</button></a>
+<h3>Registered Properties to Buy</h3>
+
 <table border="1">
     <thead>
         <tr>
             <th>Customer ID</th>
             <th>Government Id</th>
+            <th>Property Address</th>
             <th>Property Total Amount</th>
             <th>Payable Amount</th>
             <th>Payment Method</th>
@@ -39,6 +40,7 @@
                  <td> 
                 	<img alt="House" src="data:image/jpeg;base64,<%= getImage %> ">      
                  </td>
+                 <td><%=object.getPropertyAddress() %></td>
                  <td><%= object.getPropertyPrice() %></td>
                  <td><%=object.getPayableAmount() %></td>
                  <td><%= object.getPaymentMethod() %></td>
@@ -55,5 +57,6 @@
      
     </tbody>
 </table>
+<a href="CustomerWelcomePage.jsp"><button>Back to home</button></a>
 </body>
 </html>

@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="xml:lang">
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Admin login</title>
+<title>Admin Login</title>
 <style type="text/css">
 body {
     font-family: Arial, sans-serif;
     background-color: grey;
     background-size: cover;
- 	background-position: center;
-  	position: relative;
+    background-position: center;
+    position: relative;
     color: #333;
     margin: 0;
     padding: 0;
@@ -26,25 +26,26 @@ body {
     width: 100%;
     padding: 20px;
     background: #fff;
+    border: 12px solid white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 
 h3 {
     text-align: center;
     margin-bottom: 20px;
-    color: white;
+    color: black;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    flex-direction: column;
 }
 
 label {
     margin-bottom: 10px;
-    color: white;
+    color: black;
 }
 
 input[type="text"], input[type="password"] {
@@ -69,19 +70,23 @@ button {
 }
 
 button:hover {
-    background-color: #000100;
+    background-color: #333;
 }
 
 </style>
 </head>
 <body>
-<form action="AdminServlet" method="get">
-	<h3>Admin Login</h3>
-	<label>ID: <input type="text" name="id" placeholder="Enter the code given by the company" required/></label><br><br>
-	<label>Password: <input type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required/></label><br><br>
-	<button>Login</button>
-</form>
+<div class="container">
+    <form action="AdminServlet" method="get">
+        <h3>Login</h3>
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" placeholder="Enter the Id" required/>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Rakshana@12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required/>
+        
+        <button type="submit">Login</button>
+    </form>
+</div>
 </body>
 </html>
-
-

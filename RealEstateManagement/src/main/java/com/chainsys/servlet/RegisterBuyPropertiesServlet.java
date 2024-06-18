@@ -43,8 +43,6 @@ public class RegisterBuyPropertiesServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		try 
 		{
-			System.out.println("inside the retrive method");
-			
 			list = customerImplementation.registeredProperty(getCustomerId);
 			request.setAttribute("list", list);
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("RegisterBuyPropertiesTable.jsp");

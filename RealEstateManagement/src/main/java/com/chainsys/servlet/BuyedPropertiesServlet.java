@@ -13,12 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.chainsys.dao.RealEstateCustomerImplementation;
-import com.chainsys.model.CustomerPurchasedProperty;
+import com.chainsys.model.RealEstatePropertyRegister;
 
 @WebServlet("/BuyedPropertiesServlet")
 public class BuyedPropertiesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	 List<CustomerPurchasedProperty> list = new ArrayList<CustomerPurchasedProperty>();
+	 List<RealEstatePropertyRegister> list = new ArrayList<RealEstatePropertyRegister>();
 	 RealEstateCustomerImplementation customerImplementation = new RealEstateCustomerImplementation();
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
@@ -29,7 +29,7 @@ public class BuyedPropertiesServlet extends HttpServlet {
 	    list = customerImplementation.retriveBuyedProperties(customerId);
 	    
 	    request.setAttribute("list", list);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("BuyedPropertiesSellerViewTable.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("BuyedPropertiesCustomerViewTable.jsp");
         dispatcher.forward(request, response);
 	}
 

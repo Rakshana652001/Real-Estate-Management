@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.chainsys.dao.RealEstateImplementation;
 import com.chainsys.model.RealEstateUserRegister;
@@ -54,10 +53,8 @@ public class UserServlet extends HttpServlet {
 		String generatedUserID = request.getParameter("generatedUserID");
 		estateUserRegister.setGeneratedUserID(generatedUserID);
 		
-		HttpSession httpSession = request.getSession();
 		try
 		{
-			System.out.println("Inside session");
 			objectForImplementation.userRegistration(estateUserRegister);
 			response.sendRedirect("AfterRegister.jsp");
 				

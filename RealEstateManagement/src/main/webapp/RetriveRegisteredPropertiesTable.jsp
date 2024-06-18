@@ -10,8 +10,7 @@
 
 </head>
 <body>
-<h4>Property Details</h4>
-<a href="AdminWelcomePage.jsp"><button>Back to home</button></a>
+<h3>Saled Properties</h3>
 <table border="1">
     <thead>
         <tr>
@@ -26,6 +25,7 @@
             <th>Property State</th>
             <th>Approval Status</th>
             <th>Register Status</th>
+            <th>Payment Status</th>
         </tr>
     </thead>
     <tbody>
@@ -55,9 +55,10 @@
                 	<img alt="documents" src="data:image/jpeg;base64,<%= getDocuments %> ">      
                  </td>
                  <td><%= object.getPropertyDistrict() %></td>
-                 <td><%=object.getPropertyState() %></td>
-                 <td><%=object.getApproval() %></td>
-                 <td><%=object.getRegistered() %></td>
+                 <td><%= object.getPropertyState() %></td>
+                 <td><%= object.getApproval() %></td>
+                 <td><%= object.getRegistered() %></td>
+                 <td><%=object.getPayment() %></td>
              </tr>
              
          <%
@@ -68,5 +69,6 @@
      
     </tbody>
 </table>
+<a href="AdminWelcomePage.jsp"><button>Back to home</button></a>
 </body>
 </html>

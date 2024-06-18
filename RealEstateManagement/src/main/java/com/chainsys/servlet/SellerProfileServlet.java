@@ -30,7 +30,6 @@ public class SellerProfileServlet extends HttpServlet {
 		HttpSession httpSession = request.getSession();
 		try
 		{
-			System.out.println("Inside httpSession");
 			getId = (String)httpSession.getAttribute("id"); 
 			retrive(request,response);
 		}
@@ -45,11 +44,9 @@ public class SellerProfileServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		try 
 		{
-			System.out.println("inside the retrive method");
-			
 			list = objectForImplementation.retriveSellerDetails(getId);
 			request.setAttribute("list", list);
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("UserRegistrationTable.jsp");
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("SellerProfile.jsp");
 	        dispatcher.forward(request, response);
 	        System.out.println(list);
 		}

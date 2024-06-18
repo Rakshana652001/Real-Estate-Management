@@ -10,8 +10,7 @@
 
 </head>
 <body>
-<h4>Registered Properties to Buy</h4>
-<a href="AdminWelcomePage.jsp"><button>Back to home</button></a>
+<h3>Customer Registered Properties(Approved)</h3>
 <table border="1">
     <thead>
         <tr>
@@ -32,27 +31,23 @@
                  byte[] images = object.getGovernmentId();
                  String getImage;
                  getImage = Base64.getEncoder().encodeToString(images);
-             
          %>
              <tr>
                  <td><%= object.getCustomerId() %></td>
-                 <td><%=object.getPropertyAddress() %></td>
+                 <td><%= object.getPropertyAddress() %></td>
                  <td> 
                 	<img alt="Residential" src="data:image/jpeg;base64,<%= getImage %> ">      
                  </td>
                  <td><%= object.getPropertyPrice() %></td>
                  <td><%= object.getPaymentMethod() %></td>
                  <td><%= object.getApproval() %></td>
-                 <td><%=object.getPaymentStatus() %></td>
+                 <td><%= object.getPaymentStatus() %></td>
              </tr>
-             
          <%
-             }
-            
-   
+             }   
             %>
-     
     </tbody>
 </table>
+<a href="CustomerWelcomePage.jsp"><button>Back to home</button></a>
 </body>
 </html>

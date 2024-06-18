@@ -40,7 +40,6 @@ public class SellerServlet extends HttpServlet {
 			{
 				if(password.equals(objectForImplementation.getsellerPassword(id)))
 				{
-					System.out.println("Inside session");
 					httpSession.setAttribute("id", id);					
 					response.sendRedirect("SellerWelcomePage.jsp");
 					System.out.println("Successfully Logged In");

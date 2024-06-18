@@ -31,7 +31,7 @@ public class ApprovedServlet extends HttpServlet {
 		HttpSession httpSession = request.getSession();
 		try
 		{
-			getId = (String)httpSession.getAttribute("sellerId");
+			getId = (String)httpSession.getAttribute("id");
 			list = estatePropertyImplementation.retriveDetailsAfterUpdate(getId);
 			request.setAttribute("list", list);
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("RegisteredPropertiesTable.jsp");

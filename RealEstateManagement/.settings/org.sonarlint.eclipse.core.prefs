@@ -1,0 +1,4 @@
+autoEnabled=true
+bindingSuggestionsDisabled=false
+eclipse.preferences.version=1
+fileExclusions=FILE\:src/main/webapp/UserRegistration.jsp\r\nFILE\:src/main/webapp/WelcomePage.jsp\r\nFILE\:src/main/webapp/UsersTable.jsp\r\nFILE\:src/main/webapp/AdminProfile.jsp

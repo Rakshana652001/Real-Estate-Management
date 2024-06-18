@@ -106,7 +106,7 @@
 </style>
 </head>
 <body>
-<form action="UpdateSellerServlet" id="UpdateForm">
+<form action="UpdateCustomerServlet" id="UpdateForm">
 	<label for="phoneNumber">Phone Number: <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="7339263883" pattern="[789][0-9]{9}" required/></label>
     <label for="password">Password: <input type="password" id="password" name="password" placeholder="Rakshana@12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required/></label>
     <label for="address">Address: <textarea id="address" name="address" rows="4" cols="50"></textarea></label>

@@ -42,8 +42,6 @@ public class CommercialServlet extends HttpServlet {
 		RealEstatePropertyImplementation estatePropertyImplementation = new RealEstatePropertyImplementation();
 		try 
 		{
-			System.out.println("inside the retrive method");
-			
 			list = estatePropertyImplementation.retriveCommercial(getId);
 			request.setAttribute("list", list);
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("PropertyTableForUserDisplay.jsp");

@@ -10,8 +10,8 @@
 
 </head>
 <body>
-<h4>Registered Properties to Buy</h4>
-<a href="CustomerWelcomePage.jsp"><button>Back to home</button></a>
+<h3>Registered Properties to Buy</h3>
+
 <table border="1">
     <thead>
         <tr>
@@ -60,5 +60,6 @@
      
     </tbody>
 </table>
+<a href="CustomerWelcomePage.jsp"><button>Back to home</button></a>
 </body>
 </html>

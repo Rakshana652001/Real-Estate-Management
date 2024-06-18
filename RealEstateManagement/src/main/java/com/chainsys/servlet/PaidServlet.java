@@ -19,24 +19,20 @@ import com.chainsys.model.CustomerPurchasedProperty;
 @WebServlet("/PaidServlet")
 public class PaidServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    String getAddress;   
+ 
     List<CustomerPurchasedProperty> list = new ArrayList<CustomerPurchasedProperty>();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		HttpSession httpSession = request.getSession();
 		try
 		{
-			System.out.println("Inside httpSession");
-			getAddress = (String)httpSession.getAttribute("propertyAddress"); 
-		
+			String getAddress = (String)httpSession.getAttribute("id"); 
 			RealEstateCustomerImplementation customerImplementation = new RealEstateCustomerImplementation();
-//			list = customerImplementation.paidProperties(getAddress);
-			list = customerImplementation.ApprovedProperties(getAddress);
+			list = customerImplementation.retriveProperties(getAddress);
 			
 			request.setAttribute("list", list);
 		    RequestDispatcher dispatcher = request.getRequestDispatcher("PaidTable.jsp");
 		    dispatcher.forward(request, response);
-		    System.out.println(list);
 		}
 		catch(Exception e)
 		{

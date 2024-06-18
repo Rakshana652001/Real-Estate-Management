@@ -10,7 +10,7 @@
 
 </head>
 <body>
-<h3>Seller Properties (Approved)</h3>
+<h3>Your Properties</h3>
 <table border="1">
     <thead>
         <tr>
@@ -55,23 +55,12 @@
                  <td><%= object.getPropertyDistrict() %></td>
                  <td><%=object.getPropertyState() %></td>
                  <td><%=object.getApproval() %></td>
-                 <td>
-                 	<form action="RegisterStatusUpdateServlet">
-                 	<input type="hidden" name="address" value="<%=object.getPropertyAddress() %>">
-                 		<select name="registerStatus">
-                 		
-                             <option value="Select">Select</option>
-                             <option value="Registered">Registered</option>
-                             <option value="Not Registered">Not Registered</option>
-                         </select>
-                         <input type="submit" value="Submit">
-                 	</form>
-                 </td>
+                 <td><%=object.getRegistered() %></td>
              </tr>
              
          <% } %>
     </tbody>
 </table>
-<a href="AdminWelcomePage.jsp"><button>Back to home</button></a>
+<a href="CustomerWelcomePage.jsp"><button>Back to home</button></a>
 </body>
 </html>

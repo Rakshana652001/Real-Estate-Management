@@ -10,8 +10,7 @@
 
 </head>
 <body>
-<h4>Registered Properties to Buy</h4>
-<a href="SellerWelcomePage.jsp"><button>Back to home</button></a>
+<h3>Saled Properties (Contact Customer for further document registration process)</h3>
 <table border="1">
     <thead>
         <tr>
@@ -48,11 +47,10 @@
              
          <%
              }
-            
-   
             %>
      
     </tbody>
 </table>
+<a href="SellerWelcomePage.jsp"><button>Back to home</button></a>
 </body>
 </html>

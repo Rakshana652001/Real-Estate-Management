@@ -8,9 +8,12 @@
 <title>Property Registration</title>
 </head>
 <body>
+<%
+	String getSellerId = (String)session.getAttribute("id");
+%>
 <form action="PropertyServlet" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
     <h4>Property Registration</h4>
-    <label>Seller ID: <input type="text" name="sellerId" placeholder="Enter the ID given by the company" required/></label><br><br>
+    <label>Seller ID: <input type="text" name="sellerId" placeholder="Enter the ID given by the company" value="<%=getSellerId != null ? getSellerId: "" %>" readonly></label><br><br>
     <label>Property Name: 
         <select id="propertyNameSelect" name="propertyNameSelect" onchange="autoFillPropertyDetails()" required>
             <option value="">Select Property</option>

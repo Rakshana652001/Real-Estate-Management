@@ -15,34 +15,28 @@ import javax.servlet.http.HttpSession;
 import com.chainsys.dao.RealEstatePropertyImplementation;
 import com.chainsys.model.RealEstatePropertyRegister;
 
-
-@WebServlet("/PropertyTableServlet")
-public class PropertyTableServlet extends HttpServlet {
+@WebServlet("/BuyedPropertyServlet")
+public class BuyedPropertyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    String getId;
-    List<RealEstatePropertyRegister> list = new ArrayList<RealEstatePropertyRegister>();
-    RealEstatePropertyImplementation estatePropertyImplementation = new RealEstatePropertyImplementation();
+	List<RealEstatePropertyRegister> list = new ArrayList<RealEstatePropertyRegister>();
+	RealEstatePropertyImplementation estatePropertyImplementation = new RealEstatePropertyImplementation();
+    
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		HttpSession httpSession = request.getSession();
-		try
-		{
-			getId = (String)httpSession.getAttribute("id");			
-		  	list = estatePropertyImplementation.retriveDetails(getId);
-			request.setAttribute("list", list);
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("PropertiesTableSellerView.jsp");
-	        dispatcher.forward(request, response);
-		}
-		catch(Exception e)
-		{
-			System.out.println(e);
-		}
- 		
+		HttpSession session = request.getSession();
+	    String propertyAddress = (String) session.getAttribute("sellerId");
+	    System.out.println(propertyAddress);
+	    
+	    list = estatePropertyImplementation.retriveBuyedProperties(propertyAddress);
+	    
+	    request.setAttribute("list", list);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("BuyedPropertiesCustomerViewTable.jsp");
+        dispatcher.forward(request, response);
 	}
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		
 		doGet(request, response);
 	}
 

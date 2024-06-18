@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.chainsys.dao.RealEstateCustomerImplementation;
+import com.chainsys.dao.RealEstatePropertyImplementation;
 import com.chainsys.model.CustomerPurchasedProperty;
 
 
@@ -37,12 +38,15 @@ public class PayNowServlet extends HttpServlet {
 		Double getAmount = Double.parseDouble(amount);
 		customerPurchasedProperty.setAmount(getAmount);
 		
-		 HttpSession session = request.getSession();
-	     String customerId = (String) session.getAttribute("customerId");
-	     customerPurchasedProperty.setCustomerId(customerId);
+		HttpSession session = request.getSession();
+	    String customerId = (String) session.getAttribute("customerId");
+	    customerPurchasedProperty.setCustomerId(customerId);
 		try
 		{			
 			list = customerImplementation.updatePayment(accountNumber1, accountNumber2, customerId);
+			
+			RealEstatePropertyImplementation estatePropertyImplementation = new RealEstatePropertyImplementation();
+			estatePropertyImplementation.updatePaid(customerId);
 			
 			request.setAttribute("list", list);
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("ApprovedPropertyTableToBuy.jsp");
@@ -54,8 +58,6 @@ public class PayNowServlet extends HttpServlet {
 		}
 		
 	}
-
-	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import com.chainsys.dao.RealEstateCustomerImplementation;
+import com.chainsys.dao.RealEstatePropertyImplementation;
 import com.chainsys.model.CustomerPurchasedProperty;
 
 @WebServlet("/PurchaseServlet")
@@ -42,6 +43,9 @@ public class PurchaseServlet extends HttpServlet {
 
         String propertyId = request.getParameter("propertyId");
         customerPurchasedProperty.setPropertyId(propertyId);
+        
+        String sellerId = request.getParameter("sellerId");
+        customerPurchasedProperty.setSellerId(sellerId);
 
         String propertyName = request.getParameter("propertyName");
         customerPurchasedProperty.setPropertyName(propertyName);
@@ -64,6 +68,9 @@ public class PurchaseServlet extends HttpServlet {
         RealEstateCustomerImplementation customerImplementation = new RealEstateCustomerImplementation();
         try {
             customerImplementation.saveProperties(customerPurchasedProperty);
+
+            RealEstatePropertyImplementation estatePropertyImplementation = new RealEstatePropertyImplementation();
+            estatePropertyImplementation.updateCustomerId(customerId, propertyAddress);
             httpSession.setAttribute("customerId", customerId);
             response.sendRedirect("CustomerWelcomePage.jsp");
         } catch (Exception e) {

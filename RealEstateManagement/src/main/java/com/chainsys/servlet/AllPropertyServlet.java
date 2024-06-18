@@ -28,9 +28,7 @@ public class AllPropertyServlet extends HttpServlet {
 		HttpSession httpSession = request.getSession();
 		try
 		{
-			getId = (String)httpSession.getAttribute("sellerId");
-			System.out.println("inside the retrive method");
-			
+			getId = (String)httpSession.getAttribute("id");
 			list = estatePropertyImplementation.retriveAllSellerDetails(getId);
 			request.setAttribute("list", list);
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("RegisteredPropertyAdminView.jsp");

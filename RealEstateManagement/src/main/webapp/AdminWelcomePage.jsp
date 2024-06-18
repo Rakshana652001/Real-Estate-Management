@@ -1,47 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="xml:lang">
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Admin Welcome Page</title>
 <style>
     body {
-    font-family: Arial, sans-serif;
-    background-color: grey;
-    background-position: center;
-    position: relative;
-    color: #333;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    height: 100vh;
-	}
-    form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        font-family: Arial, sans-serif;
+        background-color: grey;
+        background-position: center;
+        margin: 0;
+        padding: 0;
     }
-    .btn {
-        width: 300px;
-        margin: 10px;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
+    .navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #333;
+        padding: 10px;
+    }
+    .navbar a {
+        color: white;
         text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+        font-size: 18px;
+        margin: 0 10px;
+    }
+    .navbar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    h1{
+    color:white;
     }
 </style>
 </head>
 <body>
-    <form>
-        <button type="button" class="btn" onclick="location.href='AdminProfileServlet'">Profile</button>
-        <button type="button" class="btn" onclick="location.href='SellerCustomerServlet'">Users</button>
-        <button type="button" class="btn" onclick="location.href='AllPropertyServlet'">Seller Properties(Unapproved)</button>
-        <button type="button" class="btn" onclick="location.href='ApprovedServlet'">Seller Properties(Approved)</button>
-        <button type="button" class="btn" onclick="location.href='ApproveToBuyServlet'">Customer Properties(Unapprove)</button>
-        <button type="button" class="btn" onclick="location.href='ApprovedPropertiesServlet'">Customer Properties(Approved and Payment Status)</button>
-        <button type="button" class="btn" onclick="location.href='RegisteredPropertiesServlet'">Registered Properties</button>
-        <button type="button" class="btn" onclick="location.href='WelcomePage.jsp'">Logout</button>
-    </form>
+    <div class="navbar">
+        <a href="AdminProfileServlet">Profile</a>
+        <a href="SellerCustomerServlet">Users</a>
+        <a href="AllPropertyServlet">Seller Properties (Unapproved)</a>
+        <a href="ApprovedServlet">Seller Properties (Approved)</a>
+        <a href="ApproveToBuyServlet">Customer Properties (Unapprove)</a>
+<!--         <a href="ApprovedPropertiesServlet">Customer Properties (Approved and Payment Status)</a>
+ -->        <a href="RegisteredPropertiesServlet">Saled Properties</a>
+        <a href="WelcomePage.jsp">Logout</a>
+    </div>
+    <div class="content">
+        <h1>Welcome to the Admin Dashboard</h1>
+    </div>
 </body>
 </html>

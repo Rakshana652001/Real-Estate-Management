@@ -4,7 +4,7 @@
 <html lang="xml:lang">
 <head>
 <meta charset="ISO-8859-1">
-<title>Update Seller Details</title>
+<title>Update User Details</title>
 <style>
     body{
     font-family: Arial, sans-serif;
@@ -18,7 +18,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-     margin-top: 8rem;
+   
     }
     #UpdateForm {
         background-color: white;
@@ -28,6 +28,7 @@
         width: 90%;
         max-width: 400px;
         box-sizing: border-box;
+        margin-top: 8rem;
     }
     label {
         display: block;
@@ -106,7 +107,7 @@
 </style>
 </head>
 <body>
-<form action="UpdateSellerServlet" id="UpdateForm">
+<form action="UpdateAdminServlet" id="UpdateForm">
 	<label for="phoneNumber">Phone Number: <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="7339263883" pattern="[789][0-9]{9}" required/></label>
     <label for="password">Password: <input type="password" id="password" name="password" placeholder="Rakshana@12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required/></label>
     <label for="address">Address: <textarea id="address" name="address" rows="4" cols="50"></textarea></label>
