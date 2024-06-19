@@ -48,7 +48,6 @@ public class CustomerProfileServlet extends HttpServlet {
 			request.setAttribute("list", list);
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("CustomerProfile.jsp");
 	        dispatcher.forward(request, response);
-	        System.out.println(list);
 		}
 		catch(Exception e)
 		{

@@ -30,7 +30,6 @@ public class AdminProfileServlet extends HttpServlet {
 		HttpSession httpSession = request.getSession();
 		try
 		{
-			System.out.println("Inside httpSession");
 			getId = (String)httpSession.getAttribute("id"); 
 			retrive(request,response);
 		}
@@ -49,7 +48,6 @@ public class AdminProfileServlet extends HttpServlet {
 			request.setAttribute("list", list);
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("AdminProfile.jsp");
 	        dispatcher.forward(request, response);
-	        System.out.println(list);
 		}
 		catch(Exception e)
 		{

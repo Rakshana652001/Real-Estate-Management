@@ -4,7 +4,7 @@
 <html lang="xml:lang">
 <head>
 <meta charset="ISO-8859-1">
-<title>Update Seller Details</title>
+<title>Update Customer Details</title>
 <style>
     body{
     font-family: Arial, sans-serif;

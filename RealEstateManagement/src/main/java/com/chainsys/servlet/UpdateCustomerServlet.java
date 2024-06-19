@@ -42,7 +42,6 @@ public class UpdateCustomerServlet extends HttpServlet {
 		try
 		{
 			estateImplementation.updateDetails(estateUser);
-			System.out.println("Update");
 		}
 		catch(Exception e)
 		{
@@ -52,7 +51,6 @@ public class UpdateCustomerServlet extends HttpServlet {
 		try
 		{
 			 list = estateImplementation.retriveCustomerDetails1(name1);
-			
 		}
 		catch(Exception e)
 		{
@@ -61,7 +59,6 @@ public class UpdateCustomerServlet extends HttpServlet {
 		request.setAttribute("list", list);
         RequestDispatcher dispatcher = request.getRequestDispatcher("SellerProfile.jsp");
         dispatcher.forward(request, response);
-        System.out.println(list);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

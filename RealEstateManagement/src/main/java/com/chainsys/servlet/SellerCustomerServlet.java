@@ -25,36 +25,24 @@ public class SellerCustomerServlet extends HttpServlet {
 		try
 		{
 			getId = (String)httpSession.getAttribute("id"); 
-			retrive(request,response);
+			
+			RealEstateImplementation objectForImplementation = new RealEstateImplementation();
+			
+			List<RealEstateUserRegister> list = new ArrayList<RealEstateUserRegister>();			
+			list = objectForImplementation.retriveSellersDetails(getId);
+			request.setAttribute("list", list);
+		    RequestDispatcher dispatcher = request.getRequestDispatcher("UsersTable.jsp");
+		    dispatcher.forward(request, response);
 		}
 		catch(Exception e)
 		{
 			System.out.println(e);
 		}
 	}
-
-	protected void retrive(HttpServletRequest request, HttpServletResponse response) throws IOException 
-	{
-		RealEstateImplementation objectForImplementation = new RealEstateImplementation();
-		List<RealEstateUserRegister> list = new ArrayList<RealEstateUserRegister>();
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		try 
-		{
-			list = objectForImplementation.retriveSellerCustomerDetails(getId);
-			request.setAttribute("list", list);
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("UsersTable.jsp");
-	        dispatcher.forward(request, response);
-	        System.out.println(list);
-		}
-		catch(Exception e)
-		{
-			System.out.println(e);
-		}
-	}	
+	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		
 		doGet(request, response);
 	}
 

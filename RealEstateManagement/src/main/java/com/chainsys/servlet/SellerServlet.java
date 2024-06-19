@@ -26,12 +26,9 @@ public class SellerServlet extends HttpServlet {
 	{
 		String id = request.getParameter("id");
 		objectForPojo.setGeneratedUserID(id);
-		System.out.println(id);
 		
 		String password = request.getParameter("password");
-		objectForPojo.setPassword(password);
-		System.out.println(password);
-		
+		objectForPojo.setPassword(password);		
 		
 		HttpSession httpSession = request.getSession();
 		try
@@ -42,7 +39,6 @@ public class SellerServlet extends HttpServlet {
 				{
 					httpSession.setAttribute("id", id);					
 					response.sendRedirect("SellerWelcomePage.jsp");
-					System.out.println("Successfully Logged In");
 				}
 				else
 				{
@@ -69,7 +65,6 @@ public class SellerServlet extends HttpServlet {
 	{
 		RealEstatePropertyImplementation estatePropertyImplementation = new RealEstatePropertyImplementation();
 		RealEstatePropertyRegister estatePropertyRegister = new RealEstatePropertyRegister();
-		System.out.println("Do Post");
 		String delete = request.getParameter("delete");
         if(delete != null && delete.equals("Delete"))
         {
@@ -80,9 +75,7 @@ public class SellerServlet extends HttpServlet {
             	estatePropertyImplementation.deleteDetails(estatePropertyRegister);
             	List<RealEstatePropertyRegister> list = estatePropertyImplementation.retriveDetails(id);
             	request.setAttribute("list", list);
-            	request.getRequestDispatcher("PropertyRegistrationTable.jsp").forward(request, response);
-            	System.out.println("Deleted and displayed");
-            	
+            	request.getRequestDispatcher("PropertyRegistrationTable.jsp").forward(request, response);            	
             }
             catch (Exception e)
             {

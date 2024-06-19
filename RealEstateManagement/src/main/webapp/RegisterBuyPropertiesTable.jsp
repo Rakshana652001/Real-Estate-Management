@@ -6,7 +6,7 @@
 <html lang="xml:lang">
 <head>
 <meta charset="ISO-8859-1">
-<title>Registered Properties Still Not Approved</title>
+<title>Ready-to-Purchase</title>
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -78,7 +78,7 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
 </style>
 </head>
 <body>
-<h3>Registered Properties to Buy</h3>
+<h3>Ready-to-Purchase</h3>
 <a href="CustomerWelcomePage.jsp"><button>Back to home</button></a>
 
 <table border="1">

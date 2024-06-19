@@ -94,8 +94,8 @@ button:hover {
     </label><br><br>
     <label>Property ID: <input type="text" id="propertyId" name="propertyId" readonly/></label><br><br>
     <label>Property Name: <input type="text" id="propertyName" name="propertyName" readonly/></label><br><br>
+    <label>Registration Date: <input type="date" id="registeredDate" name="registeredDate" required></label>
     <label>Property Price: <input type="number" id="propertyPrice" name="propertyPrice" required/></label><br><br>
-    
     <label>Add Images: <input type="file" id="propertyImages" name="propertyImage" required/></label><br><br>
     <label>Property Documents Photo Copy: <input type="file" id="propertyDocument" name="propertyDocument" required/> </label><br><br>
     <label>Property Address: <textarea id="propertyAddress" name="propertyAddress" placeholder="Enter detail address includes your Property type, Door no, Street name, Landmark" rows="4" cols="30" required></textarea></label><br><br>

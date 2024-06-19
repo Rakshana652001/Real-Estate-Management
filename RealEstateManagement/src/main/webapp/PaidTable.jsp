@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Saled Properties</title>
+<title>Completed Deals</title>
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -78,31 +78,33 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
 <script>
-    function generateReceipt(customerId, propertyAddress, propertyPrice, paymentMethod, approvalStatus, paymentStatus)
+    function generateReceipt(customerId, purchasedDate, propertyAddress, propertyPrice, paymentMethod, approvalStatus, paymentStatus)
     {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
 
         doc.text("Payment Receipt", 10, 10);
         doc.text("Customer ID: " + customerId, 10, 20);
-        doc.text("Property Address: " + propertyAddress, 10, 30);
-        doc.text("Property Total Amount: " + propertyPrice, 10, 40);
-        doc.text("Payment Method: " + paymentMethod, 10, 50);
-        doc.text("Approval Status: " + approvalStatus, 10, 60);
-        doc.text("Payment Status: " + paymentStatus, 10, 70);
+        doc.text("Purchased Date: "+ purchasedDate, 10, 30)
+        doc.text("Property Address: " + propertyAddress, 10, 40);
+        doc.text("Property Total Amount: " + propertyPrice, 10, 50);
+        doc.text("Payment Method: " + paymentMethod, 10, 60);
+        doc.text("Approval Status: " + approvalStatus, 10, 70);
+        doc.text("Payment Status: " + paymentStatus, 10, 80);
 
         doc.save("receipt_" + customerId + ".pdf");
     }
 </script>
 </head>
 <body>
-<h3>Saled Properties (Contact Customer for further document registration process)</h3>
+<h3>Completed Deals</h3>
 <a href="SellerWelcomePage.jsp"><button>Back to home</button></a>
 
 <table border="1">
     <thead>
         <tr>
             <th>Customer ID</th>
+            <th>Purchased Date</th>
             <th>Property Address</th>
             <th>Government Id</th>
             <th>Property Total Amount</th>
@@ -122,6 +124,7 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
         %>
         <tr>
             <td><%= object.getCustomerId() %></td>
+            <td><%=object.getPurchasedDate() %></td>
             <td><%= object.getPropertyAddress() %></td>
             <td> 
                 <img alt="Government ID" src="data:image/jpeg;base64,<%= getImage %>">      
@@ -131,7 +134,7 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
             <td><%= object.getApproval() %></td>
             <td><%= object.getPaymentStatus() %></td>
             <td>
-                <button onclick="generateReceipt('<%= object.getCustomerId() %>','<%= object.getPropertyAddress() %>','<%= object.getPropertyPrice() %>', 
+                <button onclick="generateReceipt('<%= object.getCustomerId() %>',<%=object.getPurchasedDate() %>,'<%= object.getPropertyAddress() %>','<%= object.getPropertyPrice() %>', 
                     '<%= object.getPaymentMethod() %>','<%= object.getApproval() %>','<%= object.getPaymentStatus() %>')">
                 Generate Receipt
                 </button>

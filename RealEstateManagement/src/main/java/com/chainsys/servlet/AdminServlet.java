@@ -33,12 +33,9 @@ public class AdminServlet extends HttpServlet {
 			
 			id = request.getParameter("id");
 			estateUserRegister.setGeneratedUserID(id);
-			System.out.println(id);
 			
 			String password = request.getParameter("password");
-			estateUserRegister.setPassword(password);
-			System.out.println(password);
-			
+			estateUserRegister.setPassword(password);			
 			
 			HttpSession httpSession = request.getSession();
 			try
@@ -49,11 +46,9 @@ public class AdminServlet extends HttpServlet {
 					{
 						httpSession.setAttribute("id", id);					
 						response.sendRedirect("AdminWelcomePage.jsp");
-						System.out.println("Successfully Logged In");
 					}
 					else
 					{
-						System.out.println("Enter Correct Password");
 						response.sendRedirect("AdminLogin.jsp");
 					}
 				}
@@ -63,11 +58,9 @@ public class AdminServlet extends HttpServlet {
 					{
 						httpSession.setAttribute("id", id);					
 						response.sendRedirect("SellerWelcomePage.jsp");
-						System.out.println("Successfully Logged In");
 					}
 					else
 					{
-						System.out.println("Enter Correct Password");
 						response.sendRedirect("AdminLogin.jsp");
 					}
 				}
@@ -85,7 +78,6 @@ public class AdminServlet extends HttpServlet {
 				}
 				else
 				{
-					System.out.println("Enter correct id");
 					response.sendRedirect("AdminLogin.jsp");
 				}
 				

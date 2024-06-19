@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.chainsys.dao.RealEstateImplementation;
+import com.chainsys.dao.RealEstatePropertyImplementation;
+import com.chainsys.model.RealEstatePropertyRegister;
 import com.chainsys.model.RealEstateUserRegister;
 
 
@@ -26,12 +28,11 @@ public class SearchServlet extends HttpServlet {
 		RealEstateUserRegister estateUserRegister = new RealEstateUserRegister();
 		
 		List<RealEstateUserRegister> list = new ArrayList<RealEstateUserRegister>();
-		String id = request.getParameter("generatedUserID");
-		estateUserRegister.setGeneratedUserID(id);
-		
+		String name = request.getParameter("id");
+		estateUserRegister.setGeneratedUserID(name);
 		try
 		{
-			list = estateImplementation.search(id);
+			list = estateImplementation.search(name);
 		}
 		catch(Exception e)
 		{
@@ -44,7 +45,24 @@ public class SearchServlet extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		RealEstatePropertyRegister estatePropertyRegister = new RealEstatePropertyRegister();
+		RealEstatePropertyImplementation estatePropertyImplementation = new RealEstatePropertyImplementation();
 		
+		List<RealEstatePropertyRegister> list = new ArrayList<RealEstatePropertyRegister>();
+		String id = request.getParameter("id");
+		estatePropertyRegister.setSellerId(id);
+		try
+		{
+			list = estatePropertyImplementation.search(id);
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		
+		request.setAttribute("list", list);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("RetriveRegisteredPropertiesTable.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

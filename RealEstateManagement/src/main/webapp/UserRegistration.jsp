@@ -204,7 +204,7 @@ function validateForm()
     
     generateUserID();
     
-    setTimeout(function(){ form.submit(); }, 5000); 
+    setTimeout(function(){ form.submit(); }, 5000);
 }
 </script>
 <a href="WelcomePage.jsp"><button type="submit" >Back to home</button></a>

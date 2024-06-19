@@ -80,11 +80,11 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
 <body>
 <h3>Registered Properties to Buy</h3>
 <a href="SellerWelcomePage.jsp"><button>Back to home</button></a>
-
 <table border="1">
     <thead>
         <tr>
             <th>Customer ID</th>
+            <th>Purchased Date</th>
             <th>Property Address</th>
             <th>Government Id</th>
             <th>Property Total Amount</th>
@@ -103,10 +103,10 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
                  byte[] images = object.getGovernmentId();
                  String getImage;
                  getImage = Base64.getEncoder().encodeToString(images);
-             
          %>
              <tr>
                  <td><%= object.getCustomerId() %></td>
+                 <td><%=object.getPurchasedDate() %></td>
                  <td><%=object.getPropertyAddress() %></td>
                  <td> 
                 	<img alt="GovID" src="data:image/jpeg;base64,<%= getImage %> ">      
@@ -118,13 +118,9 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
                  <td><%=object.getSenderAccountNumber() %></td>
                  <td><%=object.getPaymentStatus() %></td>
              </tr>
-             
          <%
              }
-            
-   
             %>
-     
     </tbody>
 </table>
 </body>

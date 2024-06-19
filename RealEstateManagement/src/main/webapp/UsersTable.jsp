@@ -6,7 +6,7 @@
 <html lang="xml:lang">
 <head>
 <meta charset="ISO-8859-1">
-<title>User Registration Details</title>
+<title>Clients</title>
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -50,7 +50,7 @@ th {
 button, .btn-action, input {
     padding: 10px;
     border: none;
-    border-radius: 4px;
+    border-radius: 12px;
     background-color: #000100;
     color: white;
     cursor: pointer;
@@ -72,12 +72,12 @@ button:hover, .btn-action:hover {
 </style>
 </head>
 <body>
-<h3>User Details</h3>
+<h3>Clients</h3>
 <form action="AdminWelcomePage.jsp">
 <button>Back to Home</button>
 </form>
-<form action="SearchServlet">
-	<label>Search <input type="search" name="generatedUserID" id="generatedUserID"></label>
+<form action="SearchServlet" method="get">
+	<label>Search <input type="text" name="id"  placeholder="Search By Name" ></label>
 </form>
 
 <table border="1">

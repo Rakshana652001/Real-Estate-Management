@@ -34,7 +34,6 @@ public class ApprovalServlet extends HttpServlet {
 		try
 		{
 			list = estatePropertyImplementation.updateApproval(address, approval);
-			System.out.println("Updated");
 		}
 		catch(Exception e)
 		{
@@ -44,7 +43,6 @@ public class ApprovalServlet extends HttpServlet {
 		request.setAttribute("list", list);
         RequestDispatcher dispatcher = request.getRequestDispatcher("ApprovedServlet");
         dispatcher.forward(request, response);
-        System.out.println(list);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

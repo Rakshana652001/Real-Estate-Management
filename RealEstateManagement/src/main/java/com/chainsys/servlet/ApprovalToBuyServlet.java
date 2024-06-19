@@ -35,7 +35,6 @@ public class ApprovalToBuyServlet extends HttpServlet {
 		request.setAttribute("list", list);
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("AdminWelcomePage.jsp");
 	    dispatcher.forward(request, response);
-	    System.out.println(list);
 	}
 	
 	

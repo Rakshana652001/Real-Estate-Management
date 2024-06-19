@@ -34,7 +34,6 @@ public class RegisterStatusUpdateServlet extends HttpServlet {
 		try
 		{
 			list = estatePropertyImplementation.updateRegistered(address, registerStatus);
-			System.out.println("Updated");
 		}
 		catch(Exception e)
 		{
@@ -43,7 +42,6 @@ public class RegisterStatusUpdateServlet extends HttpServlet {
 		request.setAttribute("list", list);
         RequestDispatcher dispatcher = request.getRequestDispatcher("RegisteredPropertiesServlet");
         dispatcher.forward(request, response);
-        System.out.println(list);
 	}
 	
 

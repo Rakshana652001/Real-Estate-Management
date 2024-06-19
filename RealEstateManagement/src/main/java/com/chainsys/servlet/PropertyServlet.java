@@ -28,7 +28,6 @@ public class PropertyServlet extends HttpServlet {
     	byte[] data=null;
         String sellerId = request.getParameter("sellerId");
         estatePropertyRegister.setSellerId(sellerId);
-        System.out.println("Seller ID: "+sellerId);
 
         String propertyName = request.getParameter("propertyName");
         estatePropertyRegister.setPropertyName(propertyName);
@@ -39,6 +38,9 @@ public class PropertyServlet extends HttpServlet {
         String propertyPrice = request.getParameter("propertyPrice");
         long propertyprice = Long.parseLong(propertyPrice);
         estatePropertyRegister.setPropertyPrice(propertyprice);
+        
+        String registeredDate = request.getParameter("registeredDate");
+        estatePropertyRegister.setRegisteredDate(registeredDate);
 
         
         Part file=request.getPart("propertyImage");
@@ -112,8 +114,8 @@ public class PropertyServlet extends HttpServlet {
         }
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
+    {
         doGet(request, response);
     }
 }

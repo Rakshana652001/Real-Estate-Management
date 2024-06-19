@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Approved Properties</title>
+<title>Authorized Properties</title>
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -78,13 +78,14 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
 </style>
 </head>
 <body>
-<h3>Seller Properties (Approved)</h3>
+<h3>Authorized Properties</h3>
 <a href="AdminWelcomePage.jsp"><button>Back to home</button></a>
 
 <table border="1">
     <thead>
         <tr>
             <th>Seller ID</th>
+            <th>Registered Date</th>
             <th>Property Name</th>
             <th>Property ID</th>
             <th>Property Price</th>
@@ -112,6 +113,7 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
          %>
              <tr>
                  <td><%= object.getSellerId() %></td>
+                 <td><%=object.getRegisteredDate() %></td>
                  <td><%= object.getPropertyName() %></td>
                  <td><%= object.getPropertyId() %></td>
                  <td><%= object.getPropertyPrice() %></td>

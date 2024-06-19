@@ -26,7 +26,6 @@ public class BuyedPropertyServlet extends HttpServlet {
 	{
 		HttpSession session = request.getSession();
 	    String propertyAddress = (String) session.getAttribute("sellerId");
-	    System.out.println(propertyAddress);
 	    
 	    list = estatePropertyImplementation.retriveBuyedProperties(propertyAddress);
 	    

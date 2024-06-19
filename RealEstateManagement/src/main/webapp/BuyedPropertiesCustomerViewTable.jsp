@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Approved Properties</title>
+<title>Purchased Properties</title>
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -18,6 +18,7 @@ body {
     align-items: center;
     flex-direction: column;
     color: #333;
+    width: 110%;
 }
 
 h3 {
@@ -78,13 +79,13 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
 </style>
 </head>
 <body>
-<h3>Your Properties</h3>
+<h3>Purchased Properties</h3>
 <a href="CustomerWelcomePage.jsp"><button>Back to home</button></a>
-
 <table border="1">
     <thead>
         <tr>
             <th>Seller ID</th>
+            <th>Purchased Date</th>
             <th>Property Name</th>
             <th>Property ID</th>
             <th>Property Price</th>
@@ -111,6 +112,7 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
         %>
             <tr>
                 <td><%= object.getSellerId() %></td>
+                <td><%=object.getPurchasedDate() %></td>
                 <td><%= object.getPropertyName() %></td>
                 <td><%= object.getPropertyId() %></td>
                 <td><%= object.getPropertyPrice() %></td>
@@ -137,9 +139,7 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
 <script type="text/javascript">
     function generateReceipt(sellerId, propertyName, propertyPrice, propertyAddress, propertyDistrict, propertyState, approval, payment) 
     {
-/*         console.log("Generating receipt for:", sellerId, propertyName, propertyPrice, propertyAddress, propertyDistrict, propertyState, approval, payment);
- */        
-        const { jsPDF } = window.jspdf;
+		const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
         
         doc.text("Payment Receipt", 10, 10);
@@ -150,17 +150,6 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
         doc.text("Property State: " + propertyState, 10, 60);
         doc.text("Approval Status: " + approval, 10, 70);
         doc.text("Payment: " + payment, 10, 80);
-        
-        /* // Add property image
-        const propertyImg = new Image();
-        propertyImg.src = getImage;
-        doc.addImage(propertyImg, 'JPEG', 10, 90, 100, 60); // Adjust coordinates and dimensions as needed
-        
-        // Add document image
-        const documentImg = new Image();
-        documentImg.src = getDocument;
-        doc.addImage(documentImg, 'JPEG', 120, 90, 100, 60); // Adjust coordinates and dimensions as needed
-         */
         doc.save("receipt_" + sellerId + ".pdf");
     }
 </script>

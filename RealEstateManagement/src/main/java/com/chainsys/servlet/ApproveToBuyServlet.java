@@ -46,7 +46,6 @@ public class ApproveToBuyServlet extends HttpServlet {
 			request.setAttribute("list", list);
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("ApproveToBuyTable.jsp");
 	        dispatcher.forward(request, response);
-	        System.out.println(list);
 		}
 		catch(Exception e)
 		{

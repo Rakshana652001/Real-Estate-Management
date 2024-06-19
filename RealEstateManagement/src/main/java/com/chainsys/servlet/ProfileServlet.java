@@ -32,7 +32,6 @@ public class ProfileServlet extends HttpServlet {
 		HttpSession httpSession = request.getSession();
 		try
 		{
-			System.out.println("Inside httpSession");
 			getId = (String)httpSession.getAttribute("id"); 
 			retrive(request,response);
 		}
@@ -47,13 +46,10 @@ public class ProfileServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		try 
 		{
-			System.out.println("inside the retrive method");
-			
 			list = objectForImplementation.retriveAdminDetails(getId);
 			request.setAttribute("list", list);
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("UserRegistrationTable.jsp");
 	        dispatcher.forward(request, response);
-	        System.out.println(list);
 		}
 		catch(Exception e)
 		{

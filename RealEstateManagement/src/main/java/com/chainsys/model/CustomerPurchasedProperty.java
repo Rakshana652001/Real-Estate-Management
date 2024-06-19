@@ -24,6 +24,7 @@ public class CustomerPurchasedProperty
     long senderAccountNumber;
     Double amount;
     String sellerId;
+    String purchasedDate;
     
     
 	public CustomerPurchasedProperty()
@@ -232,6 +233,16 @@ public class CustomerPurchasedProperty
 	}
 
 
+	public String getPurchasedDate() {
+		return purchasedDate;
+	}
+
+
+	public void setPurchasedDate(String purchasedDate) {
+		this.purchasedDate = purchasedDate;
+	}
+
+
 	@Override
 	public String toString() {
 		return "CustomerPurchasedProperty [customerId=" + customerId + ", customerName=" + customerName
@@ -242,11 +253,9 @@ public class CustomerPurchasedProperty
 				+ paymentMethod + ", payableAmount=" + payableAmount + ", approval=" + approval + ", registered="
 				+ registered + ", paymentStatus=" + paymentStatus + ", yourAccountNumber=" + yourAccountNumber
 				+ ", senderAccountNumber=" + senderAccountNumber + ", amount=" + amount + ", sellerId=" + sellerId
-				+ "]";
+				+ ", purchasedDate=" + purchasedDate + "]";
 	}
 
-
-	
 
 
 }

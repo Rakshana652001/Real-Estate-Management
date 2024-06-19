@@ -31,7 +31,6 @@ public class ApprovedPropertiesServlet extends HttpServlet {
 		request.setAttribute("list", list);
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("ApprovedPropertyTableToBuy.jsp");
 	    dispatcher.forward(request, response);
-	    System.out.println(list);
 	}
 
 	

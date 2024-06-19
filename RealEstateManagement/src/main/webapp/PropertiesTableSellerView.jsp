@@ -6,7 +6,7 @@
 <html lang="xml:lang"> 
 <head>
 <meta charset="ISO-8859-1">
-<title>Approved Properties</title>
+<title>Registered Properties</title>
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -18,6 +18,7 @@ body {
     align-items: center;
     flex-direction: column;
     color: #333;
+    width: 113%;
 }
 
 h3 {
@@ -78,13 +79,15 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
 </style>
 </head>
 <body>
-<h3>Property Details</h3>
+<h3>Registered Properties</h3>
 <a href="SellerWelcomePage.jsp"><button>Back to home</button></a>
 
 <table border="1">
     <thead>
         <tr>
             <th>Seller ID</th>
+            <th>Customer ID</th>
+            <th>Purchased Date</th>
             <th>Property Name</th>
             <th>Property ID</th>
             <th>Property Price</th>
@@ -113,6 +116,8 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
          %>
              <tr>
                  <td><%= object.getSellerId() %></td>
+                 <td><%=object.getCustomerId() %></td>
+                 <td><%=object.getPurchasedDate() %></td>
                  <td><%= object.getPropertyName() %></td>
                  <td><%= object.getPropertyId() %></td>
                  <td><%= object.getPropertyPrice() %></td>
@@ -129,13 +134,9 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
                  <td><%=object.getRegistered() %></td>
                  <td><%=object.getPayment() %></td>
              </tr>
-             
          <%
-             }
-            
-   
+             }  
             %>
-     
     </tbody>
 </table>
 </body>

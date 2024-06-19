@@ -42,7 +42,6 @@ public class UpdateServlet extends HttpServlet {
 		try
 		{
 			estateImplementation.updateDetails(estateUser);
-			System.out.println("Update");
 		}
 		catch(Exception e)
 		{
@@ -61,7 +60,6 @@ public class UpdateServlet extends HttpServlet {
 		request.setAttribute("list", list);
         RequestDispatcher dispatcher = request.getRequestDispatcher(".jsp");
         dispatcher.forward(request, response);
-        System.out.println(list);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

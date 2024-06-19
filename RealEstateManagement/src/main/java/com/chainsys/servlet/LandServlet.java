@@ -47,7 +47,6 @@ public class LandServlet extends HttpServlet {
 			request.setAttribute("list", list);
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("PropertyTableForUserDisplay.jsp");
 	        dispatcher.forward(request, response);
-	        System.out.println(list);
 		}
 		catch(Exception e)
 		{

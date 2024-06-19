@@ -16,6 +16,9 @@ public class RealEstatePropertyRegister
 	byte[] propertyDocument;
 	String registered;
 	String payment;
+	String customerId;
+	String registeredDate;
+	String purchasedDate;
 	
 	
 	public RealEstatePropertyRegister()
@@ -144,6 +147,36 @@ public class RealEstatePropertyRegister
 	}
 
 
+	public String getCustomerId() {
+		return customerId;
+	}
+
+
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
+	}
+
+
+	public String getRegisteredDate() {
+		return registeredDate;
+	}
+
+
+	public void setRegisteredDate(String registeredDate) {
+		this.registeredDate = registeredDate;
+	}
+
+
+	public String getPurchasedDate() {
+		return purchasedDate;
+	}
+
+
+	public void setPurchasedDate(String purchasedDate) {
+		this.purchasedDate = purchasedDate;
+	}
+
+
 	@Override
 	public String toString() {
 		return "RealEstatePropertyRegister [sellerId=" + sellerId + ", propertyId=" + propertyId + ", propertyName="
@@ -151,9 +184,8 @@ public class RealEstatePropertyRegister
 				+ Arrays.toString(propertyImages) + ", propertyAddress=" + propertyAddress + ", propertyDistrict="
 				+ propertyDistrict + ", propertyState=" + propertyState + ", approval=" + approval
 				+ ", propertyDocument=" + Arrays.toString(propertyDocument) + ", registered=" + registered
-				+ ", payment=" + payment + "]";
+				+ ", payment=" + payment + ", customerId=" + customerId + ", registeredDate=" + registeredDate
+				+ ", purchasedDate=" + purchasedDate + "]";
 	}
-	
-	
 	
 }

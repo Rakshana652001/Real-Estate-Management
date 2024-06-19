@@ -6,7 +6,7 @@
 <html lang="xml:lang">
 <head>
 <meta charset="ISO-8859-1">
-<title>Properties Registration Details Admin view</title>
+<title>Unapproved Properties</title>
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -78,13 +78,14 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
 </style>
 </head>
 <body>
-<h3>Seller Properties (Unapproved)</h3>
+<h3>Unapproved Properties</h3>
 <form action="AdminWelcomePage.jsp"><button>Back to home</button></form>
 <div class="table-container">
     <table border="1">
         <thead>
             <tr>
                 <th>Seller ID</th>
+                <th>Registered Date</th>
                 <th>Property Name</th>
                 <th>Property ID</th>
                 <th>Property Price</th>
@@ -109,6 +110,7 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
             %>
                 <tr>
                     <td><%= object.getSellerId() %></td>
+                    <td><%=object.getRegisteredDate() %></td>
                     <td><%= object.getPropertyName() %></td>
                     <td><%= object.getPropertyId() %></td>
                     <td><%= object.getPropertyPrice() %></td>

@@ -6,9 +6,10 @@
 <html lang="xml:lang">
 <head>
 <meta charset="ISO-8859-1">
-<title>Approved Properties</title>
+<title>Closed Deals</title>
 <style>
-body {
+body 
+{
     font-family: Arial, sans-serif;
     background-color: grey;
     margin: 0;
@@ -18,9 +19,11 @@ body {
     align-items: center;
     flex-direction: column;
     color: #333;
+    width: 110%;
 }
 
-h3 {
+h3 
+{
     text-align: center;
     margin-bottom: 20px;
     color: white;
@@ -56,7 +59,7 @@ td img {
     display: block;
 }
 
-button, .btn-action, input[type="submit"] {
+button, .btn-action, input {
     padding: 10px;
     border: none;
     border-radius: 4px;
@@ -65,8 +68,10 @@ button, .btn-action, input[type="submit"] {
     cursor: pointer;
     margin: 5px;
 }
-
-button:hover, .btn-action:hover, input[type="submit"]:hover {
+label{
+color: white;
+}
+button:hover, .btn-action:hover, input:hover {
     background-color: #333;
 }
 
@@ -78,13 +83,17 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
 </style>
 </head>
 <body>
-<h3>Saled Properties</h3>
+<h3>Closed Deals</h3>
 <a href="AdminWelcomePage.jsp"><button>Back to home</button></a>
-
+<form action="SearchServlet" method="post">
+	<label>Search <input type="text" name="id" placeholder="Search By Id"></label>
+</form>
 <table border="1">
     <thead>
         <tr>
             <th>Seller ID</th>
+            <th>Registered Date</th>
+            <th>Purchased Date</th>
             <th>Property Name</th>
             <th>Property ID</th>
             <th>Property Price</th>
@@ -112,6 +121,8 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
          %>
              <tr>
                  <td><%= object.getSellerId() %></td>
+                 <td><%=object.getRegisteredDate() %></td>
+                 <td><%=object.getPurchasedDate() %></td>
                  <td><%= object.getPropertyName() %></td>
                  <td><%= object.getPropertyId() %></td>
                  <td><%= object.getPropertyPrice() %></td>

@@ -57,7 +57,6 @@ public class UserServlet extends HttpServlet {
 		{
 			objectForImplementation.userRegistration(estateUserRegister);
 			response.sendRedirect("AfterRegister.jsp");
-				
 		}
 		catch(Exception e)
 		{
@@ -68,7 +67,6 @@ public class UserServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		System.out.println("Do Post");
 		String delete = request.getParameter("delete");
         if(delete != null && delete.equals("Delete"))
         {
@@ -79,9 +77,7 @@ public class UserServlet extends HttpServlet {
             	objectForImplementation.deleteDetails(estateUserRegister);
             	List<RealEstateUserRegister> list = objectForImplementation.retriveUserDetails(estateUserRegister);
             	request.setAttribute("list", list);
-            	request.getRequestDispatcher("UserRegistrationTable.jsp").forward(request, response);
-            	System.out.println("Deleted and displayed");
-            	
+            	request.getRequestDispatcher("UsersTable.jsp").forward(request, response);         	
             }
             catch (Exception e)
             {

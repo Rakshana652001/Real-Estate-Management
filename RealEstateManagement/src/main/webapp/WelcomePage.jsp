@@ -18,12 +18,17 @@ body
 }
 h1{
 font-family: "Times New Roman", Times, serif;
+color: black;
 }
 .navbar 
 {
     background-color: #343a40;
     padding: 10px 20px;
     border-bottom: 1px solid #e7e7e7;
+    position: sticky;
+    top: 0;
+  	left: 0;
+  	z-index: 100;
 }
 
 .navbar-nav 
@@ -108,6 +113,35 @@ font-family: "Times New Roman", Times, serif;
   border-color: rgb(75, 3, 3) !important;
   color: black !important;
 }
+
+section{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#footer
+{
+  color: white;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: .4rem .4rem;
+  background-color: #343a40; 
+}
+
+#home{
+  background: url(Images/Flat.webp);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  }
+
 </style>
 </head>
 <body>
@@ -187,6 +221,26 @@ font-family: "Times New Roman", Times, serif;
         </div>
     </div>
 </section>
+<section id="about">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-4 col-lg-4 col-6">
+              <img alt="Aboutus" src="Images/quality.jpg" class="card-img-top">
+            </div>
+            <div class="col-lg-6 col-lg-6 col-12">
+              <h1>About Urban Nest Realty</h1>
+              	<p>Welcome to Urban Nest Realty, your trusted partner in real estate transactions. Our mission is to provide exceptional service and help you find your dream property. Whether you are buying, selling, or investing, we are here to guide you every step of the way.</p>
+	        	<p>With years of experience in the real estate industry, our team of professionals is committed to delivering outstanding results. We pride ourselves on transparency, integrity, and customer satisfaction.</p>
+    	    	<p>Explore our website to discover a wide range of properties, from residential homes to commercial spaces. Feel free to contact us for any inquiries or assistance. We look forward to serving you!</p>
+            </div>
+          </div>
+        </div>
+</section>
+      
+<footer id="footer">
+      <p class="text-center"> Conditions of Use and Sale Privacy Notice Interest-Based Ads</p>
+        <p class="text-center"> 2024 Company, Inc</p>
+  </footer>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>

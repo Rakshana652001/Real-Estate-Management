@@ -32,7 +32,6 @@ public class RealEstateImplementation implements RealEstateInterface
 		insertStatement.setString(9, estateUserRegister.getState());	
 		
 		insertStatement.executeUpdate();
-		System.out.println("Inserted");
 		getConnection.close();
 	}
 
@@ -81,9 +80,7 @@ public class RealEstateImplementation implements RealEstateInterface
 		
 		preparedStatement.setString(4, estateUserRegister.getName());
 		
-		int executeUpdate = preparedStatement.executeUpdate();
-		System.out.println(executeUpdate);
-		
+		preparedStatement.executeUpdate();		
 	}
 
 	public void deleteDetails(RealEstateUserRegister estateUserRegister) throws ClassNotFoundException, SQLException
@@ -189,7 +186,6 @@ public class RealEstateImplementation implements RealEstateInterface
 		
 		try
 		{
-			
 			Connection getConnection = ConnectionJdbc.getConnection();
 			String retriveDetails = "select id, name, designation, phone_number, email_id, address, district, state from user_registration where name=? and (designation = 'Admin')";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveDetails);
@@ -222,15 +218,52 @@ public class RealEstateImplementation implements RealEstateInterface
 	}
 	
 	
-	public List<RealEstateUserRegister> retriveSellerCustomerDetails(String id)
+	public List<RealEstateUserRegister> retriveSellersDetails(String id)
 	{
 		ArrayList<RealEstateUserRegister> arrayList1 = new ArrayList<RealEstateUserRegister>();
 		
 		try
 		{
-			
 			Connection getConnection = ConnectionJdbc.getConnection();
-			String retriveDetails = "select id, name, designation, phone_number, email_id, address, district, state from user_registration where deleted_User=0 and (designation = 'Seller' or designation = 'Customer')";
+			String retriveDetails = "select id, name, designation, phone_number, email_id, address, district, state from user_registration where deleted_User=0 and (designation = 'Seller')";
+			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveDetails);
+		
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next())
+			{
+				
+				RealEstateUserRegister estateUserRegister2 = new RealEstateUserRegister();
+				
+				estateUserRegister2.setGeneratedUserID(resultSet.getString(1));
+				estateUserRegister2.setName(resultSet.getString(2));
+				estateUserRegister2.setDesignation(resultSet.getString(3));
+				estateUserRegister2.setPhoneNumber(resultSet.getLong(4));
+				estateUserRegister2.setEmailID(resultSet.getString(5));
+				estateUserRegister2.setAddress(resultSet.getString(6));
+				estateUserRegister2.setDistrict(resultSet.getString(7));
+				estateUserRegister2.setState(resultSet.getString(8));
+				
+				arrayList1.add(estateUserRegister2);
+			}
+			getConnection.close();
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		return arrayList1;
+		
+	}
+	
+	
+	public List<RealEstateUserRegister> retriveCustomersDetails(String id)
+	{
+		ArrayList<RealEstateUserRegister> arrayList1 = new ArrayList<RealEstateUserRegister>();
+		
+		try
+		{
+			Connection getConnection = ConnectionJdbc.getConnection();
+			String retriveDetails = "select id, name, designation, phone_number, email_id, address, district, state from user_registration where deleted_User=0 and (designation = 'Customer')";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveDetails);
 		
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -266,7 +299,6 @@ public class RealEstateImplementation implements RealEstateInterface
 		
 		try
 		{
-			
 			Connection getConnection = ConnectionJdbc.getConnection();
 			String retriveDetails = "select id, name, designation, phone_number, email_id, address, district, state from user_registration where id=? and (designation = 'Seller') and deleted_User = 0";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveDetails);
@@ -343,7 +375,6 @@ public class RealEstateImplementation implements RealEstateInterface
 		
 		try
 		{
-			
 			Connection getConnection = ConnectionJdbc.getConnection();
 			String retriveDetails = "select id, name, designation, phone_number, email_id, address, district, state from user_registration where id=? and (designation = 'Customer')";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveDetails);
@@ -377,21 +408,23 @@ public class RealEstateImplementation implements RealEstateInterface
 	
 	public void approveProperty(String propertyId) throws ClassNotFoundException 
 	{
-	    String query = "UPDATE properties SET status = 'approved' WHERE property_id = ?";
+	    String query = "update properties set status = 'approved' where property_id = ?";
 	    try 
 	    {
 	    	Connection getConnection = ConnectionJdbc.getConnection();
 	    	PreparedStatement preparedStatement = getConnection.prepareStatement(query);
 	    	preparedStatement.setString(1, propertyId);
 	    	preparedStatement.executeUpdate();
-	    } catch (SQLException e) {
+	    } 
+	    catch (SQLException e)
+	    {
 	        e.printStackTrace();
 	    }
 	}
 
 	public List<RealEstateUserRegister> retriveAdminDetails(String getId)
 	{
-ArrayList<RealEstateUserRegister> arrayList1 = new ArrayList<RealEstateUserRegister>();
+		ArrayList<RealEstateUserRegister> arrayList1 = new ArrayList<RealEstateUserRegister>();
 		
 		try
 		{
@@ -501,15 +534,15 @@ ArrayList<RealEstateUserRegister> arrayList1 = new ArrayList<RealEstateUserRegis
 		return arrayList1;
 	}
 
-	public List<RealEstateUserRegister> search(String id)
+	public List<RealEstateUserRegister> search(String name)
 	{
 		ArrayList<RealEstateUserRegister> arrayList = new ArrayList<RealEstateUserRegister>();
 		try
 		{
 			Connection getConnection = ConnectionJdbc.getConnection();
-			String retriveDetails = "select id, name, designation, phone_number, email_id, address, district, state from user_registration where  id=? and (designation = 'Seller' or designation = 'Customer') and deleted_User=0";
+			String retriveDetails = "select id, name, designation, phone_number, email_id, address, district, state from user_registration where  id=? and (designation='seller' or designation = 'customer')";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveDetails);
-			preparedStatement.setString(1, id);
+			preparedStatement.setString(1, name);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next())
 			{
