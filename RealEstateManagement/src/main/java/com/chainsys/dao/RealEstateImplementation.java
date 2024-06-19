@@ -104,6 +104,7 @@ public class RealEstateImplementation implements RealEstateInterface
 				
 	}
 
+	@SuppressWarnings("unused")
 	public Object getAdminId(String id) throws ClassNotFoundException, SQLException
 	{
 		Connection getConnection = ConnectionJdbc.getConnection();
@@ -122,6 +123,7 @@ public class RealEstateImplementation implements RealEstateInterface
 		return selectId;
 	}
 	
+	@SuppressWarnings("unused")
 	public Object getGeneratedSellerId(String id) throws ClassNotFoundException, SQLException
 	{
 		Connection getConnection = ConnectionJdbc.getConnection();
@@ -141,6 +143,7 @@ public class RealEstateImplementation implements RealEstateInterface
 	}
 	
 	
+	@SuppressWarnings("unused")
 	public String getAdminpassword(String id) throws ClassNotFoundException, SQLException
 	{
 		Connection getConnection = ConnectionJdbc.getConnection();
@@ -160,6 +163,7 @@ public class RealEstateImplementation implements RealEstateInterface
 		return password;
 	}
 	
+	@SuppressWarnings("unused")
 	public String getsellerPassword(String id) throws ClassNotFoundException, SQLException
 	{
 		Connection getConnection = ConnectionJdbc.getConnection();
@@ -293,6 +297,7 @@ public class RealEstateImplementation implements RealEstateInterface
 		return arrayList1;
 	}
 
+	@SuppressWarnings("unused")
 	public Object getCustomerGeneratedId(String id) throws ClassNotFoundException, SQLException
 	{
 		Connection getConnection = ConnectionJdbc.getConnection();
@@ -312,6 +317,7 @@ public class RealEstateImplementation implements RealEstateInterface
 		return selectId;
 	}
 
+	@SuppressWarnings("unused")
 	public Object getCustomerPassword(String id) throws ClassNotFoundException, SQLException 
 	{
 		Connection getConnection = ConnectionJdbc.getConnection();
@@ -493,6 +499,40 @@ ArrayList<RealEstateUserRegister> arrayList1 = new ArrayList<RealEstateUserRegis
 			System.out.println(e);
 		}
 		return arrayList1;
+	}
+
+	public List<RealEstateUserRegister> search(String id)
+	{
+		ArrayList<RealEstateUserRegister> arrayList = new ArrayList<RealEstateUserRegister>();
+		try
+		{
+			Connection getConnection = ConnectionJdbc.getConnection();
+			String retriveDetails = "select id, name, designation, phone_number, email_id, address, district, state from user_registration where  id=? and (designation = 'Seller' or designation = 'Customer') and deleted_User=0";
+			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveDetails);
+			preparedStatement.setString(1, id);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next())
+			{
+				RealEstateUserRegister estateUserRegister = new RealEstateUserRegister();
+				
+				estateUserRegister.setGeneratedUserID(resultSet.getString(1));
+				estateUserRegister.setName(resultSet.getString(2));
+				estateUserRegister.setDesignation(resultSet.getString(3));
+				estateUserRegister.setPhoneNumber(resultSet.getLong(4));
+				estateUserRegister.setEmailID(resultSet.getString(5));
+				estateUserRegister.setAddress(resultSet.getString(6));
+				estateUserRegister.setDistrict(resultSet.getString(7));
+				estateUserRegister.setState(resultSet.getString(8));
+				
+				arrayList.add(estateUserRegister);
+			}
+			getConnection.close();
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		return arrayList;
 	}
 
 	

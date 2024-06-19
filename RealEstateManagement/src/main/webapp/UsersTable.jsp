@@ -57,7 +57,9 @@ button, .btn-action, input {
     flex: 1;
     margin: 5px;
 }
-
+label{
+	color: white;
+}
 button:hover, .btn-action:hover {
     background-color: #333;
 }
@@ -71,7 +73,12 @@ button:hover, .btn-action:hover {
 </head>
 <body>
 <h3>User Details</h3>
-<form action="AdminWelcomePage.jsp"><button>Back to Home</button></form>
+<form action="AdminWelcomePage.jsp">
+<button>Back to Home</button>
+</form>
+<form action="SearchServlet">
+	<label>Search <input type="search" name="generatedUserID" id="generatedUserID"></label>
+</form>
 
 <table border="1">
 	<thead>
