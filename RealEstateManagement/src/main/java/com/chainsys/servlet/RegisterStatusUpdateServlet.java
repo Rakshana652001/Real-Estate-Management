@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.chainsys.dao.RealEstatePropertyImplementation;
 import com.chainsys.model.RealEstatePropertyRegister;
 
-
 @WebServlet("/RegisterStatusUpdateServlet")
 public class RegisterStatusUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -44,11 +43,8 @@ public class RegisterStatusUpdateServlet extends HttpServlet {
         dispatcher.forward(request, response);
 	}
 	
-
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		
 		doGet(request, response);
 	}
 

@@ -18,7 +18,7 @@ public class RealEstateCustomerImplementation
 	public void saveProperties(CustomerPurchasedProperty customerPurchasedProperty) throws ClassNotFoundException, SQLException
 	{
 		Connection getConnection = ConnectionJdbc.getConnection();
-		String insert = "insert into customer_registered_property (customer_id,seller_id, total_amount, payment_method, approval,property_address, government_id, payabel_amount, payed_status,purchased_date) values (?,?,?,?,?,?,?,?,?,?)";
+		String insert = "insert into customer_registered_property (customer_id,seller_id, total_amount, payment_method, approval,property_address, government_id, payabel_amount, payed_status) values (?,?,?,?,?,?,?,?,?)";
 		
 		PreparedStatement preparedStatement = getConnection.prepareStatement(insert);
 		
@@ -31,7 +31,6 @@ public class RealEstateCustomerImplementation
 		preparedStatement.setBytes(7, customerPurchasedProperty.getGovernmentId());
 		preparedStatement.setDouble(8, customerPurchasedProperty.getPayableAmount());
 		preparedStatement.setString(9, "Not Payed");
-		preparedStatement.setString(10, customerPurchasedProperty.getPurchasedDate());
 		
 		preparedStatement.executeUpdate();
 		getConnection.close();
@@ -209,18 +208,19 @@ public class RealEstateCustomerImplementation
 		return list;
 	}
 
-	public List<CustomerPurchasedProperty> updatePayment(long accountNumber1, long accountNumber2, String customerId)
+	public List<CustomerPurchasedProperty> updatePayment(long accountNumber1, long accountNumber2, String customerId, String purchasedDate)
 	{
 		List<CustomerPurchasedProperty> list = new ArrayList<CustomerPurchasedProperty>();
 		try
 		{
 			Connection getConnection = ConnectionJdbc.getConnection();
-			String update = "update customer_registered_property set customer_account=?, seller_account=?, payed_status = ? where customer_id = ?";
+			String update = "update customer_registered_property set customer_account=?, seller_account=?, payed_status = ?, purchased_date = ? where customer_id = ?";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(update);
 			preparedStatement.setLong(1, accountNumber1);
 			preparedStatement.setLong(2,accountNumber2);
 			preparedStatement.setString(3, "Paid");
-			preparedStatement.setString(4, customerId);
+			preparedStatement.setString(4, purchasedDate);
+			preparedStatement.setString(5, customerId);
 			preparedStatement.executeUpdate();
 			
 		}
@@ -237,7 +237,7 @@ public class RealEstateCustomerImplementation
 		try
 		{
 			Connection getConnection = ConnectionJdbc.getConnection();
-			String retriveProperties = "select seller_id, property_name,property_id,property_price, property_images,property_document, property_address, property_district,property_state,approval, register_status,payment_status,purchased_date from property_registration where customer_id = ? and payment_status='Paid' and deleted_User = 0";
+			String retriveProperties = "select seller_id, property_name,property_id,property_price, property_images,property_document, property_address, property_district,property_state,approval, register_status,payment_status,purchased_date,registered_date from property_registration where customer_id = ? and payment_status='Paid' and deleted_User = 0";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(retriveProperties);
 			preparedStatement.setString(1, customerId);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -258,6 +258,7 @@ public class RealEstateCustomerImplementation
 				estatePropertyRegister.setRegistered(resultSet.getString(11));
 				estatePropertyRegister.setPayment(resultSet.getString(12));
 				estatePropertyRegister.setPurchasedDate(resultSet.getString(13));
+				estatePropertyRegister.setRegisteredDate(resultSet.getString(14));
 				
 				list.add(estatePropertyRegister);
 				
@@ -325,7 +326,7 @@ public class RealEstateCustomerImplementation
 				customerPurchasedProperty.setGovernmentId(resultSet.getBytes(6));
 				customerPurchasedProperty.setPayableAmount(resultSet.getDouble(7));
 				customerPurchasedProperty.setPaymentStatus(resultSet.getString(8));
-				customerPurchasedProperty.setPurchasedDate(resultSet.getString(9));
+				customerPurchasedProperty.setPurchasedDate(resultSet.getString(9));			
 				
 				list.add(customerPurchasedProperty);
 			}

@@ -3,6 +3,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Admin Welcome Page</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -23,9 +24,9 @@
     .navbar a {
         color: white;
         text-align: center;
-        padding: 14px 20px;
+        padding: 19px 20px;
         text-decoration: none;
-        font-size: 17px;
+        font-size: 18px;
         margin: 0 10px;
     }
     .navbar a:hover {
@@ -62,31 +63,45 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: calc(100vh - 50px); /* Adjusted to account for navbar height */
+        height: calc(100vh - 50px); 
     }
-    h1 {
+    h2 {
         font-family: "Times New Roman", Times, serif;
         color: white;
         display: flex;
         justify-content: center;
-        align-items: center;
-        font-size: 2rem;
+        align-items: initial;
+        font-size: 2rem;       
     }
+    
 </style>
 </head>
 <body>
-<section id="home" class="container mt-5">
-    <h1 class="text-center">Urban Nest Realty</h1>
-</section>
+<!-- <section id="home" class="container mt-5">
+    
+    <ul>
+    	<li><a class="nav-link active" href="http://localhost:8080/RealEstateManagement/WelcomePage.jsp#home"><button>Home</button></a></li>
+    	<li><a class="nav-link active" href="http://localhost:8080/RealEstateManagement/WelcomePage.jsp#realties"><button>Realties</button></a></li>
+    	<li><a class="nav-link active" href="http://localhost:8080/RealEstateManagement/WelcomePage.jsp#about"><button>About Us</button></a></li>
+    	<li><a class="nav-link active" href="http://localhost:8080/RealEstateManagement/WelcomePage.jsp#contact"><button>Contact</button></a></li>
+    </ul>
+    
+</section> -->
+
 <div class="navbar">
+<h2 class="text-center">Urban Nest Realty</h2>
     <a href="AdminProfileServlet">Profile</a>
     <div class="dropdown">
         <a href="javascript:void(0)" class="dropbtn">Clients</a>
         <div class="dropdown-content">
+        <nav class="navbar navbar-dark bg-dark">
+    
+  </nav>
             <a href="SellerCustomerServlet">Seller</a>
             <a href="CustomersServlet">Customer</a>
         </div>
     </div>
+   
     <div class="dropdown">
         <a href="javascript:void(0)" class="dropbtn">Seller Properties</a>
         <div class="dropdown-content">
@@ -97,9 +112,13 @@
     <a href="ApproveToBuyServlet">Payment Approval</a>
     <a href="RegisteredPropertiesServlet">Closed Deals</a>
     <a href="WelcomePage.jsp">Logout</a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>      
+    </button>
 </div>
 <div class="content">
-    <h1>Welcome to the Admin Dashboard</h1>
+    <h2>Welcome to the Admin Dashboard</h2>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

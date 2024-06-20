@@ -85,8 +85,8 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
     <thead>
         <tr>
             <th>Customer ID</th>
-            <th>Property Address</th>
-            <th>Government Id</th>
+            <th>Property Address</th>  
+            <th>Government Id</th>                  
             <th>Property Total Amount</th>
             <th>Payable Amount</th>
             <th>Payment Method</th>

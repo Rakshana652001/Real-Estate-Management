@@ -36,7 +36,7 @@
         box-sizing: border-box;
     }
     
-    .btn-buy {
+     button, input {
         background-color: black;
         color: white;
         padding: 10px 20px;
@@ -46,16 +46,7 @@
         font-size: 16px;
         margin-top: 10px;
     }
-    .btn-buy:hover {
-        background-color: grey;
-    }
-    
-    form[action="WelcomePage.jsp"] {
-        display: flex;
-        justify-content: center;
-        margin: 20px 0;
-    }
-    
+   
 </style>
 </head>
 <body>

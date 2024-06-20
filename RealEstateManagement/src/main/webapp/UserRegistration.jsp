@@ -123,7 +123,7 @@
     <label for="designation">Designation: 
         <input type="text" id="designationInput" name="designation" readonly required/>
     </label>
-    <label for="phoneNumber">Phone Number: <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="7339263883" pattern="[789][0-9]{9}" required/></label>
+    <label for="phoneNumber">Phone Number: <input type="tel" id="phoneNumber" name="phoneNumber" maxlength="10" placeholder="7339263883" pattern="[789][0-9]{9}" required/></label>
     <label for="emailID">EmailID: <input type="email" id="emailID" name="emailID" pattern="[a-z0-9_/-/.]+[@][a-z]+[/.][a-z]{2,3}$" placeholder="raksha@gmail.com" required/></label>
     <label for="password">Password: <input type="password" id="password" name="password" placeholder="Rakshana@12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required/></label>
     <label for="address">Address: <textarea id="address" name="address" rows="4" cols="50"></textarea></label>
@@ -131,7 +131,6 @@
     <label for="state">State: <input type="text" id="state" name="state" placeholder="Tamil Nadu" required/></label>
     <input type="text" id="generatedUserID" name="generatedUserID" readonly style="display: none;"> 
     <label id="userIDLabel" style="display: none;"></label>
-    
     <div class="button-group">
         <button type="button" onclick="validateForm()">Register</button>
     </div>

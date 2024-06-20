@@ -21,8 +21,6 @@ public class UserServlet extends HttpServlet {
 	RealEstateImplementation objectForImplementation = new RealEstateImplementation();
 	List<RealEstateUserRegister> list = new ArrayList<RealEstateUserRegister>();
 	
-	
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		String name = request.getParameter("name");
@@ -62,7 +60,6 @@ public class UserServlet extends HttpServlet {
 		{
 			System.out.println(e);
 		}
-
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

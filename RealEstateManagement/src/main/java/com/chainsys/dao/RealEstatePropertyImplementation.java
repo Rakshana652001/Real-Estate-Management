@@ -19,7 +19,7 @@ public class RealEstatePropertyImplementation
 	{
 		
 		Connection getConnection = ConnectionJdbc.getConnection();
-		String saveProperties = "insert into property_registration (seller_id,property_name,property_id,property_price, property_images,property_document,property_address, property_district,property_state, approval, register_status, payment_status, registered_date) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String saveProperties = "insert into property_registration (seller_id,property_name,property_id,property_price, property_images,property_document,property_address, property_district,property_state, approval, register_status, payment_status, registered_date, customer_id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement insertStatement = getConnection.prepareStatement(saveProperties);
 		insertStatement.setString(1, estatePropertyRegister.getSellerId());
 		insertStatement.setString(2, estatePropertyRegister.getPropertyName());
@@ -34,6 +34,7 @@ public class RealEstatePropertyImplementation
 		insertStatement.setString(11, "Not Registered");
 		insertStatement.setString(12, "Not Paid");
 		insertStatement.setString(13, estatePropertyRegister.getRegisteredDate());
+		insertStatement.setString(14, "Not Registered");
 		
 		insertStatement.executeUpdate();
 		getConnection.close();		
@@ -155,7 +156,6 @@ public class RealEstatePropertyImplementation
 				estatePropertyRegister.setPropertyId(resultSet.getString(3));
 				estatePropertyRegister.setPropertyPrice(resultSet.getLong(4));
 				estatePropertyRegister.setPropertyImages(resultSet.getBytes(5));
-				System.out.println(resultSet.getBytes(5));
 				estatePropertyRegister.setPropertyAddress(resultSet.getString(6));
 				estatePropertyRegister.setPropertyDistrict(resultSet.getString(7));
 				estatePropertyRegister.setPropertyState(resultSet.getString(8));
@@ -481,15 +481,16 @@ public class RealEstatePropertyImplementation
 		
 	}
 
-	public void updatePaid(String customerId)
+	public void updatePaid(String customerId, String purchasedDate)
 	{
 		try
 		{
 			Connection getConnection = ConnectionJdbc.getConnection();
-			String update = "update property_registration set payment_status = ? where customer_id = ?";
+			String update = "update property_registration set payment_status = ?, purchased_date = ? where customer_id = ?";
 			PreparedStatement preparedStatement = getConnection.prepareStatement(update);
 			preparedStatement.setString(1, "Paid");
-			preparedStatement.setString(2, customerId);
+			preparedStatement.setString(2, purchasedDate);
+			preparedStatement.setString(3, customerId);
 			
 			preparedStatement.executeUpdate();
 			

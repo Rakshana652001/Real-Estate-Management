@@ -18,6 +18,7 @@ body {
     align-items: center;
     flex-direction: column;
     color: #333;
+    width: 100%;
 }
 
 h3 {

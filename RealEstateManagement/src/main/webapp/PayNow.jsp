@@ -1,3 +1,4 @@
+<%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -58,10 +59,13 @@ input[type="submit"]:hover {
 </style>
 </head>
 <body>
+<%
+	LocalDate purchasedDate = LocalDate.now();
+%>
 <div class="container">
     <h3>Payment Form</h3>
     <form action="PayNowServlet" id="paymentForm" method="post" onsubmit="return validateForm()">
-        <label for="yourAccountNumber">Your Account Number:</label>
+        <label for="yourAccountNumber">Your Account Number: </label>
         <input type="number" id="yourAccountNumber" name="yourAccountNumber" placeholder="Enter your Bank Account Number" required/>
         
         <label for="senderAccountNumber">Account Number of the Receiver:</label>
@@ -70,11 +74,14 @@ input[type="submit"]:hover {
         <label for="amount">Enter the Amount to send:</label>
         <input type="number" id="amount" name="amount" value="<%= request.getParameter("amount") %>" readonly/>
         
+        <label for="purchasedDate">Purchased Date</label>
+        <input type="date" id="purchasedDate" name="purchasedDate" value="<%=purchasedDate %>" readonly>
+        
         <input type="submit" value="Send Money">
     </form>
 </div>
 <script>
-function validateForm()
+function validateForm() 
 {
     var yourAccountNumber = document.getElementById("yourAccountNumber").value;
     var senderAccountNumber = document.getElementById("senderAccountNumber").value;
@@ -86,8 +93,7 @@ function validateForm()
         return false;
     }
 
-    if (amount <= 0) 
-    {
+    if (amount <= 0) {
         alert("The amount must be greater than zero.");
         return false;
     }

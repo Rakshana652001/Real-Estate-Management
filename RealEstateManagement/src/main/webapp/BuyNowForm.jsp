@@ -120,9 +120,6 @@
         <label for="governmentId">Government ID:
             <input type="file" id="governmentId" name="governmentId" required>
         </label><br><br>
-        <label for="purchasedDate">
-        	<input type="date" id="purchasedDate" name="purchasedDate" required>
-        </label>
         <label for="sellerId">Seller ID:
         	<input type="text" id="sellerId" name="sellerId" value="<%= request.getParameter("sellerId")%>" readonly>
         </label>

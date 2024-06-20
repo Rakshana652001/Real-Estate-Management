@@ -36,7 +36,7 @@
         box-sizing: border-box;
     }
     
-    .btn-buy {
+    button, input {
         background-color: black;
         color: white;
         padding: 10px 20px;
@@ -46,16 +46,6 @@
         font-size: 16px;
         margin-top: 10px;
     }
-    .btn-buy:hover {
-        background-color: grey;
-    }
-    
-    form[action="WelcomePage.jsp"] {
-        display: flex;
-        justify-content: center;
-        margin: 20px 0;
-    }
-    
 </style>
 </head>
 <body>
@@ -66,19 +56,19 @@
     for (RealEstateUserRegister object : list) { 
     %>
     <div class="card">
-            	<p><strong>ID: </strong><%= object.getGeneratedUserID() %></p>
-            	<p><strong>Name: </strong><%= object.getName() %></p>
-            	<p><strong>Phone Number: </strong><%= object.getPhoneNumber() %></p>
-            	<p><strong>Email ID: </strong><%= object.getEmailID() %></p>
-            	<p><strong>Address: </strong><%= object.getAddress() %></p>
-            	<p><strong>District: </strong><%= object.getDistrict() %></p>
-            	<p><strong>State: </strong><%= object.getState() %></p>    
-            	<input type="hidden" value="<%=object.getName() %>" name="name"><a href="UpdateAdminDetails.jsp?editName=<%=object.getName() %>"><button>Update</button></a>
-            	<form action="UserServlet" method="post">
-  				<input type="hidden" name="deleteName" value="<%= object.getName()%>">
-  				<input type="submit" name="delete" value="Delete">
-  				</form>
-				<form action="AdminWelcomePage.jsp"><button>Back to Home</button></form>        	
+         <p><strong>ID: </strong><%= object.getGeneratedUserID() %></p>
+         <p><strong>Name: </strong><%= object.getName() %></p>
+         <p><strong>Phone Number: </strong><%= object.getPhoneNumber() %></p>
+         <p><strong>Email ID: </strong><%= object.getEmailID() %></p>
+         <p><strong>Address: </strong><%= object.getAddress() %></p>
+         <p><strong>District: </strong><%= object.getDistrict() %></p>
+         <p><strong>State: </strong><%= object.getState() %></p>    
+         <input type="hidden" value="<%=object.getName() %>" name="name"><a href="UpdateAdminDetails.jsp?editName=<%=object.getName() %>"><button>Update</button></a>
+         <form action="UserServlet" method="post">
+  		 <input type="hidden" name="deleteName" value="<%= object.getName()%>">
+  	     <input type="submit" name="delete" value="Delete">
+  		 </form>
+   		 <form action="AdminWelcomePage.jsp"><button>Back to Home</button></form>        	
    	</div>
 	<% 
     } 

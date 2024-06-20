@@ -16,6 +16,7 @@ body
     background-color: #f8f9fa;
     
 }
+
 h1{
 font-family: "Times New Roman", Times, serif;
 color: black;
@@ -23,7 +24,7 @@ color: black;
 .navbar 
 {
     background-color: #343a40;
-    padding: 10px 20px;
+    padding: 20px 30px;
     border-bottom: 1px solid #e7e7e7;
     position: sticky;
     top: 0;
@@ -236,11 +237,20 @@ section{
           </div>
         </div>
 </section>
-      
+<section id="contact">
+<div>
+	<h1>Contact Us</h1>
+	</div>
+	<div>
+		<label>Email ID: <input type="text" id="emailID" name="emailID" placeholder="rakshana@12gmail.com" required></label>
+		<label>Enter Your Message: <textarea rows="5" cols="10" placeholder="Message" id="message" name="message" required></textarea> </label>
+		<input type="submit" value="Send">
+	</div>
+</section>
 <footer id="footer">
       <p class="text-center"> Conditions of Use and Sale Privacy Notice Interest-Based Ads</p>
         <p class="text-center"> 2024 Company, Inc</p>
-  </footer>
+</footer>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>

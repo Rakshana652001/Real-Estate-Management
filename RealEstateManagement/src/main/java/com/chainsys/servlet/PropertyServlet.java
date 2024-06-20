@@ -22,10 +22,8 @@ public class PropertyServlet extends HttpServlet {
     RealEstatePropertyRegister estatePropertyRegister = new RealEstatePropertyRegister();
     RealEstatePropertyImplementation estatePropertyImplementation = new RealEstatePropertyImplementation();
 
-   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	byte[] data=null;
         String sellerId = request.getParameter("sellerId");
         estatePropertyRegister.setSellerId(sellerId);
 
@@ -42,7 +40,7 @@ public class PropertyServlet extends HttpServlet {
         String registeredDate = request.getParameter("registeredDate");
         estatePropertyRegister.setRegisteredDate(registeredDate);
 
-        
+        byte[] data=null;
         Part file=request.getPart("propertyImage");
         String imageFilename=file.getSubmittedFileName();
         String uploadPath = "C:/Users/raks3556/git/repository7/RealEstateManagement/src/main/webapp/Images/" + imageFilename;
@@ -64,7 +62,6 @@ public class PropertyServlet extends HttpServlet {
         }
         estatePropertyRegister.setPropertyImages(data);
 
-        
         byte[] data1 = null;
         Part file1 = request.getPart("propertyDocument");
         String image = file1.getSubmittedFileName();
@@ -79,7 +76,6 @@ public class PropertyServlet extends HttpServlet {
         	inputStream.read(data1);
         	fileOutputStream.write(data1);
         	fileOutputStream.close();
-        	
         }
         catch(NumberFormatException e)
         {
@@ -96,7 +92,6 @@ public class PropertyServlet extends HttpServlet {
 
         String propertyState = request.getParameter("propertyState");
         estatePropertyRegister.setPropertyState(propertyState);
-        
 
         HttpSession httpSession = request.getSession();
         

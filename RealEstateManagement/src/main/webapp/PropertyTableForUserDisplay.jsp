@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Properties Details</title>
+<title>Property Details</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -67,8 +67,8 @@
         background-color: grey;
     }
     .no-properties {
-        text-align: center;
-        color: #999;
+        text-align: center;        
+        color: #999; 
         font-size: 18px;
         margin-top: 20px;
     }

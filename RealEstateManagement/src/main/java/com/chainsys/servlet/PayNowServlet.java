@@ -16,7 +16,6 @@ import com.chainsys.dao.RealEstateCustomerImplementation;
 import com.chainsys.dao.RealEstatePropertyImplementation;
 import com.chainsys.model.CustomerPurchasedProperty;
 
-
 @WebServlet("/PayNowServlet")
 public class PayNowServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -38,30 +37,30 @@ public class PayNowServlet extends HttpServlet {
 		Double getAmount = Double.parseDouble(amount);
 		customerPurchasedProperty.setAmount(getAmount);
 		
+		String purchasedDate = request.getParameter("purchasedDate");
+		customerPurchasedProperty.setPurchasedDate(purchasedDate);
+		
 		HttpSession session = request.getSession();
 	    String customerId = (String) session.getAttribute("customerId");
 	    customerPurchasedProperty.setCustomerId(customerId);
 		try
 		{			
-			list = customerImplementation.updatePayment(accountNumber1, accountNumber2, customerId);
+			list = customerImplementation.updatePayment(accountNumber1, accountNumber2, customerId, purchasedDate);
 			
 			RealEstatePropertyImplementation estatePropertyImplementation = new RealEstatePropertyImplementation();
-			estatePropertyImplementation.updatePaid(customerId);
+			estatePropertyImplementation.updatePaid(customerId, purchasedDate);
 			
 			request.setAttribute("list", list);
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("ApprovedPropertyTableToBuy.jsp");
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("CustomerWelcomePage.jsp");
 	        dispatcher.forward(request, response);
 		}
 		catch(Exception e)
 		{
 			System.out.println(e);
 		}
-		
 	}
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		doGet(request, response);
 	}
-
 }

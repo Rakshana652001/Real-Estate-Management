@@ -41,8 +41,6 @@ public class PurchaseServlet extends HttpServlet {
             System.out.println("File upload error: " + e.getMessage());
         }
 
-        String purchasedDate = request.getParameter("purchasedDate");
-        customerPurchasedProperty.setPurchasedDate(purchasedDate);
         
         String propertyId = request.getParameter("propertyId");
         customerPurchasedProperty.setPropertyId(propertyId);

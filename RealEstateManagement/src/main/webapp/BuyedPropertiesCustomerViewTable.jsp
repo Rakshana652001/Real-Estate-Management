@@ -18,7 +18,7 @@ body {
     align-items: center;
     flex-direction: column;
     color: #333;
-    width: 110%;
+    width: 120%;
 }
 
 h3 {
@@ -85,6 +85,7 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
     <thead>
         <tr>
             <th>Seller ID</th>
+            <th>Registered Date</th>
             <th>Purchased Date</th>
             <th>Property Name</th>
             <th>Property ID</th>
@@ -112,6 +113,7 @@ button:hover, .btn-action:hover, input[type="submit"]:hover {
         %>
             <tr>
                 <td><%= object.getSellerId() %></td>
+                <td><%=object.getRegisteredDate() %></td>
                 <td><%=object.getPurchasedDate() %></td>
                 <td><%= object.getPropertyName() %></td>
                 <td><%= object.getPropertyId() %></td>

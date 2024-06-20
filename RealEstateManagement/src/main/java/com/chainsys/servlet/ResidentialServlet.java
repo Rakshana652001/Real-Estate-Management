@@ -34,7 +34,6 @@ public class ResidentialServlet extends HttpServlet {
 			System.out.println(e);
 		}
 	}
-
 	
 	protected void retrive(HttpServletRequest request, HttpServletResponse response) throws IOException
 	{
@@ -51,10 +50,8 @@ public class ResidentialServlet extends HttpServlet {
 		catch(Exception e)
 		{
 			System.out.println(e);
-		}
-		
+		}	
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
